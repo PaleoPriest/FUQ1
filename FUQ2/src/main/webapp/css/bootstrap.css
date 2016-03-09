@@ -10,7 +10,9 @@ html {
       -ms-text-size-adjust: 100%;
 }
 body {
-  margin: 0;
+	/*background-image: url(../img/teksto_fonas_dark.jpg);*/
+	background-repeat: repeat;
+	margin: 0;
 }
 article,
 aside,
@@ -85,6 +87,18 @@ sub {
 }
 img {
   border: 0;
+}
+.stretch-img {
+	width: 100%;
+}
+.img-hspace {
+	margin: 0px 10px;
+}
+.img-left {
+	float: left;
+}
+.img-right {
+	float: right;
 }
 svg:not(:root) {
   overflow: hidden;
