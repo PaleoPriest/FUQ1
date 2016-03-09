@@ -1,0 +1,8 @@
+Hi :D
+
+Deadlinas:
+2016-03-18
+1) viena veikianti duombaze veikianti visiems
+2) keli html puslapiai, kurie gali spausdinti duomenis is duombazes ir kelti duomenis i duobaze
+3) aprasyti pirma strategija (dokumentacija)
+4) tspi??? tas keistas exelis.... ;(
