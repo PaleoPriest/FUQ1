@@ -94,6 +94,9 @@ img {
 .img-hspace {
 	margin: 0px 10px;
 }
+.img-vspace {
+	margin: 10px 0px;
+}
 .img-left {
 	float: left;
 }
