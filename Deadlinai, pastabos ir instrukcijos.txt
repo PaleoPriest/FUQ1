@@ -4,5 +4,7 @@ Deadlinas:
 2016-03-18
 1) viena veikianti duombaze veikianti visiems
 2) keli html puslapiai, kurie gali spausdinti duomenis is duombazes ir kelti duomenis i duobaze
+	padaryti keli pavyzdiniai puslapiai: nariai.html - spausdinimui, uzsiregistruoti - ikelti nariams i DB
 3) aprasyti pirma strategija (dokumentacija)
+	03/11 ataskaita nusiusta destytojui ir gautas atgal laiskas
 4) tspi??? tas keistas exelis.... ;(
