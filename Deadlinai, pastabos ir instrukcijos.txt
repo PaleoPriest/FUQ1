@@ -6,5 +6,13 @@ Deadlinas:
 2) keli html puslapiai, kurie gali spausdinti duomenis is duombazes ir kelti duomenis i duobaze
 	padaryti keli pavyzdiniai puslapiai: nariai.html - spausdinimui, uzsiregistruoti - ikelti nariams i DB
 3) aprasyti pirma strategija (dokumentacija)
-	03/11 ataskaita nusiusta destytojui ir gautas atgal laiskas
+	03/11 dokumentacija (ataskaita) nusiusta destytojui ir gautas reply
 4) tspi??? tas keistas exelis.... ;(
+	tryin to somehow fill it, but totally don know if doin it right ^^" n auto generate is very good :D
+
+
+Non for this deadline stuff
+	Most of this is design stuff, tj gal Morta kai turesi laiko po truputi do this
+1. Sugalvot musu projektui ir tinklapiui pavadinimus
+2. Brand or logo or smth like that
+3. ico for tinklapis
