@@ -29,6 +29,11 @@ section,
 summary {
   display: block;
 }
+
+p.medium_height{
+	line-height:165%;
+}
+
 audio,
 canvas,
 progress,
