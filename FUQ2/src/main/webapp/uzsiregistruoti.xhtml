@@ -1,10 +1,14 @@
-<!DOCTYPE html>
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      lang="en">
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>&quot;&quot; - Nariai</title>
+<title>&quot;&quot; - Užsiregistruoti</title>
 
 <!-- Bootstrap -->
 <link href="css/bootstrap.css" rel="stylesheet">
@@ -53,21 +57,51 @@
 </nav>
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-8 col-md-offset-2 text-center">
-      <h1>Vasaros malonumai :D</h1>
+    <div class="col-md-6 col-md-offset-3">
+      <h1 class="text-center">Vasaros malonumai :D</h1>
     </div>
   </div>
   <hr>
 </div>
 <div class="container">
   <div class="row">
-    <div class="col-md-8 col-md-offset-2">
-      <img src="img/User_icon.png" width="64" height="64" alt="User Icon" class="img-left img-vspace"/>
-      <p>Info about person</p>
+  <h3> * mb tvarkyt tarpus tarp fields * </h3>
+    <div class="col-md-offset-1 col-md-2">
+      <p class="medium_height">
+        Vardas <br> <br>
+        Pavardė <br> <br>
+        Slapyvardis <br> <br>
+        Slaptažodis <br> <br>
+        Pakartoti slaptažodį <br> <br>
+        E-mail <br> <br>
+        Telfono nr. <br> <br>
+        Lytis <br> <br>
+        Gimimo data <br>
+      </p>
     </div>
-    <div class="col-md-8 col-md-offset-2">
-      <img src="img/User_icon.png" width="64" height="64" alt="User Icon" class="img-left img-vspace"/>
-      <p>Info about person</p>
+    <div class="col-md-5 col-md-offset-0">
+    <form>
+    <input type="text"> <br> <br>
+    <input type="text"> <br> <br>
+    <input type="text"> <br> <br>
+    <input type="password"> <br> <br>
+    <input type="password"> <br> <br>
+    <input type="text"> <br> <br>
+    <input type="text"> <br> <br>
+    <select>
+      <option value="#"></option>
+      <option value="vyras">Vyras</option>
+      <option value="moteris">Moteris</option>
+      <option value="...">...</option>
+    </select> <br> <br>
+    <input type="date">
+    </form>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-5 col-md-offset-2">
+      <br>
+      <input type="submit" value="Sign up">
     </div>
   </div>
   <hr>
