@@ -21,7 +21,7 @@ public class Paskyra {
     private Users user;
     
     /*
-    private string[7] userString;
+    private string[7] userString;   // Paskyros registracijos laukai sudeti i masyva
     private obj userLytis;
     private Date userDate;
     public boolean anketaPildyti(string vardas, string pavarde, 
