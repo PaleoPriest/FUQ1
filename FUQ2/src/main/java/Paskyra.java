@@ -40,6 +40,9 @@ public class Paskyra {
         userDate = gimimoDate;
         if (tikrinimasAnketos())
         {
+            //user.vardas = userString[0];
+            //user.pavarde...
+            //...
             em.persist(user);
             return true;
         }
