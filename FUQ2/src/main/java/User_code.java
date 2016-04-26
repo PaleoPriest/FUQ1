@@ -1,3 +1,4 @@
+import Errors.Check_errors;
 import javax.inject.Named;
 
 /*
@@ -30,7 +31,7 @@ public class User_code
 	public String addUser(String userN, String pass/*, String ...*/)
 	{
 		//insert all fields to db
-		return checkForErrors(true/* or false*/, "Success of smth");	//insert done successfully
+		return (new Check_errors()).checkForErrors(true/* or false*/, "Success of smth");	//insert done successfully
 		
 		/*if ()	//insert done successfully
 			return ("New user created successful");
@@ -44,7 +45,7 @@ public class User_code
 			Get user from db
 			insert new fields to db
 		*/
-		return checkForErrors(true/* or false*/, "Success of smth");	//insert done successfully
+		return (new Check_errors()).checkForErrors(true/* or false*/, "Success of smth");	//insert done successfully
 	}
 	
 	public String changeAccImg(String username, Object img)
@@ -53,7 +54,7 @@ public class User_code
 			Get user from db
 			insert new img to db
 		*/
-		return checkForErrors(true /*or false*/, "Success of smth");	//insert done successfully
+		return (new Check_errors()).checkForErrors(true /*or false*/, "Success of smth");	//insert done successfully
 	}
 	
 	
