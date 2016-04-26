@@ -37,7 +37,35 @@ CREATE SEQUENCE seq_Rent_ID
 	
 	Tables
 
-1. Nariu
+CREATE TABLE Rooms(
+ID			INTEGER		NOT NULL,
+Max_Beds	INTEGER,	/*CHECK (Max_Beds > 0)*/
+Start_Date	DATE,
+Duration	INTEGER,
+Price		DECIMAL,
+
+PRIMARY KEY	(ID)
+);
+
+
+/*1. Papildoma nuoma*/
+CREATE TABLE Rent(
+ID			INTEGER			NOT NULL,		/*is it really a needed field ???*/
+Name		VARCHAR(15)		NOT NULL,
+Description	VARCHAR(255),
+Free_Place	INTEGER,						/*skaiciuot laisvom vietom, can be changed*/
+
+PRIMARY KEY (ID)
+);
+
+/*2. Anketa  mb needed */
+CREATE TABLE Poll(
+Name		VARCHAR(20) NOT NULL,
+Necessary	BOOLEAN
+
+);
+
+/*3. Nariu*/
 CREATE TABLE Users(
 ID		INTEGER		NOT NULL,
 Name	VARCHAR(15)	NOT NULL,
@@ -53,7 +81,7 @@ FOREIGN KEY (Room)  REFERENCES Rooms
 );
 
 
-2. Vasarnamiu
+/*4. Vasarnamiu*/
 CREATE TABLE Summerhouse(
 ID			INTEGER			NOT NULL,
 Name		VARCHAR(15)		NOT NULL,
@@ -64,35 +92,6 @@ Room		INTEGER,
 PRIMARY KEY	(ID),
 FOREIGN KEY (Room)  REFERENCES Rooms
 );
-
-CREATE TABLE Rooms(
-ID			INTEGER		NOT NULL,
-Max_Beds	INTEGER,	/*CHECK (Max_Beds > 0)*/
-Start_Date	DATE,
-Duration	INTEGER,
-Price		DECIMAL,
-
-PRIMARY KEY	(ID)
-);
-
-
-3. Papildoma nuoma
-CREATE TABLE Rent(
-ID			INTEGER			NOT NULL,		/*is it really a needed field ???*/
-Name		VARCHAR(15)		NOT NULL,
-Description	VARCHAR(255),
-Free_Place	INTEGER,						/*skaiciuot laisvom vietom, can be changed*/
-
-PRIMARY KEY (ID)
-);
-
-4. Anketa /* mb needed */
-CREATE TABLE Poll(
-Name		VARCHAR(20) NOT NULL,
-Necessary	BOOLEAN
-
-);
-
 
 --	Drop tables / sequince / triggers
 

@@ -1,4 +1,31 @@
-Wed Mar 09 20:42:09 EET 2016 : Apache Derby Network Server - 10.11.1.2 - (1629631) started and ready to accept connections on port 1527
+Tue Apr 26 16:04:34 EEST 2016 : Apache Derby Network Server - 10.11.1.2 - (1629631) started and ready to accept connections on port 1527
 ----------------------------------------------------------------
-Wed Mar 09 20:49:18 EET 2016: Shutting down Derby engine
+Tue Apr 26 16:04:35 EEST 2016:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.2 - (1629631): instance a816c00e-0154-52ab-d854-00007f623b0f 
+on database directory C:\Users\Paulina\Documents\PDF\VU_MIF\PSK\FUturistic Quality\FUQ1\Databases\FUQ_DB with class loader sun.misc.Launcher$AppClassLoader@1d44bcfa 
+Loaded from file:/C:/Program%20Files/Java/jdk1.8.0_74/db/lib/derby.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_74-b02
+user.dir=C:\Program Files\Java\jdk1.8.0_74\db
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=C:\Users\Paulina\Documents\PDF\VU_MIF\PSK\FUturistic Quality\FUQ1\Databases
+Database Class Loader started - derby.database.classpath=''
 ----------------------------------------------------------------
+Tue Apr 26 16:04:44 EEST 2016:
+Shutting down instance a816c00e-0154-52ab-d854-00007f623b0f on database directory C:\Users\Paulina\Documents\PDF\VU_MIF\PSK\FUturistic Quality\FUQ1\Databases\FUQ_DB with class loader sun.misc.Launcher$AppClassLoader@1d44bcfa 
+Tue Apr 26 16:04:44 EEST 2016 Thread[DRDAConnThread_3,5,main] (DATABASE = FUQ_DB), (DRDAID = {2}), Database 'FUQ_DB' shutdown.
+----------------------------------------------------------------
+Tue Apr 26 16:05:20 EEST 2016:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.2 - (1629631): instance a65c80ac-0154-52ab-d854-00007f623b0f 
+on database directory C:\Users\Paulina\Documents\PDF\VU_MIF\PSK\FUturistic Quality\FUQ1\Databases\FUQ_DB with class loader sun.misc.Launcher$AppClassLoader@1d44bcfa 
+Loaded from file:/C:/Program%20Files/Java/jdk1.8.0_74/db/lib/derby.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_74-b02
+user.dir=C:\Program Files\Java\jdk1.8.0_74\db
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=C:\Users\Paulina\Documents\PDF\VU_MIF\PSK\FUturistic Quality\FUQ1\Databases
+Database Class Loader started - derby.database.classpath=''
