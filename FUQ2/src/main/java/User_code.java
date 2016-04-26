@@ -1,4 +1,3 @@
-
 import javax.inject.Named;
 
 /*
@@ -58,12 +57,6 @@ public class User_code
 	}
 	
 	
-	public String checkForErrors(boolean check, String msg)
-	{
-		if (check == true)
-			return (msg);
-		else
-			return ("error msg");
-	}
+	
 	
 }
