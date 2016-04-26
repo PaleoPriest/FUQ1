@@ -35,7 +35,7 @@ CREATE SEQUENCE seq_Rent_ID
 	INCREMENT BY 1;
 
 	
-	Tables
+	/*Tables*/
 
 CREATE TABLE Rooms(
 ID			INTEGER		NOT NULL,
