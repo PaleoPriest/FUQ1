@@ -36,18 +36,6 @@ CREATE SEQUENCE seq_Rent_ID
 
 	
 	/*Tables*/
-
-CREATE TABLE Rooms(
-ID			INTEGER		NOT NULL,
-Max_Beds	INTEGER,	/*CHECK (Max_Beds > 0)*/
-Start_Date	DATE,
-Duration	INTEGER,
-Price		DECIMAL,
-
-PRIMARY KEY	(ID)
-);
-
-
 /*1. Papildoma nuoma*/
 CREATE TABLE Rent(
 ID			INTEGER			NOT NULL,		/*is it really a needed field ???*/
