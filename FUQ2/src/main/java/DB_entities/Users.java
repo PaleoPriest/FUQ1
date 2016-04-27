@@ -10,8 +10,6 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -20,7 +18,7 @@ import javax.validation.constraints.Size;
 
 /**
  *
- * @author Paulina
+ * @author Rugile
  */
 @Entity
 @Table(name = "USERS")
@@ -28,9 +26,12 @@ import javax.validation.constraints.Size;
     @NamedQuery(name = "Users.findAll", query = "SELECT u FROM Users u"),
     @NamedQuery(name = "Users.findById", query = "SELECT u FROM Users u WHERE u.id = :id"),
     @NamedQuery(name = "Users.findByName", query = "SELECT u FROM Users u WHERE u.name = :name"),
+    @NamedQuery(name = "Users.findBySurname", query = "SELECT u FROM Users u WHERE u.surname = :surname"),
+    @NamedQuery(name = "Users.findByNickname", query = "SELECT u FROM Users u WHERE u.nickname = :nickname"),
     @NamedQuery(name = "Users.findByPassword", query = "SELECT u FROM Users u WHERE u.password = :password"),
-    @NamedQuery(name = "Users.findByPhone", query = "SELECT u FROM Users u WHERE u.phone = :phone"),
     @NamedQuery(name = "Users.findByMail", query = "SELECT u FROM Users u WHERE u.mail = :mail"),
+    @NamedQuery(name = "Users.findByPhone", query = "SELECT u FROM Users u WHERE u.phone = :phone"),
+    @NamedQuery(name = "Users.findBySex", query = "SELECT u FROM Users u WHERE u.sex = :sex"),
     @NamedQuery(name = "Users.findByStatus", query = "SELECT u FROM Users u WHERE u.status = :status"),
     @NamedQuery(name = "Users.findByPay", query = "SELECT u FROM Users u WHERE u.pay = :pay")})
 public class Users implements Serializable {
@@ -41,41 +42,37 @@ public class Users implements Serializable {
     @NotNull
     @Column(name = "ID")
     private Integer id;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 15)
+    @Size(max = 15)
     @Column(name = "NAME")
     private String name;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 40)
+    @Size(max = 45)
+    @Column(name = "SURNAME")
+    private String surname;
+    @Size(max = 20)
+    @Column(name = "NICKNAME")
+    private String nickname;
+    @Size(max = 40)
     @Column(name = "PASSWORD")
     private String password;
-    @Column(name = "PHONE")
-    private Integer phone;
     @Size(max = 40)
     @Column(name = "MAIL")
     private String mail;
+    @Column(name = "PHONE")
+    private Integer phone;
+    @Size(max = 10)
+    @Column(name = "SEX")
+    private String sex;
     @Size(max = 10)
     @Column(name = "STATUS")
     private String status;
     @Column(name = "PAY")
     private Boolean pay;
-    @JoinColumn(name = "ROOM", referencedColumnName = "ID")
-    @ManyToOne
-    private Rooms room;
 
     public Users() {
     }
 
     public Users(Integer id) {
         this.id = id;
-    }
-
-    public Users(Integer id, String name, String password) {
-        this.id = id;
-        this.name = name;
-        this.password = password;
     }
 
     public Integer getId() {
@@ -94,12 +91,36 @@ public class Users implements Serializable {
         this.name = name;
     }
 
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
     public String getPassword() {
         return password;
     }
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
     }
 
     public Integer getPhone() {
@@ -110,12 +131,12 @@ public class Users implements Serializable {
         this.phone = phone;
     }
 
-    public String getMail() {
-        return mail;
+    public String getSex() {
+        return sex;
     }
 
-    public void setMail(String mail) {
-        this.mail = mail;
+    public void setSex(String sex) {
+        this.sex = sex;
     }
 
     public String getStatus() {
@@ -132,14 +153,6 @@ public class Users implements Serializable {
 
     public void setPay(Boolean pay) {
         this.pay = pay;
-    }
-
-    public Rooms getRoom() {
-        return room;
-    }
-
-    public void setRoom(Rooms room) {
-        this.room = room;
     }
 
     @Override
