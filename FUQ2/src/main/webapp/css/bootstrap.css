@@ -11,10 +11,21 @@ html {
 }
 	
 body {
-	background-image: url(../img/backgrounds/sunset.jpg);
+	/*background-image: url(../img/backgrounds/sunset.jpg);
 	background-repeat: repeat;
 	
-	margin: 0;
+	margin: 0;*/
+
+	height: 100%;
+    	width: 100%;
+    	margin: 0;
+    	padding: 0;
+    	position: relative;
+    	background-image: url(http://www.fleeceitout.com/images/field.2.jpg);
+    	background-size: cover;
+    	background-repeat: no-repeat;
+    	background-position: 0 0;
+    	background-attachment: fixed;
 }
 article,
 aside,
