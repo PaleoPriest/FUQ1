@@ -69,10 +69,12 @@ Necessary	BOOLEAN
 CREATE TABLE Users(
 ID		INTEGER		NOT NULL,
 Name	VARCHAR(15)	NOT NULL,
-Surname VARCHAR(40)	NOT NULL,
+Surname VARCHAR(45)	NOT NULL,
+Nickname VARCHAR(20)	NOTNULL,
 Password VARCHAR(40) NOT NULL,
 Phone	INTEGER,	
 Mail	VARCHAR(40),
+Sex	VARCHAR(10),
 Status	VARCHAR(10),		/*to save 'kandidatas', 'narys'*/
 Pay		BOOLEAN,
 Room	INTEGER,
@@ -95,7 +97,7 @@ FOREIGN KEY (Room)  REFERENCES Rooms
 );
 
 --	Drop tables / sequince / triggers
-
+/*
 DROP TABLE Users;
 DROP TABLE Summerhouse;
 DROP TABLE Rooms;
@@ -106,3 +108,4 @@ DROP seq_User_ID;
 DROP seq_SummerH_ID;
 DROP seq_Rooms_ID;
 DROP seq_Rent_ID;
+*/
