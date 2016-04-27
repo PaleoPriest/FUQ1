@@ -63,6 +63,7 @@ Password VARCHAR(40) /*NOT NULL*/,
 Mail	VARCHAR(40) /*NOT NULL*/,
 Phone	INTEGER,	
 Sex	VARCHAR(10),
+Bithday DATE,
 Status	VARCHAR(10),		/*to save 'kandidatas', 'narys'*/
 Pay		BOOLEAN,
 
