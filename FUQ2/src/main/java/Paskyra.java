@@ -21,7 +21,7 @@ import javax.persistence.PersistenceContext;
 public class Paskyra {
     @PersistenceContext
     private EntityManager em;
-    private Users user;
+    private Users user = new Users();
 
     List<User> userString = new ArrayList<User>();
     

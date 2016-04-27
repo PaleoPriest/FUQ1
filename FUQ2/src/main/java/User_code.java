@@ -1,13 +1,18 @@
+import DB_entities.Users;
 import Errors.Check_errors;
 import java.io.Serializable;
 import javax.ejb.Stateful;
 import javax.enterprise.context.Conversation;
 import javax.enterprise.context.ConversationScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
+import javax.persistence.OptimisticLockException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
+import javax.persistence.PersistenceException;
 import javax.persistence.SynchronizationType;
 import jdk.nashorn.internal.objects.annotations.Getter;
 
@@ -27,12 +32,11 @@ import jdk.nashorn.internal.objects.annotations.Getter;
 public class User_code implements Serializable
 {
 
-    /*
     private static final String PAGE_INDEX          = "index?faces-redirect=true";
-    private static final String PAGE_CREATE_STUDENT = "createStudent?faces-redirect=true";
-    private static final String PAGE_CONFIRM        = "confirm?faces-redirect=true";
-        CIA BUS MUSU LINKAI :D
-    */
+    //private static final String PAGE_CREATE_STUDENT = "createStudent?faces-redirect=true";
+    //private static final String PAGE_CONFIRM        = "confirm?faces-redirect=true";
+
+    
     
     @PersistenceContext(type = PersistenceContextType.EXTENDED, synchronization = SynchronizationType.UNSYNCHRONIZED)
     private EntityManager em;
@@ -40,24 +44,16 @@ public class User_code implements Serializable
     @Inject
     //@Getter KODEL NEVEIKIA??? META ERRORA :(
     private Conversation conversation;
+    
+    private Users user = new Users();
 
-    /*@Inject
-    private CourseService courseService;
-    CIA VELIAU PASIZIURESIU KOKIOS DVI KLASES TURI BUTI
-    TIKRAI TURI BUTI PASKYRA.JAVA IR DAR KAZKAS
-    @Inject
-    //private StudentService studentService;*/
-
-    /*@Getter
-    private User user = new User();
-    WHY U NOT WORK??
-    */
-    
-    
-    //@Getter NEREIK SITO BERODS
-    //private Student student = new Student();
-    
-    
+    public Users getUser() {
+        return user;
+    }
+    public void setUser(Users user) {
+        this.user = user;
+    }
+   
 	String username;
 	String password;
 	
@@ -103,6 +99,42 @@ public class User_code implements Serializable
 	}
 	
 	
-	
+	public String createUser() {
+            if (conversation.isTransient()) {
+                return PAGE_INDEX;
+            }
+
+            em.persist(user);
+            //studentService.create(student);
+            //student.getCourseList().add(course);
+            //course.getStudentList().add(student);
+
+            return PAGE_CONFIRM;
+        }
+
+        public String ok() {
+            try {
+                conversation.end();
+                em.joinTransaction();
+                em.flush();
+                return PAGE_INDEX;
+            } catch (OptimisticLockException ole) {
+                // Kažkas kitas buvo greitesnis...
+                return null;
+            } catch (PersistenceException pe) {
+                // Kitokios bėdos su DB
+                FacesContext.getCurrentInstance().addMessage(
+                        null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Oi ai ajajai.", "Finita la commedia")
+                );
+                return null;
+            }
+        }
+
+        public String cancel() {
+            if (!conversation.isTransient()) {
+                conversation.end();
+            }
+            return PAGE_INDEX;
+        }
 	
 }
