@@ -1,5 +1,10 @@
 
+import DB_entities.Users;
 import java.util.Date;
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.SynchronizationType;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -11,6 +16,8 @@ import java.util.Date;
  *
  * @author Paulina
  */
+
+@Stateless
 public class User_valid {
     
     public String vardas;
@@ -22,6 +29,9 @@ public class User_valid {
     public String tel;
     public Object lytis;
     public Date gimimoDate;
+
+    public User_valid() {
+    }
     
     public User_valid(String vardas, String pavarde,  String slapyvardis, String slap1,
                 String slap2, String email, String tel, Object lytis, Date gimimoDate)
@@ -37,4 +47,10 @@ public class User_valid {
         this.gimimoDate = gimimoDate;
     } 
      
+    @PersistenceContext(synchronization = SynchronizationType.UNSYNCHRONIZED)
+    private EntityManager em;
+
+    public void create(Users user) {
+        em.persist(user);
+    }
 }

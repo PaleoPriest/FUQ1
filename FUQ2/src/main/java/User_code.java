@@ -44,6 +44,16 @@ public class User_code implements Serializable
     @Inject
     //@Getter KODEL NEVEIKIA??? META ERRORA :(
     private Conversation conversation;
+
+    @Inject
+    private User_valid user_valid;
+    
+    public Conversation getConversation() {
+        return conversation;
+    }
+    public void setConversation(Conversation conversation) {
+        this.conversation = conversation;
+    }
     
     private Users user = new Users();
 
@@ -100,16 +110,28 @@ public class User_code implements Serializable
 	
 	
 	public String createUser() {
+            
+            /*if (!conversation.isTransient()) {
+            conversation.end();
+            return PAGE_INDEX;
+            }
+
+            //conversation.begin();
+            
             if (conversation.isTransient()) {
                 return PAGE_INDEX;
             }
-
-            em.persist(user);
+            
+            System.out.println("asdf");
+            user_valid.create(user);
+            
             //studentService.create(student);
             //student.getCourseList().add(course);
             //course.getStudentList().add(student);
 
-            return PAGE_CONFIRM;
+            return PAGE_CONFIRM;*/
+            return PAGE_INDEX;  //vidus uzkomentuotas, nes neaisku, kas veikia. 
+            //Greiciausiai neveikia create ir redirect
         }
 
         public String ok() {
