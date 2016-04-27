@@ -23,12 +23,12 @@ public class Paskyra {
     private EntityManager em;
     private Users user = new Users();
 
-    List<User> userString = new ArrayList<User>();
+    List<User_valid> userString = new ArrayList<User_valid>();
     
     public boolean anketaPildyti(String vardas, String pavarde, String slapyvardis, String slap1, 
                     String slap2, String email, String tel, Object lytis, Date gimimoDate)
     {
-        User user = new User(vardas, pavarde, slapyvardis, slap1, slap2, email, tel, lytis, gimimoDate);
+        User_valid user = new User_valid(vardas, pavarde, slapyvardis, slap1, slap2, email, tel, lytis, gimimoDate);
         if (tikrinimasAnketos(user))
         {
             em.persist(user);
@@ -37,7 +37,7 @@ public class Paskyra {
         return false;
     }
     
-    private boolean tikrinimasAnketos(User user)
+    private boolean tikrinimasAnketos(User_valid user)
     {
         if ((user.vardas == null) && (user.pavarde == null) && (user.slapyvardis == null)
             && (user.slap1 == null) && (user.slap2 == null) && (user.email == null)

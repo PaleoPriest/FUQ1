@@ -11,7 +11,7 @@ import java.util.Date;
  *
  * @author Paulina
  */
-public class User {
+public class User_valid {
     
     public String vardas;
     public String pavarde; 
@@ -23,7 +23,7 @@ public class User {
     public Object lytis;
     public Date gimimoDate;
     
-    public User(String vardas, String pavarde,  String slapyvardis, String slap1,
+    public User_valid(String vardas, String pavarde,  String slapyvardis, String slap1,
                 String slap2, String email, String tel, Object lytis, Date gimimoDate)
     {
         this.vardas = vardas;
