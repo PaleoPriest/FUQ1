@@ -34,7 +34,7 @@ public class User_code implements Serializable
 
     private static final String PAGE_INDEX          = "index?faces-redirect=true";
     //private static final String PAGE_CREATE_STUDENT = "createStudent?faces-redirect=true";
-    //private static final String PAGE_CONFIRM        = "confirm?faces-redirect=true";
+    private static final String PAGE_CONFIRM        = "confirm?faces-redirect=true";
 
     
     
