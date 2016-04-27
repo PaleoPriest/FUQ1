@@ -49,7 +49,7 @@ $(document).ready(function () {
                     $('#fullPage').animate({
                         backgroundColor: 'rgb(255,255,255)'
                     }, 1000);
-                }, 3000);
+                }, 2000);
             });
             return 'url(../img/backgrounds/b.' + img_array[index] + '.jpg)';
         });
