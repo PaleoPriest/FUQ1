@@ -1,5 +1,7 @@
 
 import DB_entities.Users;
+import java.util.ArrayList;
+import java.util.List;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -19,6 +21,9 @@ public class Paskyra {
     @PersistenceContext
     private EntityManager em;
     private Users user;
+
+    List<List<String>> userString = new ArrayList<List<String>>();
+    
     
     /*
     private string[7] userString;   // Paskyros registracijos laukai sudeti i masyva
