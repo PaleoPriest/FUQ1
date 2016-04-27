@@ -22,7 +22,7 @@ import javax.validation.constraints.NotNull;
 
 /**
  *
- * @author Paulina
+ * @author Rugile
  */
 @Entity
 @Table(name = "ROOMS")
@@ -50,8 +50,6 @@ public class Rooms implements Serializable {
     private Integer duration;
     @Column(name = "PRICE")
     private Integer price;
-    @OneToMany(mappedBy = "room")
-    private List<Users> usersList;
     @OneToMany(mappedBy = "room")
     private List<Summerhouse> summerhouseList;
 
@@ -100,14 +98,6 @@ public class Rooms implements Serializable {
 
     public void setPrice(Integer price) {
         this.price = price;
-    }
-
-    public List<Users> getUsersList() {
-        return usersList;
-    }
-
-    public void setUsersList(List<Users> usersList) {
-        this.usersList = usersList;
     }
 
     public List<Summerhouse> getSummerhouseList() {
