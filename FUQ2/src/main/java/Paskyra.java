@@ -1,6 +1,7 @@
 
 import DB_entities.Users;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
@@ -22,59 +23,30 @@ public class Paskyra {
     private EntityManager em;
     private Users user;
 
-    List<List<String>> userString = new ArrayList<List<String>>();
+    List<User> userString = new ArrayList<User>();
     
-    
-    /*
-    private string[7] userString;   // Paskyros registracijos laukai sudeti i masyva
-    private obj userLytis;
-    private Date userDate;
-    public boolean anketaPildyti(string vardas, string pavarde, 
-                        string slapyvardis, string slap1, 
-                        string slap2, string email, 
-                        string tel, obj lytis, Date gimimoDate)
+    public boolean anketaPildyti(String vardas, String pavarde, String slapyvardis, String slap1, 
+                    String slap2, String email, String tel, Object lytis, Date gimimoDate)
     {
-        userString[0] = vardas;
-        userString[1] = pavarde;
-        userString[2] = slapyvardis;
-        userString[3] = slap1;
-        userString[4] = slap2;
-        userString[5] = email;
-        userString[6] = tel;
-        userLytis = lytis;
-        userDate = gimimoDate;
-        if (tikrinimasAnketos())
+        User user = new User(vardas, pavarde, slapyvardis, slap1, slap2, email, tel, lytis, gimimoDate);
+        if (tikrinimasAnketos(user))
         {
-            //user.vardas = userString[0];
-            //user.pavarde...
-            //...
             em.persist(user);
             return true;
         }
         return false;
     }
     
-    private boolean tikrinimasAnketos()
+    private boolean tikrinimasAnketos(User user)
     {
-        if ((userString[0] == NULL)&&(userString[1] == NULL)
-            &&(userString[2] == NULL)&&(userString[3] == NULL)
-            &&(userString[4] == NULL)&&(userString[5] == NULL
-            &&(userString[6] == NULL))) //string empty, string null....?
-        {
+        if ((user.vardas == null) && (user.pavarde == null) && (user.slapyvardis == null)
+            && (user.slap1 == null) && (user.slap2 == null) && (user.email == null)
+            && (user.tel == null) && (user.lytis == null) && (user.gimimoDate == null))
+                return false;
+            
+        if (user.slap1 != user.slap2)
             return false;
-        }
-        if (userString[3] != userString[4])
-        {
-            return false;
-        }
-        //if(...)...
+        
         return true;
-    }
-    
-    */
-    
-    public String hi()
-    {
-        return "hi";
     }
 }
