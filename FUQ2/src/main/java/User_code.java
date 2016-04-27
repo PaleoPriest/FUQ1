@@ -1,5 +1,15 @@
 import Errors.Check_errors;
+import java.io.Serializable;
+import javax.ejb.Stateful;
+import javax.enterprise.context.Conversation;
+import javax.enterprise.context.ConversationScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceContextType;
+import javax.persistence.SynchronizationType;
+import jdk.nashorn.internal.objects.annotations.Getter;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -12,12 +22,47 @@ import javax.inject.Named;
  * @author Paulina
  */
 @Named
-public class User_code
+@ConversationScoped
+@Stateful
+public class User_code implements Serializable
 {
 
+    /*
+    private static final String PAGE_INDEX          = "index?faces-redirect=true";
+    private static final String PAGE_CREATE_STUDENT = "createStudent?faces-redirect=true";
+    private static final String PAGE_CONFIRM        = "confirm?faces-redirect=true";
+        CIA BUS MUSU LINKAI :D
+    */
+    
+    @PersistenceContext(type = PersistenceContextType.EXTENDED, synchronization = SynchronizationType.UNSYNCHRONIZED)
+    private EntityManager em;
+
+    @Inject
+    //@Getter KODEL NEVEIKIA??? META ERRORA :(
+    private Conversation conversation;
+
+    /*@Inject
+    private CourseService courseService;
+    CIA VELIAU PASIZIURESIU KOKIOS DVI KLASES TURI BUTI
+    TIKRAI TURI BUTI PASKYRA.JAVA IR DAR KAZKAS
+    @Inject
+    //private StudentService studentService;*/
+
+    /*@Getter
+    private User user = new User();
+    WHY U NOT WORK??
+    */
+    
+    
+    //@Getter NEREIK SITO BERODS
+    //private Student student = new Student();
+    
+    
 	String username;
 	String password;
 	
+        //TOLIAU CONVERSATION... FUNKCIJOS ETC
+        
 	public String login(String userN, String pass)
 	{
 		//Get username & password from db
