@@ -111,12 +111,12 @@ public class User_code implements Serializable
 	
 	public String createUser() {
             
-            /*if (!conversation.isTransient()) {
+            if (!conversation.isTransient()) {
             conversation.end();
             return PAGE_INDEX;
             }
 
-            //conversation.begin();
+            conversation.begin();
             
             if (conversation.isTransient()) {
                 return PAGE_INDEX;
@@ -129,8 +129,9 @@ public class User_code implements Serializable
             //student.getCourseList().add(course);
             //course.getStudentList().add(student);
 
-            return PAGE_CONFIRM;*/
-            return PAGE_INDEX;  //vidus uzkomentuotas, nes neaisku, kas veikia. 
+            return PAGE_CONFIRM;
+            //System.out.println("asdf");
+            //return PAGE_INDEX;  //vidus uzkomentuotas, nes neaisku, kas veikia. 
             //Greiciausiai neveikia create ir redirect
         }
 
