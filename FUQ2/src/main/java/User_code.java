@@ -68,15 +68,21 @@ public class User_code implements Serializable
 	String username;
 	String password;
         Date data;      //temporary!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-    public Date getData() {
-        return data;
-    }
-
-    public void setData(Date data) {
-        this.data = data;
-    }
+        public Date getData() {
+            return data;
+        }
+        public void setData(Date data) {
+            this.data = data;
+        }  
 	
+        String passRepeat;
+        public String getPassRepeat() {
+            return passRepeat;
+        }
+        public void setPassRepeat(String passRepeat) {
+            this.passRepeat = passRepeat;
+        }
+        
         //TOLIAU CONVERSATION... FUNKCIJOS ETC
         
 	public String login(String userN, String pass)
@@ -121,28 +127,29 @@ public class User_code implements Serializable
 	
 	public String createUser() {
             
-            if (!conversation.isTransient()) {
-            conversation.end();
-            return PAGE_INDEX;
+            if(!user_valid.comparePasswords(user.getPassword(), passRepeat))
+            {
+                return null;    //ka daryti, jei negeras slaptazodis
+                //issiaiskinti, kaip normaliai pranesimus mesti
             }
-
-            conversation.begin();
-            
-            if (conversation.isTransient()) {
+            else
+            {
+                if (!conversation.isTransient()) {
+                conversation.end();
                 return PAGE_INDEX;
-            }
-            
-            System.out.println("asdf");
-            user_valid.create(user);
-            
-            //studentService.create(student);
-            //student.getCourseList().add(course);
-            //course.getStudentList().add(student);
+                }
 
-            return PAGE_CONFIRM;
-            //System.out.println("asdf");
-            //return PAGE_INDEX;  //vidus uzkomentuotas, nes neaisku, kas veikia. 
-            //Greiciausiai neveikia create ir redirect
+                conversation.begin();
+
+                if (conversation.isTransient()) {
+                    return PAGE_INDEX;
+                }
+
+                //System.out.println("asdf");
+                user_valid.create(user);
+
+                return PAGE_CONFIRM;
+            }
         }
 
         public String ok() {

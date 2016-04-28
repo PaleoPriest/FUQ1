@@ -1,24 +1,24 @@
 
 /*$(function() {
-var body = $(‘body’);
+var body = $(ï¿½bodyï¿½);
 var backgrounds = new Array(
-‘url(../img/backgrounds/sunset.jpg)’,
-‘url(../img/backgrounds/lake.jpg)’,
-‘url(../img/backgrounds/forest.jpg)’,
-‘url(../img/backgrounds/stream.jpg)’
+ï¿½url(../img/backgrounds/sunset.jpg)ï¿½,
+ï¿½url(../img/backgrounds/lake.jpg)ï¿½,
+ï¿½url(../img/backgrounds/forest.jpg)ï¿½,
+ï¿½url(../img/backgrounds/stream.jpg)ï¿½
 );
 var current = 0;
 
 function nextBackground() {
 body.css(
-‘background’,
+ï¿½backgroundï¿½,
 backgrounds[current = ++current % backgrounds.length]
 );
 
 setTimeout(nextBackground, 10000);
 }
 setTimeout(nextBackground, 10000);
-body.css(‘background’, backgrounds[0]);
+body.css(ï¿½backgroundï¿½, backgrounds[0]);
 });*/
 
 $(document).ready(function () {

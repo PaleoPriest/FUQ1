@@ -81,20 +81,22 @@
     </div>
     <div class="col-md-3">
     <h:form>
-    <h:inputText value="#{user_code.user.name}"></h:inputText> <br/> <br/> 
-    <h:inputText value="#{user_code.user.surname}"></h:inputText> <br/> <br/>
-    <h:inputText value="#{user_code.user.nickname}"></h:inputText> <br/> <br/>
-    <h:inputSecret value="#{user_code.user.password}"></h:inputSecret> <br/> <br/>
-    <h:inputSecret></h:inputSecret> <br/> <br/>     <!-- save to other part of .java class :D-->
-    <h:inputText value="#{user_code.user.mail}"></h:inputText> <br/> <br/>
-    <h:inputText value="#{user_code.user.phone}"></h:inputText> <br/> <br/>
-    <h:selectOneRadio>    <!--add value here-->
-      <f:selectItem   itemLabel="Vyras" itemValue="1"/>
-      <f:selectItem   itemLabel="Moteris" itemValue="2"/>
-      <f:selectItem   itemLabel="..." itemValue="3"/>
-    </h:selectOneRadio> <br/> <br/>
-    <p:calendar value="#{user_code.data}"></p:calendar>    <!-- add to database and add value. Rewritefor jsf -->
-    <h:commandButton value="Save" action="#{user_code.createUser()}" ></h:commandButton>
+        <h:inputText required="true" value="#{user_code.user.name}"></h:inputText> <br/> <br/> 
+        <h:inputText value="#{user_code.user.surname}"></h:inputText> <br/> <br/>
+        <h:inputText value="#{user_code.user.nickname}"></h:inputText> <br/> <br/>
+        <h:inputSecret value="#{user_code.user.password}"></h:inputSecret> <br/> <br/>
+        <h:inputSecret value="#{user_code.passRepeat}"></h:inputSecret> <br/> <br/>
+        <h:inputText value="#{user_code.user.mail}"></h:inputText> <br/> <br/>
+        <h:inputText value="#{user_code.user.phone}"></h:inputText> <br/> <br/>
+        <h:selectOneRadio>    <!--add value here-->
+          <f:selectItem   itemLabel="Vyras" itemValue="1"/>
+          <f:selectItem   itemLabel="Moteris" itemValue="2"/>
+          <f:selectItem   itemLabel="..." itemValue="3"/>
+        </h:selectOneRadio> <br/> <br/>
+        <p:calendar value="#{user_code.data}" pattern="dd-mm-yyyy"></p:calendar>    <!-- add to database and add value. Rewritefor jsf -->
+
+        <br/> <br/>
+        <h:commandButton value="Save" action="#{user_code.createUser()}" ></h:commandButton>
     </h:form>
   </div>
   <div class="col-md-4">

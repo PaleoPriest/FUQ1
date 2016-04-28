@@ -51,7 +51,12 @@ public class User_valid {
     private EntityManager em;
 
     public void create(Users user) {
-        //user.setId(127);        //generate?
+        user.setId(131);        //generate?
         em.persist(user);
+    }
+    
+    public boolean comparePasswords(String pass1, String pass2)
+    {
+        return pass1.equals(pass2);
     }
 }
