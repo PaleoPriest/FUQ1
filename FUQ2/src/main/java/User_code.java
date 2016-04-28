@@ -1,6 +1,7 @@
 import DB_entities.Users;
 import Errors.Check_errors;
 import java.io.Serializable;
+import java.util.Date;
 import javax.ejb.Stateful;
 import javax.enterprise.context.Conversation;
 import javax.enterprise.context.ConversationScoped;
@@ -66,6 +67,15 @@ public class User_code implements Serializable
    
 	String username;
 	String password;
+        Date data;      //temporary!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+    public Date getData() {
+        return data;
+    }
+
+    public void setData(Date data) {
+        this.data = data;
+    }
 	
         //TOLIAU CONVERSATION... FUNKCIJOS ETC
         
