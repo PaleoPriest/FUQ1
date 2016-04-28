@@ -51,7 +51,7 @@ public class User_valid {
     private EntityManager em;
 
     public void create(Users user) {
-        user.setId(123);        //generate?
+        //user.setId(127);        //generate?
         em.persist(user);
     }
 }
