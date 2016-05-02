@@ -15,7 +15,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
 import javax.persistence.PersistenceException;
 import javax.persistence.SynchronizationType;
-import jdk.nashorn.internal.objects.annotations.Getter;
+//import jdk.nashorn.internal.objects.annotations.Getter;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -146,7 +146,6 @@ public class User_code implements Serializable
                     return PAGE_INDEX;
                 }
 
-                //System.out.println("asdf");
                 user_valid.create(user);
 
                 return PAGE_CONFIRM;
@@ -161,6 +160,8 @@ public class User_code implements Serializable
                 return PAGE_INDEX;
             } catch (OptimisticLockException ole) {
                 // Kažkas kitas buvo greitesnis...
+                FacesContext.getCurrentInstance().addMessage(
+                        null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Vartotojas nesukurtas. Griskite atgal ir bandykite dar karta.", " "));
                 return null;
             } catch (PersistenceException pe) {
                 // Kitokios bėdos su DB

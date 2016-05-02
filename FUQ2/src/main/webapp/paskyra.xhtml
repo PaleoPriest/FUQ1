@@ -96,6 +96,7 @@
         <p:calendar value="#{user_code.data}" pattern="dd-mm-yyyy"></p:calendar>    <!-- add to database and correct value.-->
         <br/> <br/>
         <h:commandButton id="submitUserButton" value="Save" action="#{user_code.createUser()}" ></h:commandButton><!--add auto ids-->
+        <a  href='http://www.facebook.com/dialog/oauth?client_id=217641221951231&amp;redirect_uri=http://localhost:8080/FUQ2/FBLogin.do&amp;scope=email'><img src="img/facebook_login_icon.png" width="150" alt="Login with FB"/></a>
     </h:form>
   </div>
   <div class="col-md-4">
