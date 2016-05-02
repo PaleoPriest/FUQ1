@@ -129,8 +129,9 @@ public class User_code implements Serializable
             
             if(!user_valid.comparePasswords(user.getPassword(), passRepeat))
             {
-                return null;    //ka daryti, jei negeras slaptazodis
-                //issiaiskinti, kaip normaliai pranesimus mesti
+                FacesContext.getCurrentInstance().addMessage(
+                        null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Nesutampa slaptazodziai", "Nesutampa slaptazodis"));
+                return null;
             }
             else
             {
@@ -164,7 +165,7 @@ public class User_code implements Serializable
             } catch (PersistenceException pe) {
                 // Kitokios bėdos su DB
                 FacesContext.getCurrentInstance().addMessage(
-                        null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Oi ai ajajai.", "Finita la commedia")
+                        null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Vartotojas nesukurtas. Griskite atgal ir bandykite dar karta.", " ")
                 );
                 return null;
             }
