@@ -41,7 +41,7 @@ $(document).ready(function () {
 
             index = (index + 1) % img_array.length;
 
-        $('body').css('backgroundImage', function () {
+        $('bootstrap').css('backgroundImage', function () {
             $('#fullPage').animate({
                 backgroundColor: 'transparent'
             }, 1000, function () {
@@ -51,7 +51,7 @@ $(document).ready(function () {
                     }, 1000);
                 }, 3000);
             });
-            return 'url(../img/backgrounds/b.' + img_array[index] + '.jpg)';
+            return 'url(../img/05-02/b.' + img_array[index] + '.jpg)';
         });
         setTimeout(changeBg, interval);
     })();

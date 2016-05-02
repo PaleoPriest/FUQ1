@@ -21,7 +21,7 @@ body {
     	margin: 0;
     	padding: 0;
     	position: relative;
-    	background-image: url(../img/05-02/PaturbinimasFonu/sunset.jpg);
+    	background-image: url(../img/05-02/b.1.jpg);
     	background-size: cover;
     	background-repeat: no-repeat;
     	background-position: 0 0;
@@ -35,6 +35,7 @@ body {
     left: 0;
     background-color: rgb(255, 255, 255);
 }
+
 article,
 aside,
 details,
