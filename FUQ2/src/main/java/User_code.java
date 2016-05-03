@@ -1,4 +1,6 @@
+import login.User_valid;
 import DB_entities.Users;
+
 import Errors.Check_errors;
 import java.io.Serializable;
 import java.util.Date;
@@ -36,9 +38,8 @@ public class User_code implements Serializable
     private static final String PAGE_INDEX          = "index?faces-redirect=true";
     //private static final String PAGE_CREATE_STUDENT = "createStudent?faces-redirect=true";
     private static final String PAGE_CONFIRM        = "confirm?faces-redirect=true";
+    private static final long serialVersionUID = 1L;
 
-    
-    
     @PersistenceContext(type = PersistenceContextType.EXTENDED, synchronization = SynchronizationType.UNSYNCHRONIZED)
     private EntityManager em;
 
@@ -96,7 +97,7 @@ public class User_code implements Serializable
                     return ("Wrong username or password has been entered.");
             return "";
     }
-
+ 
     public String addUser(String userN, String pass/*, String ...*/)
     {
             //insert all fields to db

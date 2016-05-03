@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
+import javax.ejb.EJB;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -33,7 +34,10 @@ import javax.inject.Named;
 
 @Named
 public class FBLogin extends HttpServlet{
-    
+
+    @EJB
+    private FBLoginHelper fBLoginHelper;
+        
     @Override   //doesn't get called
     public void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         
@@ -103,14 +107,22 @@ public class FBLogin extends HttpServlet{
             if (json.has("gender")) {
                 String g = json.getString("gender");
                 if (g.equalsIgnoreCase("female"))
-                    gender = "female";
+                    gender = "Moteris";
                 else if (g.equalsIgnoreCase("male"))
-                    gender = "male";
+                    gender = "Vyras";
                 else
-                    gender = "Unknown";
+                    gender = "Kita";
             } else {
-                gender = "Unknown";
+                gender = "Kita";
             }
+            
+            if(!fBLoginHelper.createUser(facebookId, firstName, lastName, email, gender))
+            {
+                FacesContext.getCurrentInstance().addMessage(
+                    null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Vartotojas nesukurtas. Griskite atgal ir bandykite dar karta.", " ")); //or sth. Dar nezinau, kaip cia klaidas metyt
+            }
+            
+            res.sendRedirect("index.html");
             //System.out.println("sadf");
             //System.out.println(firstName);
             
@@ -118,7 +130,7 @@ public class FBLogin extends HttpServlet{
             // an error occurred, handle this
         }   
     }
-    //add interaction with db, actual logging in. Save login status to db?
+    //Save login status to db?
     //add redirect here?
     
 }
