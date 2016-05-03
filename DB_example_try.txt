@@ -55,17 +55,18 @@ Necessary	BOOLEAN
 
 /*3. Nariu*/
 CREATE TABLE Users(
-ID		INTEGER		/*NOT NULL*/,
+ID	INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
 Name	VARCHAR(15),
 Surname VARCHAR(45),
-Nickname VARCHAR(20)	/*NOT NULL*/,
+Nickname VARCHAR(20),
 Password VARCHAR(40) /*NOT NULL*/,
 Mail	VARCHAR(40) /*NOT NULL*/,
 Phone	INTEGER,	
-Sex	VARCHAR(10),
+Sex	VARCHAR(10) CHECK (Sex IN ('Vyras', 'Moteris', 'Kita')),
 Birthday DATE,
 Status	VARCHAR(10),		/*to save 'kandidatas', 'narys'*/
 Pay		BOOLEAN,
+FBId VARCHAR(20),
 
 PRIMARY KEY	(ID)
 );

@@ -21,10 +21,6 @@
         <servlet-name>Login</servlet-name>
         <url-pattern>*.do</url-pattern>
     </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>Login</servlet-name>
-        <url-pattern>/FBLogin</url-pattern>
-    </servlet-mapping>
     <session-config>
         <session-timeout>
             5

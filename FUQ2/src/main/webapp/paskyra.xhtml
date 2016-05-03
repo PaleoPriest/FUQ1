@@ -88,14 +88,13 @@
         <h:inputSecret value="#{user_code.passRepeat}"></h:inputSecret> <br/> <br/>
         <h:inputText value="#{user_code.user.mail}"></h:inputText> <br/> <br/>
         <h:inputText value="#{user_code.user.phone}"></h:inputText> <br/> <br/>
-        <h:selectOneRadio>    <!--add value here because db-->
+        <h:selectOneRadio value="#{user_code.genderValue}">
           <f:selectItem   itemLabel="Vyras" itemValue="1"/>
           <f:selectItem   itemLabel="Moteris" itemValue="2"/>
-          <f:selectItem   itemLabel="..." itemValue="3"/>
+          <f:selectItem   itemLabel="Kita" itemValue="3"/>
         </h:selectOneRadio> <br/> <br/>
-        <p:calendar value="#{user_code.data}" pattern="dd-mm-yyyy"></p:calendar>    <!-- add to database and correct value.-->
-        <br/> <br/>
-        <h:commandButton id="submitUserButton" value="Save" action="#{user_code.createUser()}" ></h:commandButton><!--add auto ids-->
+        <p:calendar value="#{user_code.user.birthday}" pattern="dd-mm-yyyy"></p:calendar> <br/> <br/>
+        <h:commandButton id="submitUserButton" value="Save" action="#{user_code.createUser()}" ></h:commandButton>
         <a  href='http://www.facebook.com/dialog/oauth?client_id=217641221951231&amp;redirect_uri=http://localhost:8080/FUQ2/FBLogin.do&amp;scope=email'><img src="img/facebook_login_icon.png" width="150" alt="Login with FB"/></a>
     </h:form>
   </div>

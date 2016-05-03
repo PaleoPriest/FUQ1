@@ -6,13 +6,18 @@
 package DB_entities;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -36,10 +41,13 @@ import javax.validation.constraints.Size;
     @NamedQuery(name = "Users.findByPay", query = "SELECT u FROM Users u WHERE u.pay = :pay")})
 public class Users implements Serializable {
 
+
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
     @NotNull
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "ID")
     private Integer id;
     @Size(max = 15)
@@ -67,7 +75,15 @@ public class Users implements Serializable {
     private String status;
     @Column(name = "PAY")
     private Boolean pay;
-
+    @Column(name = "BIRTHDAY")
+    @Temporal(TemporalType.DATE)
+    private Date birthday;
+    @Size(max = 20)
+    @Column(name = "FBID")
+    private String fbid;
+    
+    
+    
     public Users() {
     }
 
@@ -155,6 +171,22 @@ public class Users implements Serializable {
         this.pay = pay;
     }
 
+       public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
+    }
+
+    public String getFbid() {
+        return fbid;
+    }
+
+    public void setFbid(String fbid) {
+        this.fbid = fbid;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 0;
@@ -179,5 +211,7 @@ public class Users implements Serializable {
     public String toString() {
         return "DB_entities.Users[ id=" + id + " ]";
     }
+
+ 
     
 }

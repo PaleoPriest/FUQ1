@@ -51,12 +51,25 @@ public class User_valid {
     private EntityManager em;
 
     public void create(Users user) {
-        user.setId(131);        //generate?
+        int tempId = 0;
+        user.setId(tempId);     //nes kitaip persist skundziasi
         em.persist(user);
     }
     
     public boolean comparePasswords(String pass1, String pass2)
     {
         return pass1.equals(pass2);
+    }
+    
+    public String convertGender(String value)
+    {
+        if("1".equals(value))
+            return "Vyras";
+        if ("2".equals(value))
+            return "Moteris";
+        if ("".equals(value) || value==null)
+            return null;
+        else
+            return "Kita";
     }
 }

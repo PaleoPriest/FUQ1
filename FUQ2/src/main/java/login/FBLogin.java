@@ -16,6 +16,9 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
 
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -38,7 +41,7 @@ public class FBLogin extends HttpServlet{
         
         String code = req.getParameter("code");
         if (code == null || code.equals("")) {
-            // an error occurred, handle this
+            // an error occurred, handle this. Kazkoks grazinimas?
         }
 
         String token = null;
