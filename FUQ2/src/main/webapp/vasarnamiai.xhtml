@@ -2,6 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
       lang="en">
 <head>
 <meta charset="utf-8"></meta>
@@ -65,6 +66,55 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
+        <div>
+            <div>
+            <h:form id="summerhouse_form">
+                Pavadinimas<h:inputText value="#{summerhouse_edit.newSummerhouse.name}"></h:inputText> <br/>
+                Aprasymas<h:inputTextarea value="#{summerhouse_edit.newSummerhouse.description}"></h:inputTextarea> <br/>
+                Max kambariai<h:inputText value="#{summerhouse_edit.newSummerhouse.maxRooms}"></h:inputText> <br/>
+                <h:commandButton id="submitSummerhouse" value="Sukurti vasarnami" action="#{summerhouse_edit.saveSummerhouse()}" ></h:commandButton>
+            </h:form>
+        </div>
+        </div>
+        <div>
+            <h:form id="summerhouse_table">
+                <h:dataTable value="#{summerhouse_edit.summerhouseList}" var="summerhouse" frame="box" rules="all">
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Pavadinimas"/>
+                        </f:facet>
+                        <h:outputText value="#{summerhouse.name}"/>
+                    </h:column>
+                    
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Aprasymas"/>
+                        </f:facet>
+                    <h:outputText value="#{summerhouse.description}"/>
+                    </h:column>
+                    
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Kambariu skaicius"/>
+                        </f:facet>
+                        <h:outputText value="#{summerhouse.maxRooms}"/>
+                    </h:column>
+                    
+                    <h:column>
+                        <h:commandLink id="editlink" action="#{summerhouse_edit.editSummerhouse(summerhouse)}">
+                            <h:outputText value="Redaguoti" />
+                        </h:commandLink>
+                    </h:column>
+                    
+                    <h:column>
+                        <h:commandLink id="deletelink" action="#{summerhouse_edit.deleteSummerhouse(summerhouse)}">
+                            <h:outputText value="Trinti" />
+                        </h:commandLink>
+                    </h:column>
+
+                </h:dataTable>
+            </h:form>
+        </div>
       <img src="img/05-02/SummerHouseTurbo/farmhouse-exterior.jpg" width="149" height="100" alt="House img" class="img-left img-vspace"/>
       <p>Informacija apie vasarnamį. Vieta, dydis, apylinkės, vandens telkiniai, kambariai, etc... 
           Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. 
