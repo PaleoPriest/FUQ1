@@ -3,7 +3,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:p="http://primefaces.org/ui"
       lang="en">
 <h:head>
 <meta charset="utf-8"></meta>
@@ -61,7 +60,7 @@
           <f:selectItem   itemLabel="Moteris" itemValue="2"/>
           <f:selectItem   itemLabel="Kita" itemValue="3"/>
         </h:selectOneRadio> <br/> <br/>
-        <p:calendar value="#{user_code.user.birthday}" pattern="dd-mm-yyyy"></p:calendar> <br/> <br/>
+        
         <h:commandButton id="submitUserButton" value="Save" action="#{user_code.createUser()}" ></h:commandButton>
         <a  href='http://www.facebook.com/dialog/oauth?client_id=217641221951231&amp;redirect_uri=http://localhost:8080/FUQ2/FBLogin.do&amp;scope=email'><img src="img/facebook_login_icon.png" width="150" alt="Login with FB"/></a>
     </h:form>
@@ -89,14 +88,21 @@
   <hr/>
 </div>
     
+<div id="error"></div>
+    
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
-<!--script src="js/jquery-1.11.3.min.js"></script-->
+<script src="js/jquery-1.11.3.min.js"></script>
 
 <!-- Include all compiled plugins (below), or include individual files as needed --> 
 <script src="js/bootstrap.js"></script>
 
 <script>
-$( "#navigacija" ).load( "NavbarTemplate.html");
+$( "#navigacija" ).load( "NavbarTemplate.html", function( response, status, xhr ) {
+  if ( status === "error" ) {
+    var msg = "Sorry but there was an error: ";
+    $( "#error" ).html( msg + xhr.status + " " + xhr.statusText );
+  }
+} );
 </script>
 
 </body>
