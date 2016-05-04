@@ -63,6 +63,14 @@ public class Summerhouse implements Serializable {
         this.id = id;
         this.name = name;
     }
+    
+    public Summerhouse(Integer id, String name, String description, int maxRooms)
+    {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.maxRooms = maxRooms;
+    }
 
     public Integer getId() {
         return id;
