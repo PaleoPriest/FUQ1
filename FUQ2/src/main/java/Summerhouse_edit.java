@@ -41,11 +41,12 @@ public class Summerhouse_edit implements Serializable {
     
     private Summerhouse newSummerhouse;
     
-    private Summerhouse editedSummerhouse;
+    private int editID;
     
     @PostConstruct
     public void init()
     {
+        setEditID(0);
         setNewSummerhouse(new Summerhouse());
         summerhouseList.add(new Summerhouse(1, "aaa", "ad", 2));
         summerhouseList.add(new Summerhouse(2, "bbb", "bd", 3));
@@ -54,30 +55,44 @@ public class Summerhouse_edit implements Serializable {
     
     public String toEditPage()
     {
+        setNewSummerhouse(new Summerhouse());
         return PAGE_EDIT; 
     }
     
     public String saveSummerhouse()
     {
-        /*if(editedSummerhouse == null)
+        if(editID == 0)
         {
+            newSummerhouse.setId(summerhouseList.get(summerhouseList.size()-1).getId()+1);
             summerhouseList.add(newSummerhouse);
+            
+            //DB INSERT code
         }
         else
         {
-            summerhouseList.set(summerhouseList.indexOf(editedSummerhouse), newSummerhouse);
-            editedSummerhouse = null;
-        }*/
-        
-        summerhouseList.add(newSummerhouse);
-        
-        //DB INSERT code
+            int i = 0;
+            for(Summerhouse sh : summerhouseList)
+            {
+                if(sh.getId() == editID)
+                {
+                    newSummerhouse.setId(editID);
+                    summerhouseList.set(i, newSummerhouse);
+                    
+                    //DB REPLACE CODE
+                    
+                    editID = 0;
+                    break;
+                }
+                i++;
+            }
+        }
+        setNewSummerhouse(new Summerhouse());
         
         return PAGE_INDEX;
     }
-    public String editSummerhouse(Summerhouse summerhouseToEdit)
+    public String editSummerhouse(int summerhouseToEdit)
     {
-        //editedSummerhouse = summerhouseToEdit;
+        setEditID(summerhouseToEdit);
         return PAGE_EDIT;
     }
     public void deleteSummerhouse(Summerhouse summerhouseToDelete)
@@ -113,5 +128,19 @@ public class Summerhouse_edit implements Serializable {
      */
     public void setNewSummerhouse(Summerhouse newSummerhouse) {
         this.newSummerhouse = newSummerhouse;
+    }
+
+    /**
+     * @return the editID
+     */
+    public int getEditID() {
+        return editID;
+    }
+
+    /**
+     * @param editID the editID to set
+     */
+    public void setEditID(int editID) {
+        this.editID = editID;
     }
 }
