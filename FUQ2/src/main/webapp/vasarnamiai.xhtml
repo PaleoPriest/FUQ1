@@ -78,6 +78,13 @@
                 <h:dataTable value="#{summerhouse_edit.summerhouseList}" var="summerhouse" frame="box" rules="all">
                     <h:column>
                         <f:facet name="header">
+                            <h:outputText value="ID"/>
+                        </f:facet>
+                        <h:outputText value="#{summerhouse.id}"/>
+                    </h:column>
+                    
+                    <h:column>
+                        <f:facet name="header">
                             <h:outputText value="Pavadinimas"/>
                         </f:facet>
                         <h:outputText value="#{summerhouse.name}"/>
@@ -98,7 +105,7 @@
                     </h:column>
                     
                     <h:column>
-                        <h:commandLink id="editlink" action="#{summerhouse_edit.editSummerhouse(summerhouse)}">
+                        <h:commandLink id="editlink" action="#{summerhouse_edit.editSummerhouse(summerhouse.id)}">
                             <h:outputText value="Redaguoti" />
                         </h:commandLink>
                     </h:column>

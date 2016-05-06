@@ -68,10 +68,18 @@
     <div class="col-md-8 col-md-offset-2">
         <div>
             <h:form id="summerhouse_form">
-                Pavadinimas<h:inputText value="#{summerhouse_edit.newSummerhouse.name}"></h:inputText> <br/>
-                Aprasymas<h:inputTextarea value="#{summerhouse_edit.newSummerhouse.description}"></h:inputTextarea> <br/>
-                Max kambariai<h:inputText value="#{summerhouse_edit.newSummerhouse.maxRooms}"></h:inputText> <br/>
-                <h:commandButton id="submitSummerhouse" value="Sukurti vasarnami" action="#{summerhouse_edit.saveSummerhouse()}" ></h:commandButton>
+                <table>
+                    <tr>
+                        <td>Pavadinimas</td> <td><h:inputText value="#{summerhouse_edit.newSummerhouse.name}"></h:inputText></td>
+                    </tr>
+                    <tr>
+                        <td>Aprašymas</td> <td><h:inputTextarea value="#{summerhouse_edit.newSummerhouse.description}"></h:inputTextarea></td>
+                    </tr>
+                    <tr>
+                        <td>Maks kambariai</td> <td><h:inputText value="#{summerhouse_edit.newSummerhouse.maxRooms}"></h:inputText></td>
+                    </tr>
+                </table>
+                <h:commandButton id="submitSummerhouse" value="Išsaugoti" action="#{summerhouse_edit.saveSummerhouse()}" ></h:commandButton>
             </h:form>
         </div>
     </div>
