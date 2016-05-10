@@ -1,8 +1,11 @@
 
 import java.util.Date;
 import javax.ejb.Stateful;
+import javax.ejb.Stateless;
+import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
+import javax.inject.Singleton;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -15,10 +18,15 @@ import javax.inject.Named;
  * @author Iron Frog
  */
     @Named
-    @RequestScoped // @SessionScoped
-    @Stateful
-    
-public class mokejimai {
+    @ApplicationScoped
+    @Singleton
+    //@Stateless
+    //@TransactionAttribute – transaction management
+    //@PersistenceContext: PersistenContextType – short-term or long-term data cache
+    //SynchronizationType – automatic or manual flushing to DB
+    //@Version 
+public class mokejimai {   
+        
     ///////////////////////////////////////////
     //TEKSTAS PDF'UI
     String pavedimas = "PAVEDIMAS";
@@ -31,8 +39,9 @@ public class mokejimai {
     String tekstas7 = "Gavėjas:         ";
     //String pastabos = "Pastabos:        "; pastabos bus dedamos apacioje pdf'o
     Date data = new Date(); //siandsienos data reikia ideti
+    String data_string = "";
     int suma_int = 2016;
-    int ID; //traukti is duombazes
+    int ID = 0; //traukti is duombazes
     String gavejo_saskaita = "LT2016201620162016";
     String gavejas = "VasarnamiuNuoma";
     String moketojas = "Bulvė Ropė";
@@ -43,31 +52,27 @@ public class mokejimai {
     
     
     ///////////////////////////////////////////
-    //FUNKCIJOS "MOKETI"
+    //FUNKCIJOS "MOKETI" -> REQUEST TYPE
     //get name tiktai? kaip suma ir visa kita redaguoti? is programos tiktai
     //get date?
     //get is DUOMBAZES ID
     //to PDF
+    void ToPDF()
+    {
+        //xhtml change name
+        ID++;
+        data_string = data.toString();
+    }
+    
     
     ///////////////////////////////////////////
     //FUNKCIJOS "ZYMETI SUMOKEJUSIUS"
     //get names list
     //change status duombazeje myBool = !myBool;
-    
-    //DEL DUOBAZES PAKEITIMU reikia bool ideti ir ID
-    
-    /*
-    MOKEJIMAI FUNKCIJOS:
-    >patikrinti suzymetas varneles (is xhtml)
-    >sugeneruoti pdf
-    >show in new window & activate "back button"
-    ------
-    >kai mygtukas payed pushed
-    is tam tikro xhtml su listu nariu paiimti info, kurios varneles pazymetos
-    >ar tikrai? -yes/no: return with emtied
-                         return with nothing changed
-    >gali atzymeti (mygtukas atzymejimui kitoj vietoj? kaip patogiau?)
-    -------
-    duombaze: narys dar turi vieta su "payed" boolean
-    */ 
+    void Keisti_kas_sumokejo ()
+    {
+        //List<String> moketojai = new ArrayList<String>(); 
+        //i sita lista sumesti ...kazkaip... per xhtml suzymetus vardus
+        //pasiimti lentele useriu eiti per vardus ir keisti !boolean
+    }
 }
