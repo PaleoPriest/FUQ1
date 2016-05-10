@@ -82,6 +82,12 @@ Max_Rooms	INTEGER,
 PRIMARY KEY	(ID)
 );
 
+/*4. Mokejimas*/
+/*CREATE TABLE Mokejimas(
+ID			INTEGER			NOT NULL,
+PRIMARY KEY	(ID)
+);*/
+
 --	Drop tables / sequince / triggers
 /*
 DROP TABLE Users;
