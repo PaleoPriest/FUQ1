@@ -41,6 +41,9 @@ import javax.validation.constraints.Size;
     @NamedQuery(name = "Users.findByPay", query = "SELECT u FROM Users u WHERE u.pay = :pay")})
 public class Users implements Serializable {
 
+    @Column(name = "POINTS")
+    private Integer points;
+
 
 
     private static final long serialVersionUID = 1L;
@@ -210,6 +213,14 @@ public class Users implements Serializable {
     @Override
     public String toString() {
         return "DB_entities.Users[ id=" + id + " ]";
+    }
+
+    public Integer getPoints() {
+        return points;
+    }
+
+    public void setPoints(Integer points) {
+        this.points = points;
     }
 
  
