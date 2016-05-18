@@ -34,10 +34,10 @@ import javax.inject.Named;
  */
 
 @Named
-public class FBLogin extends HttpServlet{
+public class FBRegister extends HttpServlet{
 
     @EJB
-    private FBLoginHelper fBLoginHelper;
+    private FBRegisterHelper fBLoginHelper;
         
     @Override
     public void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
@@ -79,7 +79,7 @@ public class FBLogin extends HttpServlet{
             String inputLine;
             StringBuffer b = new StringBuffer();
             while ((inputLine = in.readLine()) != null)
-                b.append(inputLine + "\n");            
+                b.append(inputLine + "\n");
             in.close();
             graph = b.toString();
         } catch (Exception e) {

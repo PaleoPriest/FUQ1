@@ -27,7 +27,7 @@ import javax.persistence.SynchronizationType;
 @Named
 @Stateless
 
-public class FBLoginHelper implements Serializable{
+public class FBRegisterHelper implements Serializable{
 
     private static final long serialVersionUID = 1L;
     

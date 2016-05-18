@@ -11,7 +11,7 @@
     </servlet>
     <servlet>
         <servlet-name>Login</servlet-name>
-        <servlet-class>login.FBLogin</servlet-class>
+        <servlet-class>login.FBRegister</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
