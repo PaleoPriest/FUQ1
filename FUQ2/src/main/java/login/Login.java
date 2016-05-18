@@ -28,6 +28,7 @@ public class Login {
     private String  userName;
     private String  password;
     private Integer id; 
+    private boolean admin;
     
     public String getUserName() {
         return userName;
@@ -41,7 +42,20 @@ public class Login {
     public void setPassword(String password) {
         this.password = password;
     }
+    public Integer getId() {
+        return id;
+    }
+    public void setId(Integer id) {
+        this.id = id;
+    }
+    public boolean getAdmin() {
+        return admin;
+    }
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
+    }
 
+    
     public void login(){
         id = lh.isValidUser(userName, password);
         password=null;
@@ -66,5 +80,10 @@ public class Login {
         {
             return false;
         }
+    }
+    
+    public Boolean isAdmin()
+    {
+        return admin;
     }
 }
