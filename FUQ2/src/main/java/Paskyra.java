@@ -26,7 +26,7 @@ public class Paskyra {
 
     List<User_valid> userString = new ArrayList<User_valid>();
     
-    public boolean anketaPildyti(String vardas, String pavarde, String slapyvardis, String slap1, 
+    /*public boolean anketaPildyti(String vardas, String pavarde, String slapyvardis, String slap1, 
                     String slap2, String email, String tel, Object lytis, Date gimimoDate)
     {
         User_valid user = new User_valid(vardas, pavarde, slapyvardis, slap1, slap2, email, tel, lytis, gimimoDate);
@@ -49,5 +49,5 @@ public class Paskyra {
             return false;
         
         return true;
-    }
+    }*/
 }

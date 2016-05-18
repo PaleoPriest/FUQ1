@@ -45,7 +45,7 @@ public class FBLogin extends HttpServlet{
         String code = req.getParameter("code");
         if (code == null || code.equals("")) {
             // an error occurred, handle this. Kazkoks grazinimas?
-            klaida("Klaida arba nepatvirtinote Faceebook", res);
+            errorMessage("Klaida arba nepatvirtinote Faceebook", res);
         }
 
         String token = null;
@@ -67,7 +67,7 @@ public class FBLogin extends HttpServlet{
                 throw new Exception("error on requesting token: " + token + " with code: " + code);
         } catch (Exception e) {
                 // an error occurred, handle this
-                klaida("Gristame. Nepatvirtinote Facebook", res);
+                errorMessage("Gristame. Nepatvirtinote Facebook", res);
         }
 
         String graph = null;
@@ -84,7 +84,7 @@ public class FBLogin extends HttpServlet{
             graph = b.toString();
         } catch (Exception e) {
                 // an error occurred, handle this
-                klaida("Nepatvirtinote Facebook. Gristama atgal", res);
+                errorMessage("Nepatvirtinote Facebook. Gristama atgal", res);
         }
             
 
@@ -115,22 +115,22 @@ public class FBLogin extends HttpServlet{
             if(!fBLoginHelper.createUser(facebookId, firstName, lastName, email, gender))
             {
                 System.out.println("Klaida");
-                klaida("Vartotojas nesukurtas. Bandykite dar karta", res);
+                errorMessage("Vartotojas nesukurtas. Bandykite dar karta", res);
             }
             //klaida("Vartotojas nesukurtas. Nepatvirtinote Facebook.", res);
             res.sendRedirect("index.html");
             
         } catch (JSONException e) {
             // an error occurred, handle this
-            klaida("Griztame atgal. Nepatvirtinote Facebook", res);
+            errorMessage("Griztame atgal. Nepatvirtinote Facebook", res);
         } catch (NullPointerException npe){
             //System.out.println("asdf");
-            klaida("Vartotojas nesukurtas. Nepatvirtinote Facebook.", res);
+            errorMessage("Vartotojas nesukurtas. Nepatvirtinote Facebook.", res);
             //res.sendRedirect("index.html");
         } 
     }
     
-    public void klaida(String message, HttpServletResponse res)throws IOException{
+    public void errorMessage(String message, HttpServletResponse res)throws IOException{
         PrintWriter out = res.getWriter();  
         res.setContentType("text/html");  
         out.println("<script type=\"text/javascript\">");
