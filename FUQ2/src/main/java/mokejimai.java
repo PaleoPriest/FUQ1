@@ -26,11 +26,6 @@ import javax.persistence.Query;
     @Named
     @Stateless
     
-    //@Stateless
-    //@TransactionAttribute – transaction management
-    //@PersistenceContext: PersistenContextType – short-term or long-term data cache
-    //SynchronizationType – automatic or manual flushing to DB
-    //@Version 
 public class mokejimai {
     ///////////////////////////////////////////
     //FUNKCIJOS "ZYMETI SUMOKEJUSIUS"
@@ -42,19 +37,19 @@ public class mokejimai {
     //int[] ids = int[n];
     int n = 100;
     
-    String spausdinti_vardus ()
+    public String spausdinti_vardus ()
     {
         //Users user = new Users();
         //List<Users> vartotojai = ArrayList<>();
-        String spaudai = "";
-        Query uzklausa = em.createQuery("SELECT Name, Surname, Pay, ID FROM Users");
+        String spaudai = "~";
+        /*Query uzklausa = em.createQuery("SELECT Name, Surname, Pay, ID FROM Users");
         List<Object> vartotojai = uzklausa.getResultList();
         for (int i = 0; i < vartotojai.size(); i++)
         {
             spaudai = spaudai + vartotojai.get(i) + "/n";
             //grazins su tarpais ar be? ar keisti boola?
         }
-        //System.out.print(spaudai);
+        //System.out.print(spaudai);*/
         return spaudai;
     }
     
