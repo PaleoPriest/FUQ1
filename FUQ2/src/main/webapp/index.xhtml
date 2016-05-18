@@ -29,17 +29,20 @@
   </div>
     <hr/>
 </div>
-<div class="container">
-  <div class="row text-center">
-    <div class="col-md-8 col-md-offset-2">
-        Columns are always contained within a row.
-    </div>
-  </div>
-  <hr/>
-<hr/>
+<h:form id ="formos_ID">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-8 col-md-offset-2">
+                    Columns are always contained within a row.
+                <h:commandButton id="ciaID" value="E-mail" action="#{email_Controller.sendEmail()}"/>
+            </div>
+        </div>
+    <hr/>
+    <hr/>
   <div class="row" id="footer"></div>
-  <hr/>
-</div>
+        <hr/>
+    </div>
+</h:form>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="js/jquery-1.11.3.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed --> 
