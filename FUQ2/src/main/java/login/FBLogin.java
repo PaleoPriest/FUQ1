@@ -11,6 +11,7 @@ import org.json.JSONException;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import java.net.URL;
 import java.net.URLConnection;
@@ -38,14 +39,13 @@ public class FBLogin extends HttpServlet{
     @EJB
     private FBLoginHelper fBLoginHelper;
         
-    @Override   //doesn't get called
+    @Override
     public void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-        
-        //System.out.println("asdf");
         
         String code = req.getParameter("code");
         if (code == null || code.equals("")) {
             // an error occurred, handle this. Kazkoks grazinimas?
+            klaida("Klaida arba nepatvirtinote Faceebook", res);
         }
 
         String token = null;
@@ -67,6 +67,7 @@ public class FBLogin extends HttpServlet{
                 throw new Exception("error on requesting token: " + token + " with code: " + code);
         } catch (Exception e) {
                 // an error occurred, handle this
+                klaida("Gristame. Nepatvirtinote Facebook", res);
         }
 
         String graph = null;
@@ -83,7 +84,9 @@ public class FBLogin extends HttpServlet{
             graph = b.toString();
         } catch (Exception e) {
                 // an error occurred, handle this
+                klaida("Nepatvirtinote Facebook. Gristama atgal", res);
         }
+            
 
         String facebookId;
         String firstName;
@@ -92,18 +95,11 @@ public class FBLogin extends HttpServlet{
         String gender;
         try {
             JSONObject json = new JSONObject(graph);
-            
-            //System.out.println("sadf");
-            
-            //System.out.println(json);
+
             facebookId = json.getString("id");
-            //System.out.println(facebookId);
             firstName = json.getString("first_name");
-            //System.out.println(firstName);
             lastName = json.getString("last_name");
-            //System.out.println(lastName);
             email = json.getString("email");
-            //System.out.println(email);
             if (json.has("gender")) {
                 String g = json.getString("gender");
                 if (g.equalsIgnoreCase("female"))
@@ -119,19 +115,28 @@ public class FBLogin extends HttpServlet{
             if(!fBLoginHelper.createUser(facebookId, firstName, lastName, email, gender))
             {
                 System.out.println("Klaida");
-                /*FacesContext.getCurrentInstance().addMessage(
-                    null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Vartotojas nesukurtas. Griskite atgal ir bandykite dar karta.", " ")); //or sth. Dar nezinau, kaip cia klaidas metyt */
+                klaida("Vartotojas nesukurtas. Bandykite dar karta", res);
             }
-            
+            //klaida("Vartotojas nesukurtas. Nepatvirtinote Facebook.", res);
             res.sendRedirect("index.html");
-            //System.out.println("sadf");
-            //System.out.println(firstName);
             
         } catch (JSONException e) {
             // an error occurred, handle this
-        }   
+            klaida("Griztame atgal. Nepatvirtinote Facebook", res);
+        } catch (NullPointerException npe){
+            //System.out.println("asdf");
+            klaida("Vartotojas nesukurtas. Nepatvirtinote Facebook.", res);
+            //res.sendRedirect("index.html");
+        } 
     }
-    //Save login status to db?
-    //add redirect here?
     
+    public void klaida(String message, HttpServletResponse res)throws IOException{
+        PrintWriter out = res.getWriter();  
+        res.setContentType("text/html");  
+        out.println("<script type=\"text/javascript\">");
+        String alert = "alert('" + message + "');";
+        out.println(alert);
+        out.println("location='index.html';");
+        out.println("</script>");
+    }
 }
