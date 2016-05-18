@@ -20,7 +20,7 @@ import javax.persistence.Query;
  */
 @Named
 @Stateless
-public class Bla {
+public class PabegusiKlaseLoginHelper {
     
     @PersistenceContext
     private EntityManager em;
