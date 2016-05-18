@@ -1,6 +1,7 @@
 package payments;
 
 
+import java.io.Serializable;
 import java.util.Date;
 import javax.ejb.Stateful;
 import javax.enterprise.context.ConversationScoped;
@@ -19,7 +20,7 @@ import javax.inject.Named;
 @Named
 @ConversationScoped
 @Stateful
-public class klientas_uzklausa_mokejimui {
+public class klientas_uzklausa_mokejimui  implements Serializable{
             
     ///////////////////////////////////////////
     //TEKSTAS PDF'UI
