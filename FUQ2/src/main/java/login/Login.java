@@ -44,6 +44,27 @@ public class Login {
 
     public void login(){
         id = lh.isValidUser(userName, password);
-        //System.out.println(id);
+        password=null;
+        
+        if(id!=null)
+        {
+            System.out.println(id);
+        }
+        else
+        {
+            System.out.println("Nera userio");
+        }
+    }
+    
+    public Boolean isLoggedIn()
+    {
+        if(id!=null)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }

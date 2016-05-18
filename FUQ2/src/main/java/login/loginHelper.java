@@ -30,24 +30,26 @@ public class LoginHelper {
         //Users userList = null;
         Query query = em.createQuery("SELECT u.nickname, u.password, u.id FROM Users u where u.nickname = :name").setParameter("name", name);
         
-        String id2=null;
         List<Object[]> results = query.getResultList();
-        for(Object[] elements: results){
-        String nick = String.valueOf(String.valueOf(elements[0]));
-        String pass2  = String.valueOf(elements[1]);
-          id2 = String.valueOf(elements[2]);
-        }
-        //userList = (Users) query.getSingleResult();
         
-        //System.out.println(results);
-        //System.out.println(id2);
-        /*if(userList!=null)
+        String nicknameTemp = String.valueOf(String.valueOf(results.get(0)[0]));
+        String passTemp  = String.valueOf(results.get(0)[1]);
+        String idTemp = String.valueOf(results.get(0)[2]);
+
+        Integer idTemp2 = Integer.valueOf(idTemp);
+        if(idTemp2!=null)
         {
-            return userList.getId();
+            if(name.equals(nicknameTemp) && pass.equals(passTemp))
+            {
+                return idTemp2;
+            }
+            else
+            {
+                return null;
+            }
         }
         else{
             return null;
-        }*/
-        return null;
+        } 
     }
 }
