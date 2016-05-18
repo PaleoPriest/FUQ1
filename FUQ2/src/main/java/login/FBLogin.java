@@ -118,8 +118,9 @@ public class FBLogin extends HttpServlet{
             
             if(!fBLoginHelper.createUser(facebookId, firstName, lastName, email, gender))
             {
-                FacesContext.getCurrentInstance().addMessage(
-                    null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Vartotojas nesukurtas. Griskite atgal ir bandykite dar karta.", " ")); //or sth. Dar nezinau, kaip cia klaidas metyt
+                System.out.println("Klaida");
+                /*FacesContext.getCurrentInstance().addMessage(
+                    null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Vartotojas nesukurtas. Griskite atgal ir bandykite dar karta.", " ")); //or sth. Dar nezinau, kaip cia klaidas metyt */
             }
             
             res.sendRedirect("index.html");

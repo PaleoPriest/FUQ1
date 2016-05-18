@@ -2,6 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
       lang="en">
 <head>
 <meta charset="utf-8"></meta>
@@ -34,40 +36,40 @@
   <h3> * mb tvarkyt tarpus tarp fields * </h3>
     <div class="col-md-offset-1 col-md-2">
       <p class="medium_height">
-        Vardas <br> <br>
-        Pavardė <br> <br>
-        Slapyvardis <br> <br>
-        Slaptažodis <br> <br>
-        Pakartoti slaptažodį <br> <br>
-        E-mail <br> <br>
-        Telfono nr. <br> <br>
-        Lytis <br> <br>
-        Gimimo data <br>
+        Vardas <br/> <br/>
+        Pavardė <br/> <br/>
+        Slapyvardis <br/> <br/>
+        Slaptažodis <br/> <br/>
+        Pakartoti slaptažodį <br/> <br/>
+        E-mail <br/> <br/>
+        Telfono nr. <br/> <br/>
+        Lytis <br/> <br/>
+        Gimimo data <br/>
       </p>
     </div>
     <div class="col-md-5 col-md-offset-0">
-    <form>
-    <input type="text"> <br> <br>
-    <input type="text"> <br> <br>
-    <input type="text"> <br> <br>
-    <input type="password"> <br> <br>
-    <input type="password"> <br> <br>
-    <input type="text"> <br> <br>
-    <input type="text"> <br> <br>
-    <select>
-      <option value="#"></option>
-      <option value="vyras">Vyras</option>
-      <option value="moteris">Moteris</option>
-      <option value="...">...</option>
-    </select> <br> <br>
-    <input type="date">
-    </form>
+    <h:form id="userForm">
+        <h:inputText required="true" value="#{user_code.user.name}"></h:inputText> <br/> <br/> 
+        <h:inputText value="#{user_code.user.surname}"></h:inputText> <br/> <br/>   <!--add required to not null fields-->
+        <h:inputText value="#{user_code.user.nickname}"></h:inputText> <br/> <br/>
+        <h:inputSecret value="#{user_code.user.password}"></h:inputSecret> <br/> <br/>
+        <h:inputSecret value="#{user_code.passRepeat}"></h:inputSecret> <br/> <br/>
+        <h:inputText value="#{user_code.user.mail}"></h:inputText> <br/> <br/>
+        <h:inputText value="#{user_code.user.phone}"></h:inputText> <br/> <br/>
+        <h:selectOneRadio value="#{user_code.genderValue}">
+          <f:selectItem   itemLabel="Vyras" itemValue="1"/>
+          <f:selectItem   itemLabel="Moteris" itemValue="2"/>
+          <f:selectItem   itemLabel="Kita" itemValue="3"/>
+        </h:selectOneRadio> <br/> <br/>
+        <p:calendar value="#{user_code.user.birthday}" pattern="dd-mm-yyyy"></p:calendar> <br/> <br/>
+        <h:commandButton id="submitUserButton" value="Save" action="#{user_code.createUser()}" ></h:commandButton>
+    </h:form>
     </div>
   </div>
   <div class="row">
     <div class="col-md-5 col-md-offset-2">
-      <br>
-      <input type="submit" value="Sign up">
+      <br/>
+      <input type="submit" value="Sign up"/>
     </div>
   </div>
   <hr/>
