@@ -1,9 +1,7 @@
 import login.User_valid;
 import DB_entities.Users;
 
-import Errors.Check_errors;
 import java.io.Serializable;
-import java.util.Date;
 import javax.ejb.Stateful;
 import javax.enterprise.context.Conversation;
 import javax.enterprise.context.ConversationScoped;
@@ -17,13 +15,6 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
 import javax.persistence.PersistenceException;
 import javax.persistence.SynchronizationType;
-//import jdk.nashorn.internal.objects.annotations.Getter;
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 /**
  *
@@ -34,9 +25,7 @@ import javax.persistence.SynchronizationType;
 @Stateful
 public class User_code implements Serializable
 {
-
     private static final String PAGE_INDEX          = "index?faces-redirect=true";
-    //private static final String PAGE_CREATE_STUDENT = "createStudent?faces-redirect=true";
     private static final String PAGE_CONFIRM        = "confirm?faces-redirect=true";
     private static final long serialVersionUID = 1L;
 
@@ -44,11 +33,10 @@ public class User_code implements Serializable
     private EntityManager em;
 
     @Inject
-    //@Getter KODEL NEVEIKIA??? META ERRORA :(
-    private Conversation conversation;
-
-    @Inject
     private User_valid user_valid;
+    
+    @Inject
+    private Conversation conversation;
     
     public Conversation getConversation() {
         return conversation;
@@ -58,16 +46,12 @@ public class User_code implements Serializable
     }
     
     private Users user = new Users();
-
     public Users getUser() {
         return user;
     }
     public void setUser(Users user) {
         this.user = user;
     }
-    
-    String username;
-    String password;
 
     String passRepeat;
     public String getPassRepeat() {
@@ -83,52 +67,6 @@ public class User_code implements Serializable
     public void setGenderValue(String genderValue) {
         this.genderValue = genderValue;
     }
-    
-    
-    //TOLIAU CONVERSATION... FUNKCIJOS ETC
-    //Unused functions
-
-    public String login(String userN, String pass)
-    {
-            //Get username & password from db
-            if (username ==	userN && password == pass)
-                    ;	//good user data, login user
-            else
-                    return ("Wrong username or password has been entered.");
-            return "";
-    }
- 
-    public String addUser(String userN, String pass/*, String ...*/)
-    {
-            //insert all fields to db
-            return (new Check_errors()).checkForErrors(true/* or false*/, "Success of smth");	//insert done successfully
-
-            /*if ()	//insert done successfully
-                    return ("New user created successful");
-            else
-                    return ("error msg");*/
-    }
-
-    public String changeAccName(String username /*... fileds to change*/)	//change name / last name / nickname
-    {
-            /*
-                    Get user from db
-                    insert new fields to db
-            */
-            return (new Check_errors()).checkForErrors(true/* or false*/, "Success of smth");	//insert done successfully
-    }
-
-    public String changeAccImg(String username, Object img)
-    {
-            /*
-                    Get user from db
-                    insert new img to db
-            */
-            return (new Check_errors()).checkForErrors(true /*or false*/, "Success of smth");	//insert done successfully
-    }
-    //end unused functions
-    
-    
 
     public String createUser() {
 
@@ -151,11 +89,8 @@ public class User_code implements Serializable
                 return PAGE_INDEX;
             }
 
-            //System.out.println(check);
             user.setSex(user_valid.convertGender(genderValue));
             user_valid.create(user);
-            //System.out.println(user);
-
             return PAGE_CONFIRM;
         }
     }
