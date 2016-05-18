@@ -23,7 +23,7 @@ import javax.inject.Named;
 public class Login {
     
     @Inject
-    LoginHelper lh;
+    Bla lh;
     
     private String  userName;
     private String  password;
