@@ -20,6 +20,7 @@
     <![endif]-->
 </head>
 <body>
+<div id="slideshow"></div>
 <nav class="navbar navbar-default" id="navigacija"></nav>
 <div class="container-fluid">
   <div class="row">
@@ -55,6 +56,7 @@
 <!-- Include all compiled plugins (below), or include individual files as needed --> 
 <script src="js/bootstrap.js"></script>
 <script>
+$("#slideshow").load("Templates/BackgroundSlideshowTemplate.html");
 $( "#navigacija" ).load( "Templates/NavbarTemplate.html");
 $( "#footer" ).load( "Templates/FooterTemplate.html #footer");
 </script>
