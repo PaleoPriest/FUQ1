@@ -1,3 +1,5 @@
+package payments;
+
 
 import java.util.List;
 import javax.ejb.Stateless;

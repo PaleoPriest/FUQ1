@@ -1,3 +1,5 @@
+package payments;
+
 
 import java.util.Date;
 import javax.ejb.Stateful;

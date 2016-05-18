@@ -1,3 +1,5 @@
+package payments;
+
 
 import DB_entities.Users;
 import java.util.ArrayList;
@@ -41,16 +43,24 @@ public class mokejimai {
     {
         //Users user = new Users();
         //List<Users> vartotojai = ArrayList<>();
+        //em.getTransaction().begin();
         String spaudai = "~";
-        Query uzklausa = em.createQuery("SELECT u.name, u.surname, u.pay, u.id FROM Users u");
-        List<Users> vartotojai = uzklausa.getResultList();
-        for (int i = 0; i < vartotojai.size(); i++)
+        Query uzklausa = em.createQuery("SELECT u.name, u.surname, u.pay, u.id FROM Users u ");
+        List<Object[]> vartotojai = uzklausa.getResultList();
+        for (Object[] elements: vartotojai)
         {
-            spaudai = spaudai + vartotojai.get(i).getName() + vartotojai.get(i).getSurname() /*+ vartotojai.get(i).getPay().toString() + vartotojai.get(i).getId().toString() */+ "/n";
-            //grazins su tarpais ar be? ar keisti boola?
+            //spaudai = spaudai + vartotojai.get(i).toString() + "/n";
+            spaudai = spaudai + String.valueOf(String.valueOf(elements[2])) + " " + String.valueOf(elements[0]) + " " + String.valueOf(elements[1]) + ", id: " + String.valueOf(String.valueOf(elements[3])) + "\n";
         }
-        //System.out.print(spaudai);
+        /*for(Object[] elements: results){
+        String nick = String.valueOf(String.valueOf(elements[0]));
+        String pass2  = String.valueOf(elements[1]);
+          id2 = String.valueOf(elements[2]);
+        }*/
         return spaudai;
+        //em.getTransaction().commit();
+        //em.close();
+        //return vartotojai.size();
     }
     
     int[] IsChecked()
