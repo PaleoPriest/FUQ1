@@ -42,14 +42,14 @@ public class mokejimai {
         //Users user = new Users();
         //List<Users> vartotojai = ArrayList<>();
         String spaudai = "~";
-        /*Query uzklausa = em.createQuery("SELECT Name, Surname, Pay, ID FROM Users");
-        List<Object> vartotojai = uzklausa.getResultList();
+        Query uzklausa = em.createQuery("SELECT u.name, u.surname, u.pay, u.id FROM Users u");
+        List<Users> vartotojai = uzklausa.getResultList();
         for (int i = 0; i < vartotojai.size(); i++)
         {
-            spaudai = spaudai + vartotojai.get(i) + "/n";
+            spaudai = spaudai + vartotojai.get(i).getName() + vartotojai.get(i).getSurname() /*+ vartotojai.get(i).getPay().toString() + vartotojai.get(i).getId().toString() */+ "/n";
             //grazins su tarpais ar be? ar keisti boola?
         }
-        //System.out.print(spaudai);*/
+        //System.out.print(spaudai);
         return spaudai;
     }
     
