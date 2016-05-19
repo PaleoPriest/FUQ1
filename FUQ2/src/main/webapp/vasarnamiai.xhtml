@@ -32,99 +32,61 @@
 </div>
 <div class="container">
   <div class="row">
-    <div class="col-md-8 col-md-offset-2">
         <div>
             <div>
-            <h:form id="summerhouse_form">
-                <h:commandButton id="submitSummerhouse" value="Sukurti vasarnami" action="#{summerhouse_edit.toEditPage()}" ></h:commandButton>
-            </h:form>
-        </div>
-        </div>
-        <div>
+            <div>
+                <h:form id="searchForm">
+                    <table>
+                        <tr>
+                            <td>Pavadinimas</td><td>Minimalus kambariu skaicius</td>
+                        </tr>
+                        <tr>
+                            <td><h:inputText value="#{summerhouse_edit.searchName}"/></td> 
+                            <td><h:inputText value="#{summerhouse_edit.searchMinRooms}"/></td>
+                        </tr>
+                    </table>
+                    <h:commandButton id="searchButton" value="Ieskoti vasarnami" action="#{summerhouse_edit.searchSummerhouses()}"/>
+                </h:form>
             <h:form id="summerhouse_table">
-                <h:dataTable value="#{summerhouse_edit.summerhouseList}" var="summerhouse" frame="box" rules="all">
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="ID"/>
-                        </f:facet>
-                        <h:outputText value="#{summerhouse.id}"/>
-                    </h:column>
-                    
+                <h:dataTable value="#{summerhouse_edit.filteredSummerhouseList}" var="summerhouse" frame="box" rules="all">
                     <h:column>
                         <f:facet name="header">
                             <h:outputText value="Pavadinimas"/>
                         </f:facet>
                         <h:outputText value="#{summerhouse.name}"/>
                     </h:column>
-                    
                     <h:column>
                         <f:facet name="header">
-                            <h:outputText value="Aprasymas"/>
+                            <h:outputText value="Rezervacijos laikotarpis"/>
                         </f:facet>
-                    <h:outputText value="#{summerhouse.description}"/>
+                        <h:outputText value="#{summerhouse.reservationTime}"/>
                     </h:column>
-                    
                     <h:column>
                         <f:facet name="header">
-                            <h:outputText value="Kambariu skaicius"/>
+                            <h:outputText value="Rezervuoti savaitems"/>
                         </f:facet>
-                        <h:outputText value="#{summerhouse.maxRooms}"/>
+                        <h:inputText value="#{summerhouse.reservationTime}" size="3" converterMessage="Ne skaicius!">
+                        <f:validateLongRange minimum="0" maximum="6"/>
+                    </h:inputText>
                     </h:column>
-                    
                     <h:column>
-                        <h:commandLink id="editlink" action="#{summerhouse_edit.editSummerhouse(summerhouse.id)}">
-                            <h:outputText value="Redaguoti" />
+                        <h:commandLink id="reservelink" action="#{summerhouse_edit.reserveSummerhouse(summerhouse)}">
+                            <h:outputText value="Rezervuoti" />
                         </h:commandLink>
                     </h:column>
-                    
                     <h:column>
-                        <h:commandLink id="deletelink" action="#{summerhouse_edit.deleteSummerhouse(summerhouse)}">
-                            <h:outputText value="Trinti" />
+                        <h:commandLink id="freelink" action="#{summerhouse_edit.freeSummerhouse(summerhouse)}">
+                            <h:outputText value="Atsaukti rezervacija" />
                         </h:commandLink>
                     </h:column>
-
                 </h:dataTable>
             </h:form>
         </div>
-      <img src="img/vasarnamiai/farmhouse-exterior S.jpg" width="149" height="100" alt="House img" class="img-left img-vspace"/>
-      <p>Informacija apie vasarnamį. Vieta, dydis, apylinkės, vandens telkiniai, kambariai, etc... 
-          Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. 
-          Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. 
-          Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. 
-          Tekstas. Tekstas. Tekstas. </p>
-    </div>
-    <div class="col-md-8 col-md-offset-2">
-      <img src="img/vasarnamiai/Summer house S.jpg" width="149" height="100" alt="House img" class="img-left img-vspace"/>
-      <p>Informacija apie vasarnamį. Vieta, dydis, apylinkės, vandens telkiniai, kambariai, etc... 
-          Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. 
-          Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. 
-          Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. 
-          Tekstas. Tekstas. Tekstas. </p>
-    </div>
-      <div class="col-md-8 col-md-offset-2">
-      <img src="img/vasarnamiai/Summer-house-on-Lake S.jpg" width="149" height="100" alt="House img" class="img-left img-vspace"/>
-      <p>Informacija apie vasarnamį. Vieta, dydis, apylinkės, vandens telkiniai, kambariai, etc... 
-          Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. 
-          Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. 
-          Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. 
-          Tekstas. Tekstas. Tekstas. </p>
-    </div>
-    <div class="col-md-8 col-md-offset-2">
-      <img src="img/vasarnamiai/House S.jpg" width="149" height="100" alt="House img" class="img-left img-vspace"/>
-      <p>Informacija apie vasarnamį. Vieta, dydis, apylinkės, vandens telkiniai, kambariai, etc... 
-          Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. 
-          Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. 
-          Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. 
-          Tekstas. Tekstas. Tekstas. </p>
-    </div>
-    <div class="col-md-8 col-md-offset-2">
-      <img src="img/vasarnamiai/Sunmer House S.jpg" width="149" height="100" alt="House img" class="img-left img-vspace"/>
-      <p>Informacija apie vasarnamį. Vieta, dydis, apylinkės, vandens telkiniai, kambariai, etc... 
-          Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. 
-          Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. 
-          Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. Tekstas. 
-          Tekstas. Tekstas. Tekstas. </p>
-    </div>
+            <h:form id="summerhouse_form">
+                <h:commandButton id="editSummerhouse" value="Keisti vasarnamius" action="#{navBean.toSActions()}" ></h:commandButton>
+            </h:form>
+        </div>
+        </div>
   </div>
   <hr/>
 <hr/>

@@ -31,7 +31,7 @@ import javax.enterprise.context.RequestScoped;
 @Stateful
 public class Summerhouse_edit implements Serializable {
     
-    private static final String PAGE_INDEX = "vasarnamiai?faces-redirect=true";
+    private static final String PAGE_INDEX = "vasarnamiai_actions?faces-redirect=true";
     private static final String PAGE_EDIT = "vasarnamiai_edit?faces-redirect=true";
     
     @PersistenceContext(type = PersistenceContextType.EXTENDED, synchronization = SynchronizationType.UNSYNCHRONIZED)
@@ -41,6 +41,14 @@ public class Summerhouse_edit implements Serializable {
     
     private Summerhouse newSummerhouse;
     
+    private List<Summerhouse> filteredSummerhouseList = new ArrayList<>();
+    
+    private String searchName;
+    
+    private int searchMinRooms;
+    
+    private int newReservation;
+    
     private int editID;
     
     @PostConstruct
@@ -48,9 +56,10 @@ public class Summerhouse_edit implements Serializable {
     {
         setEditID(0);
         setNewSummerhouse(new Summerhouse());
-        summerhouseList.add(new Summerhouse(1, "aaa", "ad", 2));
-        summerhouseList.add(new Summerhouse(2, "bbb", "bd", 3));
-        summerhouseList.add(new Summerhouse(3, "ccc", "cd", 4));
+        summerhouseList.add(new Summerhouse(1, "aaa", "ad", 2, 0));
+        summerhouseList.add(new Summerhouse(2, "bbb", "bd", 3, 0));
+        summerhouseList.add(new Summerhouse(3, "ccc", "cd", 4, 0));
+        listCopy(summerhouseList, filteredSummerhouseList);
     }
     
     public String toEditPage()
@@ -87,7 +96,7 @@ public class Summerhouse_edit implements Serializable {
             }
         }
         setNewSummerhouse(new Summerhouse());
-        
+        listCopy(summerhouseList, filteredSummerhouseList);
         return PAGE_INDEX;
     }
     public String editSummerhouse(int summerhouseToEdit)
@@ -142,5 +151,103 @@ public class Summerhouse_edit implements Serializable {
      */
     public void setEditID(int editID) {
         this.editID = editID;
+    }
+    
+    public void searchSummerhouses()
+    {
+        filteredSummerhouseList.clear();
+        if(searchName.isEmpty() && searchMinRooms == 0)
+        {
+            filteredSummerhouseList = new ArrayList<Summerhouse>(summerhouseList);
+        }
+        else
+        {
+            for(Summerhouse sm : summerhouseList)
+            {
+                if((sm.getName().compareTo(searchName) == 0) || ((sm.getMaxRooms() >= searchMinRooms) && (searchMinRooms > 0)))
+                {
+                    filteredSummerhouseList.add(sm);
+                }
+            } 
+        }
+    }
+    
+    public void reserveSummerhouse(Summerhouse summerhouseToReserve)
+    {
+        //System.out.println("New: " + newReservation);
+        //System.out.println("ResTime: " + summerhouseToReserve.getReservationTime());
+        if(summerhouseToReserve.getReservationTime() == 0)
+        {
+            summerhouseToReserve.setReservationTime(newReservation);
+        }
+        //System.out.println("New: " + newReservation);
+        //System.out.println("ResTime: " + summerhouseToReserve.getReservationTime());
+    }
+    
+    public void freeSummerhouse(Summerhouse summerhouseToFree)
+    {
+        summerhouseToFree.setReservationTime(0);
+    }
+
+    /**
+     * @return the newReservation
+     */
+    public int getNewReservation() {
+        return newReservation;
+    }
+
+    /**
+     * @param newReservation the newReservation to set
+     */
+    public void setNewReservation(int newReservation) {
+        this.newReservation = newReservation;
+    }
+    
+    public String getSearchName() {
+        return searchName;
+    }
+
+    /**
+     * @param searchName the searchName to set
+     */
+    public void setSearchName(String searchName) {
+        this.searchName = searchName;
+    }
+
+    /**
+     * @return the filteredSummerhouseList
+     */
+    public List<Summerhouse> getFilteredSummerhouseList() {
+        return filteredSummerhouseList;
+    }
+
+    /**
+     * @param filteredSummerhouseList the filteredSummerhouseList to set
+     */
+    public void setFilteredSummerhouseList(List<Summerhouse> filteredSummerhouseList) {
+        this.filteredSummerhouseList = filteredSummerhouseList;
+    }
+    
+    public void listCopy(List<Summerhouse> sourceList, List<Summerhouse> targetList)
+    {
+        targetList.clear();
+        for(Summerhouse sm : sourceList)
+        {
+            targetList.add(sm);
+        }
+    }
+
+    /**
+     * @return the searchMinRooms
+     */
+    public int getSearchMinRooms() {
+        return searchMinRooms;
+    }
+
+    /**
+     * @param searchMinRooms the searchMinRooms to set
+     */
+    public void setSearchMinRooms(int searchMinRooms) {
+        this.searchMinRooms = searchMinRooms;
     }
 }
