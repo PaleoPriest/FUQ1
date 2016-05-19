@@ -55,8 +55,6 @@ public class FBRegisterHelper implements Serializable{
         
         try
         {
-            int tempId = 0;
-            user.setId(tempId);     //nes kitaip persist skundziasi
             em.persist(user);
             //user_valid.create(user);
             //System.out.println("asdf");

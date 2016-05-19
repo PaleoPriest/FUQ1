@@ -116,6 +116,7 @@ public class FBRegister extends HttpServlet{
             {
                 System.out.println("Klaida");
                 errorMessage("Vartotojas nesukurtas. Bandykite dar karta", res);
+                return;
             }
             //klaida("Vartotojas nesukurtas. Nepatvirtinote Facebook.", res);
             res.sendRedirect("index.html");

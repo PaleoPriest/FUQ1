@@ -28,8 +28,6 @@ public class User_valid {
     private EntityManager em;
 
     public void create(Users user) {
-        int tempId = 0;
-        user.setId(tempId);     //nes kitaip persist skundziasi
         em.persist(user);
     }
     

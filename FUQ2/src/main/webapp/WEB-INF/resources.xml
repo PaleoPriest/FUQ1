@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+  <Resource id="FUQ_DB" type="javax.sql.DataSource">#Mon Mar 14 09:25:09 EET 2016
+jdbcDriver=org.apache.derby.jdbc.ClientDriver
+password=FUQ
+userName=FUQ
+jdbcUrl=jdbc\:derby\://localhost\:1527/FUQ_DB
+</Resource>
+</resources>

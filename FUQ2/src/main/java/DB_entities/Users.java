@@ -41,17 +41,11 @@ import javax.validation.constraints.Size;
     @NamedQuery(name = "Users.findByPay", query = "SELECT u FROM Users u WHERE u.pay = :pay")})
 public class Users implements Serializable {
 
-    @Column(name = "POINTS")
-    private Integer points;
-
-
-
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @NotNull
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Column(name = "ID")
+    @Column(name = "ID", nullable = false, unique = true)
     private Integer id;
     @Size(max = 15)
     @Column(name = "NAME")
@@ -84,7 +78,11 @@ public class Users implements Serializable {
     @Size(max = 20)
     @Column(name = "FBID")
     private String fbid;
-    
+    @Column(name = "POINTS")
+    private Integer points;
+    @Column(name = "ISADMIN")
+    private Boolean isAdmin;
+
     
     
     public Users() {
@@ -190,6 +188,24 @@ public class Users implements Serializable {
         this.fbid = fbid;
     }
     
+    public Integer getPoints() {
+        return points;
+    }
+
+    public void setPoints(Integer points) {
+        this.points = points;
+    }
+    
+    public Boolean getIsAdmin() {
+        return isAdmin;
+    }
+
+    public void setIsAdmin(Boolean isAdmin) {
+        this.isAdmin = isAdmin;
+    }
+    
+    
+    
     @Override
     public int hashCode() {
         int hash = 0;
@@ -215,13 +231,7 @@ public class Users implements Serializable {
         return "DB_entities.Users[ id=" + id + " ]";
     }
 
-    public Integer getPoints() {
-        return points;
-    }
-
-    public void setPoints(Integer points) {
-        this.points = points;
-    }
+    
 
 
     
