@@ -50,7 +50,7 @@ public class mokejimai {
         for (Object[] elements: vartotojai)
         {
             //spaudai = spaudai + vartotojai.get(i).toString() + "/n";
-            spaudai = spaudai + String.valueOf(String.valueOf(elements[2])) + " " + String.valueOf(elements[0]) + " " + String.valueOf(elements[1]) + ", id: " + String.valueOf(String.valueOf(elements[3])) + "\n";
+            spaudai = spaudai + String.valueOf(String.valueOf(elements[2])) + " " + String.valueOf(elements[0]) + " " + String.valueOf(elements[1]) + ", id: " + String.valueOf(String.valueOf(elements[3])) + "<br/>";
         }
         /*for(Object[] elements: results){
         String nick = String.valueOf(String.valueOf(elements[0]));
