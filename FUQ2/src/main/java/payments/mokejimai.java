@@ -44,13 +44,21 @@ public class mokejimai {
         //Users user = new Users();
         //List<Users> vartotojai = ArrayList<>();
         //em.getTransaction().begin();
-        String spaudai = "~";
+        String spaudai = "";
         Query uzklausa = em.createQuery("SELECT u.name, u.surname, u.pay, u.id FROM Users u ");
         List<Object[]> vartotojai = uzklausa.getResultList();
         for (Object[] elements: vartotojai)
         {
+            if (String.valueOf(String.valueOf(elements[2])) == "null" || String.valueOf(String.valueOf(elements[2])) == "false")
+            {
+                spaudai = spaudai + "<input type=checkbox unchecked>";
+            }
+            else
+            {
+                spaudai = spaudai + "<input type=checkbox checked>";
+            }
             //spaudai = spaudai + vartotojai.get(i).toString() + "/n";
-            spaudai = spaudai + String.valueOf(String.valueOf(elements[2])) + " " + String.valueOf(elements[0]) + " " + String.valueOf(elements[1]) + ", id: " + String.valueOf(String.valueOf(elements[3])) + " <br/>";
+            spaudai = spaudai + " " + String.valueOf(String.valueOf(elements[3])) + " " + String.valueOf(elements[0]) + " " + String.valueOf(elements[1]) + " <br/>";
         }
         /*for(Object[] elements: results){
         String nick = String.valueOf(String.valueOf(elements[0]));
