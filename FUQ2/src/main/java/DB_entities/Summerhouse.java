@@ -48,6 +48,8 @@ public class Summerhouse implements Serializable {
     private String description;
     @Column(name = "MAX_ROOMS")
     private Integer maxRooms;
+    
+    private Integer reservationTime;
     @JoinColumn(name = "ROOM", referencedColumnName = "ID")
     @ManyToOne
     private Rooms room;
@@ -64,12 +66,13 @@ public class Summerhouse implements Serializable {
         this.name = name;
     }
 
-    public Summerhouse(Integer id, String name, String description, Integer maxRooms)
+    public Summerhouse(Integer id, String name, String description, Integer maxRooms, Integer reservationTime)
     {
         this.id = id;
         this.name = name;
         this.description = description;
         this.maxRooms = maxRooms;
+        this.reservationTime = reservationTime;
     }
     public Integer getId() {
         return id;
@@ -134,6 +137,20 @@ public class Summerhouse implements Serializable {
     @Override
     public String toString() {
         return "DB_entities.Summerhouse[ id=" + id + " ]";
+    }
+
+    /**
+     * @return the reservationTime
+     */
+    public Integer getReservationTime() {
+        return reservationTime;
+    }
+
+    /**
+     * @param reservationTime the reservationTime to set
+     */
+    public void setReservationTime(Integer reservationTime) {
+        this.reservationTime = reservationTime;
     }
     
 }
