@@ -20,7 +20,7 @@ import javax.persistence.Query;
  */
 @Named
 @Stateless
-public class PabegusiKlaseLoginHelper {
+public class LoginHelper {
     
     @PersistenceContext
     private EntityManager em;
@@ -30,24 +30,32 @@ public class PabegusiKlaseLoginHelper {
         Query query = em.createQuery("SELECT u.nickname, u.password, u.id, u.isAdmin, u.name, u.surname FROM Users u where u.nickname = :name").setParameter("name", name);
         
         List<Object[]> results = query.getResultList();
+        String nicknameTemp="";
+        String passTemp="";
         
-        String nicknameTemp = String.valueOf(String.valueOf(results.get(0)[0]));
-        String passTemp  = String.valueOf(results.get(0)[1]);
-        usi.id = Integer.valueOf(results.get(0)[2].toString());
-        usi.isAdmin = Boolean.valueOf(results.get(0)[3].toString());
-        usi.firstName =String.valueOf(results.get(0)[4]);
-        usi.lastName =String.valueOf(results.get(0)[5]);
-
-        if(usi.id!=null)
+        if(!results.isEmpty())
         {
-            if(name.equals(nicknameTemp) && pass.equals(passTemp))
+            nicknameTemp = String.valueOf(String.valueOf(results.get(0)[0]));
+            passTemp  = String.valueOf(results.get(0)[1]);
+            usi.id = Integer.valueOf(results.get(0)[2].toString());
+            
+            usi.firstName =String.valueOf(results.get(0)[4]);
+            usi.lastName =String.valueOf(results.get(0)[5]);
+            
+            if(results.get(0)[3]==null)
             {
-                return true;
+                usi.isAdmin = false;
             }
             else
             {
-                return false;
+                usi.isAdmin = Boolean.valueOf(results.get(0)[3].toString());
             }
+        }
+
+        if(usi.id!=null)
+        {
+            System.out.println(name+nicknameTemp+pass+passTemp);
+            return name.equals(nicknameTemp) && pass.equals(passTemp);
         }
         else{
             return false;

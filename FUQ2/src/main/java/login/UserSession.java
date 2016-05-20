@@ -20,14 +20,14 @@ import javax.inject.Named;
 @Stateful
 @SessionScoped
 
-public class Session {
+public class UserSession {
     
     @Inject
-    PabegusiKlaseLoginHelper lh;
+    LoginHelper lh;
     
     private String  userName;
     private String  password;
-    private UserSessionInfo usi;
+    private UserSessionInfo usi = new UserSessionInfo();
     
     public String getUserName() {
         return userName;
@@ -50,8 +50,6 @@ public class Session {
     
     
     public void login(){
-        password=null;
-        
         if(lh.isValidUser(userName, password, usi)!=false)
         {
             System.out.println(usi.id);
@@ -60,6 +58,7 @@ public class Session {
         {
             System.out.println("Nera userio");
         }
+        password=null;
     }
     
     public Boolean isLoggedIn()

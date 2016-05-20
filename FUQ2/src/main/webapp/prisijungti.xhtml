@@ -34,14 +34,14 @@
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
       <h:form>
-        Name <h:inputText required="true" value="#{session.userName}"></h:inputText>
-        Password  <h:inputSecret value="sessionin.password}"></h:inputSecret>
+          Name <h:inputText required="true" value="#{userSession.userName}"></h:inputText>
+        Password  <h:inputSecret required="true" value="#{userSession.password}"></h:inputSecret>
         <br/>
         <input type="checkbox"/>
         Keep me logged in &nbsp; &nbsp;
         
         Forgot your password? <br/>
-        <h:commandButton id="submitUserButton" value="Log in" actionsessionogin.login()}" ></h:commandButton>
+        <h:commandButton id="submitUserButton" value="Log in" action="#{userSession.login()}" ></h:commandButton>
         <br/>
 		<img src="img/facebook_login_icon.png" width="152" height="57" alt=""/>
       </h:form>
