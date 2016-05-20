@@ -24,31 +24,33 @@ public class PabegusiKlaseLoginHelper {
     
     @PersistenceContext
     private EntityManager em;
-    public Integer isValidUser(String name, String pass)
+    public boolean isValidUser(String name, String pass, UserSessionInfo usi)
     {
         //Users userList = null;
-        Query query = em.createQuery("SELECT u.nickname, u.password, u.id FROM Users u where u.nickname = :name").setParameter("name", name);
+        Query query = em.createQuery("SELECT u.nickname, u.password, u.id, u.isAdmin, u.name, u.surname FROM Users u where u.nickname = :name").setParameter("name", name);
         
         List<Object[]> results = query.getResultList();
         
         String nicknameTemp = String.valueOf(String.valueOf(results.get(0)[0]));
         String passTemp  = String.valueOf(results.get(0)[1]);
-        String idTemp = String.valueOf(results.get(0)[2]);
+        usi.id = Integer.valueOf(results.get(0)[2].toString());
+        usi.isAdmin = Boolean.valueOf(results.get(0)[3].toString());
+        usi.firstName =String.valueOf(results.get(0)[4]);
+        usi.lastName =String.valueOf(results.get(0)[5]);
 
-        Integer idTemp2 = Integer.valueOf(idTemp);
-        if(idTemp2!=null)
+        if(usi.id!=null)
         {
             if(name.equals(nicknameTemp) && pass.equals(passTemp))
             {
-                return idTemp2;
+                return true;
             }
             else
             {
-                return null;
+                return false;
             }
         }
         else{
-            return null;
+            return false;
         } 
     }
 }

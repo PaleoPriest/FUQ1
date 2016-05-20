@@ -20,15 +20,14 @@ import javax.inject.Named;
 @Stateful
 @SessionScoped
 
-public class Login {
+public class Session {
     
     @Inject
     PabegusiKlaseLoginHelper lh;
     
     private String  userName;
     private String  password;
-    private Integer id; 
-    private boolean admin;
+    private UserSessionInfo usi;
     
     public String getUserName() {
         return userName;
@@ -42,27 +41,20 @@ public class Login {
     public void setPassword(String password) {
         this.password = password;
     }
-    public Integer getId() {
-        return id;
+    public UserSessionInfo getUsi() {
+        return usi;
     }
-    public void setId(Integer id) {
-        this.id = id;
+    public void setUsi(UserSessionInfo usi) {
+        this.usi = usi;
     }
-    public boolean getAdmin() {
-        return admin;
-    }
-    public void setAdmin(boolean admin) {
-        this.admin = admin;
-    }
-
+    
     
     public void login(){
-        id = lh.isValidUser(userName, password);
         password=null;
         
-        if(id!=null)
+        if(lh.isValidUser(userName, password, usi)!=false)
         {
-            System.out.println(id);
+            System.out.println(usi.id);
         }
         else
         {
@@ -72,18 +64,16 @@ public class Login {
     
     public Boolean isLoggedIn()
     {
-        if(id!=null)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return usi.id!=null;    //return true if not equals
     }
     
     public Boolean isAdmin()
     {
-        return admin;
+        return usi.isAdmin;
+    }
+    
+    public Integer getId()
+    {
+        return usi.id;
     }
 }
