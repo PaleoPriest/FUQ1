@@ -90,6 +90,11 @@ public class UserSession {
         return "index?faces-redirect=true";
     }
     
+    public void resetShowMessage()
+    {
+        isFailure = false;
+    }
+    
     public String logout(){
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
         return "index?faces-redirect=true";

@@ -55,7 +55,7 @@
     </p:dialog>
     <p:dialog id="msgDialogSuccess" widgetVar="messageDialogFailure" modal="true" visible="#{userSession.isFailure}">
     <p:messages id="messagesFailure" />
-    <p:button value="OK" onclick="PF('messageDialogFailure').hide()" />
+    <p:commandButton value="OK" onclick="PF('messageDialogFailure').hide()" action="#{userSession.resetShowMessage()}"/>
     </p:dialog>
   <hr/>
   <div class="row" id="footer"></div>
