@@ -45,7 +45,7 @@ public class FBRegister extends HttpServlet{
         String code = req.getParameter("code");
         if (code == null || code.equals("")) {
             // an error occurred, handle this. Kazkoks grazinimas?
-            errorMessage("Klaida arba nepatvirtinote Faceebook", res);
+            errorMessage("Klaida arba nepatvirtinote Facebook", res);
         }
 
         String token = null;

@@ -50,20 +50,20 @@
     </div>
     <div class="col-md-3">
         <h:form id="userForm">
-        <h:inputText required="true" value="#{user_code.user.name}"></h:inputText> <br/> <br/> 
-        <h:inputText value="#{user_code.user.surname}"></h:inputText> <br/> <br/>   <!--add required to not null fields-->
-        <h:inputText value="#{user_code.user.nickname}"></h:inputText> <br/> <br/>
-        <h:inputSecret value="#{user_code.user.password}"></h:inputSecret> <br/> <br/>
-        <h:inputSecret value="#{user_code.passRepeat}"></h:inputSecret> <br/> <br/>
-        <h:inputText value="#{user_code.user.mail}"></h:inputText> <br/> <br/>
-        <h:inputText value="#{user_code.user.phone}"></h:inputText> <br/> <br/>
-        <h:selectOneRadio value="#{user_code.genderValue}">
+        <h:inputText required="true" value="#{userCreation.user.name}"></h:inputText> <br/> <br/> 
+        <h:inputText value="#{userCreation.user.surname}"></h:inputText> <br/> <br/>   <!--add required to not null fields-->
+        <h:inputText value="#{userCreation.user.nickname}"></h:inputText> <br/> <br/>
+        <h:inputSecret value="#{userCreation.user.password}"></h:inputSecret> <br/> <br/>
+        <h:inputSecret value="#{userCreation.passRepeat}"></h:inputSecret> <br/> <br/>
+        <h:inputText value="#{userCreation.user.mail}"></h:inputText> <br/> <br/>
+        <h:inputText value="#{userCreation.user.phone}"></h:inputText> <br/> <br/>
+        <h:selectOneRadio value="#{userCreation.genderValue}">
           <f:selectItem   itemLabel="Vyras" itemValue="1"/>
           <f:selectItem   itemLabel="Moteris" itemValue="2"/>
           <f:selectItem   itemLabel="Kita" itemValue="3"/>
         </h:selectOneRadio> <br/> <br/>
-        <p:calendar value="#{user_code.user.birthday}" pattern="dd-mm-yyyy"></p:calendar> <br/> <br/>
-        <h:commandButton id="submitUserButton" value="Save" action="#{user_code.createUser()}" ></h:commandButton>
+        <p:calendar value="#{userCreation.user.birthday}" pattern="dd-mm-yyyy"></p:calendar> <br/> <br/>
+        <h:commandButton id="submitUserButton" value="Save" action="#{userCreation.createUser()}" ></h:commandButton>
         <a  href='http://www.facebook.com/dialog/oauth?client_id=217641221951231&amp;redirect_uri=http://localhost:8080/FUQ2/FBLogin.do&amp;scope=email'><img src="img/facebook_login_icon.png" width="150" alt="Login with FB"/></a>
     </h:form>
   </div>
@@ -77,7 +77,7 @@
     <div class="col-md-5 col-md-offset-2">
       <br/>     <!--does not work outside form. Find a workaround--><!--maybe hidden button inside form-->
       <h:messages/>
-      <h:commandButton value="Save" action="#{user_code.createUser()}" ></h:commandButton>
+      <h:commandButton value="Save" action="#{userCreation.createUser()}" ></h:commandButton>
     </div>
   </div>
   <hr/>

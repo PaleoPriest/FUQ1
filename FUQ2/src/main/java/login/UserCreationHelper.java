@@ -19,9 +19,9 @@ import javax.persistence.SynchronizationType;
  */
 
 @Stateless
-public class User_valid {
+public class UserCreationHelper {
 
-    public User_valid() {
+    public UserCreationHelper() {
     }
    
     @PersistenceContext(synchronization = SynchronizationType.UNSYNCHRONIZED)

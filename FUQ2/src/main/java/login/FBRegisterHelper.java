@@ -78,4 +78,9 @@ public class FBRegisterHelper implements Serializable{
         }
         return true;
     }
+    
+    public void isUserRegistered(String facebookId)
+    {
+        
+    }
 }

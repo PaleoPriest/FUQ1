@@ -1,5 +1,5 @@
 
-import login.User_valid;
+import login.UserCreationHelper;
 import DB_entities.Users;
 import java.util.ArrayList;
 import java.util.Date;
@@ -24,12 +24,12 @@ public class Paskyra {
     private EntityManager em;
     private Users user = new Users();
 
-    List<User_valid> userString = new ArrayList<User_valid>();
+    List<UserCreationHelper> userString = new ArrayList<UserCreationHelper>();
     
     /*public boolean anketaPildyti(String vardas, String pavarde, String slapyvardis, String slap1, 
                     String slap2, String email, String tel, Object lytis, Date gimimoDate)
     {
-        User_valid user = new User_valid(vardas, pavarde, slapyvardis, slap1, slap2, email, tel, lytis, gimimoDate);
+        UserCreationHelper user = new UserCreationHelper(vardas, pavarde, slapyvardis, slap1, slap2, email, tel, lytis, gimimoDate);
         if (tikrinimasAnketos(user))
         {
             em.persist(user);
@@ -38,7 +38,7 @@ public class Paskyra {
         return false;
     }
     
-    private boolean tikrinimasAnketos(User_valid user)
+    private boolean tikrinimasAnketos(UserCreationHelper user)
     {
         if ((user.vardas == null) && (user.pavarde == null) && (user.slapyvardis == null)
             && (user.slap1 == null) && (user.slap2 == null) && (user.email == null)

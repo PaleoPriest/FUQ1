@@ -1,4 +1,4 @@
-import login.User_valid;
+import login.UserCreationHelper;
 import DB_entities.Users;
 
 import java.io.Serializable;
@@ -23,7 +23,7 @@ import javax.persistence.SynchronizationType;
 @Named
 @ConversationScoped
 @Stateful
-public class User_code implements Serializable
+public class UserCreation implements Serializable
 {
     private static final String PAGE_INDEX          = "index?faces-redirect=true";
     private static final String PAGE_CONFIRM        = "confirm?faces-redirect=true";
@@ -33,7 +33,7 @@ public class User_code implements Serializable
     private EntityManager em;
 
     @Inject
-    private User_valid user_valid;
+    private UserCreationHelper user_valid;
     
     @Inject
     private Conversation conversation;
