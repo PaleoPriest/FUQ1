@@ -24,18 +24,18 @@ public class LoginHelper {
     
     @PersistenceContext
     private EntityManager em;
-    public boolean isValidUser(String name, String pass, UserSessionInfo usi)
+    public boolean isValidUser(String email, String pass, UserSessionInfo usi)
     {
         //Users userList = null;
-        Query query = em.createQuery("SELECT u.nickname, u.password, u.id, u.isAdmin, u.name, u.surname FROM Users u where u.nickname = :name").setParameter("name", name);
+        Query query = em.createQuery("SELECT u.mail, u.password, u.id, u.isAdmin, u.name, u.surname FROM Users u where u.mail = :email").setParameter("email", email);
         
         List<Object[]> results = query.getResultList();
-        String nicknameTemp="";
+        String emailTemp="";
         String passTemp="";
         
         if(!results.isEmpty())
         {
-            nicknameTemp = String.valueOf(String.valueOf(results.get(0)[0]));
+            emailTemp = String.valueOf(String.valueOf(results.get(0)[0]));
             passTemp  = String.valueOf(results.get(0)[1]);
             usi.id = Integer.valueOf(results.get(0)[2].toString());
             
@@ -54,8 +54,8 @@ public class LoginHelper {
 
         if(usi.id!=null)
         {
-            System.out.println(name+nicknameTemp+pass+passTemp);
-            return name.equals(nicknameTemp) && pass.equals(passTemp);
+            //System.out.println(name+emailTemp+pass+passTemp);
+            return email.equals(emailTemp) && pass.equals(passTemp);
         }
         else{
             return false;
