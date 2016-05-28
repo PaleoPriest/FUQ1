@@ -7,17 +7,7 @@ package DB_entities;
 
 import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -82,6 +72,8 @@ public class Users implements Serializable {
     private Integer points;
     @Column(name = "ISADMIN")
     private Boolean isAdmin;
+
+    @Transient private boolean editable;
 
     
     
@@ -194,6 +186,7 @@ public class Users implements Serializable {
 
     public void setPoints(Integer points) {
         this.points = points;
+        System.out.println(points);
     }
     
     public Boolean getIsAdmin() {
@@ -231,8 +224,18 @@ public class Users implements Serializable {
         return "DB_entities.Users[ id=" + id + " ]";
     }
 
-    
 
+    @Transient
+    public boolean isEditable() {
+        System.out.println("Getteris "+this.editable);
+        return editable;
+    }
 
-    
+    @Transient
+    public void setEditable(boolean editable) {
+        System.out.println(this.editable);
+        this.editable = editable;
+        System.out.println(this.editable);
+
+    }
 }
