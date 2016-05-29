@@ -67,17 +67,18 @@
         <p:calendar value="#{userCreation.user.birthday}" pattern="dd-mm-yyyy"></p:calendar> <br/> <br/>
         <h:commandButton id="submitUserButton" value="Save" action="#{userCreation.createUser()}" ></h:commandButton>
     </h:form>
-    <div>
-        <a  href='http://www.facebook.com/dialog/oauth?client_id=217641221951231&amp;redirect_uri=http://localhost:8080/FUQ2/FBLogin.do&amp;scope=email'><img src="img/facebook_login_icon.png" width="150" alt="Login with FB"/></a>
-        <form method="post" action="prisijungti.html">
-            <button type="submit">Prisijungti</button>
-        </form>
-    </div>
   </div>
   <div class="col-md-4">
       <img src="img/User_icon.png" width="90" height="90" alt="User icon"/>
     <br/> <br/>
     <input type="file"></input>
+    <br/><br/>
+      <div class="col-md-offset-6">
+        <a  href='http://www.facebook.com/dialog/oauth?client_id=217641221951231&amp;redirect_uri=http://localhost:8080/FUQ2/FBLogin.do&amp;scope=email'><img src="img/facebook_login_icon.png" width="150" alt="Login with FB"/></a>
+        <form method="post" action="prisijungti.html">
+            &nbsp; <button type="submit">Prisijungti</button>
+        </form>
+      </div>
   </div>  
   <hr/>
   <hr/>
