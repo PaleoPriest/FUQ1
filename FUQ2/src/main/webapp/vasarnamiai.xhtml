@@ -49,10 +49,10 @@
                             <td><h:inputText value="#{summerhouse_edit.searchMinRooms}"/></td>
                         </tr>
                     </table>
-                    <h:commandButton id="searchButton" value="Ieskoti vasarnami" action="#{summerhouse_edit.searchSummerhouses()}"/>
+                    <h:commandButton class="btn btn-info" id="searchButton" value="Ieskoti vasarnami"  action="#{summerhouse_edit.searchSummerhouses()}"/>
                 </h:form>
             <h:form id="summerhouse_table">
-                <h:dataTable value="#{summerhouse_edit.filteredSummerhouseList}" var="summerhouse" frame="box" rules="all">
+                <h:dataTable value="#{summerhouse_edit.filteredSummerhouseList}" class="table" var="summerhouse" frame="box" rules="all">
                     <h:column>
                         <f:facet name="header">
                             <h:outputText value="Pavadinimas"/>
@@ -93,7 +93,7 @@
             </h:form>
         </div>
             <h:form id="summerhouse_form">
-                <h:commandButton id="editSummerhouse" value="Keisti vasarnamius" action="#{navBean.toSActions()}" ></h:commandButton>
+                <h:commandButton class="btn btn-success" id="editSummerhouse" value="Keisti vasarnamius" action="#{navBean.toSActions()}" ></h:commandButton>
             </h:form>
         </div>
         </div>

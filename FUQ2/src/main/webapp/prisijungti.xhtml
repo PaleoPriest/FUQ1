@@ -39,14 +39,14 @@
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
       <h:form>
-        Email <h:inputText required="true" value="#{userSession.email}"></h:inputText>
-        Password  <h:inputSecret required="true" value="#{userSession.password}"></h:inputSecret>
+        Email <h:inputText class="form-control" required="true" value="#{userSession.email}"></h:inputText>
+        Password  <h:inputSecret class="form-control" required="true" value="#{userSession.password}"></h:inputSecret>
         <br/>
         <input type="checkbox"/>
         Keep me logged in &nbsp; &nbsp;
         
         Forgot your password? <br/>
-        <p:commandButton id="submitUserButton" value="Log in" action="#{userSession.login()}" update=":msgDialogFailure msgDialogSuccess"></p:commandButton>
+        <p:commandButton id="submitUserButton" value="Log in" action="#{userSession.login()}" update=":msgDialogFailure msgDialogSuccess" > </p:commandButton>
         <br/>
         <a  href='http://www.facebook.com/dialog/oauth?client_id=217641221951231&amp;redirect_uri=http://localhost:8080/FUQ2/FBLogin.do&amp;scope=email'>
             <img src="img/facebook_login_icon.png" width="152" height="57" alt="" />

@@ -70,7 +70,6 @@ public class UserEditViewBean implements Serializable {
     }
 
 
-
 }
 
 
