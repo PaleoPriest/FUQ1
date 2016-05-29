@@ -56,7 +56,7 @@ public class Summerhouse_edit implements Serializable {
     
     private GregorianCalendar startDate;
     
-    private SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd");
+    private SimpleDateFormat dateFormat = new SimpleDateFormat("MM.dd");
     
     private String stringDate;
     
