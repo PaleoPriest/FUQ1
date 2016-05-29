@@ -1,4 +1,5 @@
 import DB_entities.*;
+import dao.*;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -18,6 +19,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 
 
 /*
@@ -41,6 +43,9 @@ public class Summerhouse_edit implements Serializable {
     @PersistenceContext(type = PersistenceContextType.EXTENDED, synchronization = SynchronizationType.UNSYNCHRONIZED)
     private EntityManager em;
     
+    @Inject
+    private SummerhouseDAO summerhouseDAOImpl;
+    
     private List<Summerhouse> summerhouseList = new ArrayList<Summerhouse>();
     
     private Summerhouse newSummerhouse;
@@ -62,6 +67,11 @@ public class Summerhouse_edit implements Serializable {
     private String stringDate;
     
     private int dayOfTheWeek;
+    
+    public Summerhouse_edit()
+    {
+        //summerhouseList = summerhouseDAOImpl.getSummerhouseList();
+    }
     
     @PostConstruct
     public void init()
@@ -106,7 +116,7 @@ public class Summerhouse_edit implements Serializable {
             newSummerhouse.setId(summerhouseList.get(summerhouseList.size()-1).getId()+1);
             summerhouseList.add(newSummerhouse);
             
-            //DB INSERT code
+            //summerhouseDAOImpl.insertSummerhouse(newSummerhouse);
         }
         else
         {
@@ -118,7 +128,7 @@ public class Summerhouse_edit implements Serializable {
                     newSummerhouse.setId(editID);
                     summerhouseList.set(i, newSummerhouse);
                     
-                    //DB REPLACE CODE
+                    //summerhouseDAOImpl.updateSummerhouse(newSummerhouse);
                     
                     editID = 0;
                     break;
@@ -139,7 +149,7 @@ public class Summerhouse_edit implements Serializable {
     {
         summerhouseList.remove(summerhouseToDelete);
         
-        //DB DELETE code
+        //summerhouseDAOImpl.deleteSummerhouse(summerhouseToDelete.getId());
     }
 
     /**
