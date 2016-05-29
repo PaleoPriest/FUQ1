@@ -1,3 +1,5 @@
+package login;
+
 import login.UserCreationHelper;
 import DB_entities.Users;
 
@@ -33,7 +35,7 @@ public class UserCreation implements Serializable
     private EntityManager em;
 
     @Inject
-    private UserCreationHelper user_valid;
+    private UserCreationHelper creationHelper;
     
     @Inject
     private Conversation conversation;
@@ -70,29 +72,35 @@ public class UserCreation implements Serializable
 
     public String createUser() {
 
-        if(!user_valid.comparePasswords(user.getPassword(), passRepeat))
+        if(!creationHelper.comparePasswords(user.getPassword(), passRepeat))
         {
             FacesContext.getCurrentInstance().addMessage(
                     null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Nesutampa slaptazodziai", "Nesutampa slaptazodis"));
             return null;
         }
-        else
+        
+        if(creationHelper.isUserRegisteredYet(user.getMail()))
         {
-            if (!conversation.isTransient()) {
-            conversation.end();
-            return PAGE_INDEX;
-            }
-
-            conversation.begin();
-
-            if (conversation.isTransient()) {
-                return PAGE_INDEX;
-            }
-
-            user.setSex(user_valid.convertGender(genderValue));
-            user_valid.create(user);
-            return PAGE_CONFIRM;
+            FacesContext.getCurrentInstance().addMessage(
+                    null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Vartotojas tokiu elektroniniu paštu jau egzistuoja", ""));
+            return null;
         }
+        
+        if (!conversation.isTransient()) {
+        conversation.end();
+        return PAGE_INDEX;
+        }
+
+        conversation.begin();
+
+        if (conversation.isTransient()) {
+            return PAGE_INDEX;
+        }
+
+        user.setSex(creationHelper.convertGender(genderValue));
+        creationHelper.create(user);
+        return PAGE_CONFIRM;
+        
     }
 
     public String ok() {
@@ -100,6 +108,9 @@ public class UserCreation implements Serializable
             conversation.end();
             em.joinTransaction();
             em.flush();
+            
+            creationHelper.loginUser(user.getName(), user.getSurname(), user.getMail());
+            
             return PAGE_INDEX;
         } catch (OptimisticLockException ole) {
             // Kažkas kitas buvo greitesnis...

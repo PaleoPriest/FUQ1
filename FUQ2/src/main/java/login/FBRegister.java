@@ -114,8 +114,10 @@ public class FBRegister extends HttpServlet{
                 gender = "Kita";
             }
             
-            if(fBLoginHelper.isUserRegistered(facebookId))
+            Integer tempId = fBLoginHelper.isUserRegistered(facebookId);
+            if(tempId!=null)
             {
+                fBLoginHelper.setSessionInfo(tempId, firstName, lastName, false);
                 res.sendRedirect("index.html");
                 return;
             }

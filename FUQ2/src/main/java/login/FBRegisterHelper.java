@@ -7,10 +7,10 @@ package login;
 
 import DB_entities.Users;
 import dao.UserDAO;
-import dao.UserDAOImpl;
 import java.io.Serializable;
 import javax.ejb.Stateless;
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -42,6 +42,9 @@ public class FBRegisterHelper implements Serializable{
     @Inject
     private UserDAO userDAOImpl;
     
+    @Inject
+    UserSession userSession;
+    
     private Users user = new Users();
 
     public Users getUser() {
@@ -65,6 +68,8 @@ public class FBRegisterHelper implements Serializable{
             //user_valid.create(user);
             //System.out.println("asdf");
             em.flush();
+            int tempId = userDAOImpl.getUserByFBId(facebookId).getId();
+            setSessionInfo(tempId, firstName, lastName, false);
         }
         catch (OptimisticLockException ole) {
             // Kažkas kitas buvo greitesnis...
@@ -85,9 +90,14 @@ public class FBRegisterHelper implements Serializable{
         return true;
     }
     
-    public boolean isUserRegistered(String facebookId)
+    public Integer isUserRegistered(String facebookId)
     {
         Users tempUser = userDAOImpl.getUserByFBId(facebookId);
-        return tempUser!=null;
+        return tempUser.getId();
+    }
+    
+    public void setSessionInfo(int id, String firstName, String lastName, boolean isAdmin)
+    {
+        userSession.setAllSessionInfo(id, firstName, lastName, isAdmin);
     }
 }

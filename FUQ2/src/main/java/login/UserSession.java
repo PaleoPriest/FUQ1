@@ -114,4 +114,12 @@ public class UserSession {
     {
         return usi.id;
     }
+    
+    public void setAllSessionInfo(int id, String firstName, String lastName, boolean isAdmin)
+    {
+        usi.id = id;
+        usi.firstName = firstName;
+        usi.lastName = lastName;
+        usi.isAdmin = isAdmin;
+    }
 }
