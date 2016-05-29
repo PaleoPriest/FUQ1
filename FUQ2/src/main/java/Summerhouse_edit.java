@@ -13,6 +13,9 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
 import javax.persistence.SynchronizationType;
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import javax.enterprise.context.RequestScoped;
 
 
@@ -51,9 +54,28 @@ public class Summerhouse_edit implements Serializable {
     
     private int editID;
     
+    private GregorianCalendar startDate;
+    
+    private SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd");
+    
+    private String stringDate;
+    
+    private int dayOfTheWeek;
+    
     @PostConstruct
     public void init()
     {
+        startDate = (GregorianCalendar)GregorianCalendar.getInstance();
+        System.out.println(startDate.getTime());
+        dayOfTheWeek = startDate.get(Calendar.DAY_OF_WEEK);
+        System.out.println(dayOfTheWeek);
+        
+        dateFormat.setCalendar(startDate);
+        stringDate = dateFormat.format(startDate.getTime());
+        
+        startDate.add(GregorianCalendar.DATE, 8-dayOfTheWeek);
+        System.out.println(startDate.getTime());
+        
         setEditID(0);
         setNewSummerhouse(new Summerhouse());
         summerhouseList.add(new Summerhouse(1, "aaa", "ad", 2, 0));
@@ -249,5 +271,33 @@ public class Summerhouse_edit implements Serializable {
      */
     public void setSearchMinRooms(int searchMinRooms) {
         this.searchMinRooms = searchMinRooms;
+    }
+
+    /**
+     * @return the startDate
+     */
+    public GregorianCalendar getStartDate() {
+        return startDate;
+    }
+
+    /**
+     * @param startDate the startDate to set
+     */
+    public void setStartDate(GregorianCalendar startDate) {
+        this.startDate = startDate;
+    }
+
+    /**
+     * @return the stringDate
+     */
+    public String getStringDate() {
+        return stringDate;
+    }
+
+    /**
+     * @param stringDate the stringDate to set
+     */
+    public void setStringDate(String stringDate) {
+        this.stringDate = stringDate;
     }
 }
