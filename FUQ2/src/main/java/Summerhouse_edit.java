@@ -39,6 +39,7 @@ public class Summerhouse_edit implements Serializable {
     
     private static final String PAGE_INDEX = "vasarnamiai_actions?faces-redirect=true";
     private static final String PAGE_EDIT = "vasarnamiai_edit?faces-redirect=true";
+    private static final String SUMMERHOUSE_LIST_PAGE = "vasarnamiai?faces-redirect=true";
     
     @PersistenceContext(type = PersistenceContextType.EXTENDED, synchronization = SynchronizationType.UNSYNCHRONIZED)
     private EntityManager em;
@@ -62,7 +63,7 @@ public class Summerhouse_edit implements Serializable {
     
     private GregorianCalendar startDate;
     
-    private SimpleDateFormat dateFormat = new SimpleDateFormat("MM.dd");
+    private SimpleDateFormat dateFormat;
     
     private String stringDate;
     
@@ -76,6 +77,7 @@ public class Summerhouse_edit implements Serializable {
     @PostConstruct
     public void init()
     {
+        dateFormat = new SimpleDateFormat("MM.dd");
         startDate = (GregorianCalendar)GregorianCalendar.getInstance();
         System.out.println(startDate.getTime());
         dayOfTheWeek = startDate.get(Calendar.DAY_OF_WEEK);
@@ -111,6 +113,7 @@ public class Summerhouse_edit implements Serializable {
     
     public String saveSummerhouse()
     {
+        newSummerhouse.setReservationTime(0);
         if(editID == 0)
         {
             newSummerhouse.setId(summerhouseList.get(summerhouseList.size()-1).getId()+1);
@@ -215,16 +218,11 @@ public class Summerhouse_edit implements Serializable {
     
     public void reserveSummerhouse(Summerhouse summerhouseToReserve)
     {
-        //System.out.println("New: " + newReservation);
-        //System.out.println("ResTime: " + summerhouseToReserve.getReservationTime());
         if(summerhouseToReserve.getReservationTime() == 0)
         {
             summerhouseToReserve.setReservationTime(newReservation);
             summerhouseToReserve.setReservationStart(startDate.getTime());
-            //summerhouseToReserve.setReservationEnd
         }
-        //System.out.println("New: " + newReservation);
-        //System.out.println("ResTime: " + summerhouseToReserve.getReservationTime());
     }
     
     public String getEndDate(Summerhouse summerhouseToReserve)
@@ -331,5 +329,15 @@ public class Summerhouse_edit implements Serializable {
      */
     public void setStringDate(String stringDate) {
         this.stringDate = stringDate;
+    }
+    
+    public String toSummerhouseListPage()
+    {
+        return SUMMERHOUSE_LIST_PAGE;
+    }
+    
+    public String toSActions()
+    {
+        return PAGE_INDEX;
     }
 }
