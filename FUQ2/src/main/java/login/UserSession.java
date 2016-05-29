@@ -31,7 +31,6 @@ public class UserSession {
     private String  password;
     private UserSessionInfo usi = new UserSessionInfo();
     private boolean isFailure = false;
-    private boolean showMessage = false;
     
     public String getEmail() {
         return email;
@@ -57,22 +56,14 @@ public class UserSession {
     public void setIsFailure(boolean isFailure) {
         this.isFailure = isFailure;
     }
-    public boolean getShowMessage() {
-        return showMessage;
-    }
-    public void setShowMessage(boolean showMessage) {
-        this.showMessage = showMessage;
-    }
+
 
     
     
     public void login(){
         if(lh.isValidUser(email, password, usi)!=false)
         {
-            FacesContext.getCurrentInstance().addMessage(
-                    null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Prisijungta", ""));
             isFailure = false;
-            //System.out.println(usi.id);
         }
         else
         {
@@ -82,7 +73,6 @@ public class UserSession {
             //System.out.println("Nera userio");
         }
         password=null;
-        showMessage = !isFailure;   //edit logic so we stop seeing message!!!!!!!!!!!
     }
     
     public String returnHome()

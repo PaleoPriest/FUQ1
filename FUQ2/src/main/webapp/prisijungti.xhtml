@@ -46,21 +46,20 @@
         Keep me logged in &nbsp; &nbsp;
         
         Forgot your password? <br/>
-        <p:commandButton id="submitUserButton" value="Log in" action="#{userSession.login()}" update=":msgDialogFailure msgDialogSuccess" > </p:commandButton>
-        <br/>
-        <a  href='http://www.facebook.com/dialog/oauth?client_id=217641221951231&amp;redirect_uri=http://localhost:8080/FUQ2/FBLogin.do&amp;scope=email'>
-            <img src="img/facebook_login_icon.png" width="152" height="57" alt="" />
-        </a>
+        <p:commandButton id="submitUserButton" value="Log in" action="#{userSession.login()}" update=":msgDialogFailure" > </p:commandButton>
       </h:form>
     </div>
+    <br/>
+    <a  href='http://www.facebook.com/dialog/oauth?client_id=217641221951231&amp;redirect_uri=http://localhost:8080/FUQ2/FBLogin.do&amp;scope=email'>
+        <img src="img/facebook_login_icon.png" width="152" height="57" alt="" />
+    </a>
+    <form method="post" action="registracija.html">
+        <button type="submit">Registruotis</button>
+    </form>
   <hr/>
   <hr/>
   </div>
-    <p:dialog id="msgDialogFailure" widgetVar="messageDialogSuccess" modal="true" visible="#{userSession.showMessage}">
-    <p:messages id="messagesSuccess" />
-    <p:commandButton value="OK" action="#{userSession.returnHome()}" />
-    </p:dialog>
-    <p:dialog id="msgDialogSuccess" widgetVar="messageDialogFailure" modal="true" visible="#{userSession.isFailure}">
+    <p:dialog id="msgDialogFailure" widgetVar="messageDialogFailure" modal="true" visible="#{userSession.isFailure}">
     <p:messages id="messagesFailure" />
     <p:commandButton value="OK" onclick="PF('messageDialogFailure').hide()" action="#{userSession.resetShowMessage()}"/>
     </p:dialog>

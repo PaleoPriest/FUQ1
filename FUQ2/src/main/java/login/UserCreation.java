@@ -98,6 +98,7 @@ public class UserCreation implements Serializable
         }
 
         user.setSex(creationHelper.convertGender(genderValue));
+        user.setStatus("Kandidatas");
         creationHelper.create(user);
         return PAGE_CONFIRM;
         
