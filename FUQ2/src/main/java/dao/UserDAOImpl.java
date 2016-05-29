@@ -109,7 +109,11 @@ public class UserDAOImpl implements UserDAO {
     public Users getUserByFBId(String facebookId) {
         Query query = em.createQuery("SELECT u FROM Users u WHERE u.fbid = :id").setParameter("id", facebookId);
         List<Users> results = query.getResultList();
-        Users user = results.get(0);
+        Users user = null;
+        if(!results.isEmpty())
+        {
+            user = results.get(0);
+        }
         return user;
     }
 
@@ -117,7 +121,11 @@ public class UserDAOImpl implements UserDAO {
     public Users getUserByEmail(String email) {
         TypedQuery<Users> query = em.createQuery("SELECT u FROM Users u where u.mail = :email", Users.class).setParameter("email", email);
         List<Users> results = query.getResultList();
-        Users user = results.get(0);
+        Users user = null;
+        if(!results.isEmpty())
+        {
+            user = results.get(0);
+        }
         return user;
     }
     

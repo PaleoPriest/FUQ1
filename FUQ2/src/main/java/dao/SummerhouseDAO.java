@@ -15,4 +15,7 @@ import java.util.List;
  */
 public interface SummerhouseDAO extends Serializable {
     public List<Summerhouse> getSummerhouseList();
+    public void updateSummerhouse(Summerhouse summerhouse);
+    public void deleteSummerhouse(int id);
+    public void insertSummerhouse(Summerhouse summerhouse);
 }
