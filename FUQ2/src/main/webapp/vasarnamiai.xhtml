@@ -70,8 +70,14 @@
                             <h:outputText value="Rezervuoti savaitems"/>
                         </f:facet>
                         <h:inputText value="#{summerhouse.reservationTime}" size="3" converterMessage="Ne skaicius!">
-                        <f:validateLongRange minimum="0" maximum="6"/>
+                        <f:validateLongRange minimum="0" maximum="9"/>
                     </h:inputText>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Rezervacija galioja iki:"/>
+                        </f:facet>
+                        <h:outputText value="#{summerhouse_edit.getEndDate(summerhouse)}"/>
                     </h:column>
                     <h:column>
                         <h:commandLink id="reservelink" action="#{summerhouse_edit.reserveSummerhouse(summerhouse)}">

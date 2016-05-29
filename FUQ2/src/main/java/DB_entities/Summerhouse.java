@@ -6,6 +6,7 @@
 package DB_entities;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -48,6 +49,8 @@ public class Summerhouse implements Serializable {
     private String description;
     @Column(name = "MAX_ROOMS")
     private Integer maxRooms;
+    
+    private Date reservationStart;
     
     private Integer reservationTime;
     @JoinColumn(name = "ROOM", referencedColumnName = "ID")
@@ -152,5 +155,18 @@ public class Summerhouse implements Serializable {
     public void setReservationTime(Integer reservationTime) {
         this.reservationTime = reservationTime;
     }
-    
+
+    /**
+     * @return the reservationStart
+     */
+    public Date getReservationStart() {
+        return reservationStart;
+    }
+
+    /**
+     * @param reservationStart the reservationStart to set
+     */
+    public void setReservationStart(Date reservationStart) {
+        this.reservationStart = reservationStart;
+    }    
 }

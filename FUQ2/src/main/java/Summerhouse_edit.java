@@ -15,6 +15,7 @@ import javax.persistence.SynchronizationType;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
 import javax.enterprise.context.RequestScoped;
 
@@ -73,7 +74,15 @@ public class Summerhouse_edit implements Serializable {
         dateFormat.setCalendar(startDate);
         stringDate = dateFormat.format(startDate.getTime());
         
-        startDate.add(GregorianCalendar.DATE, 8-dayOfTheWeek);
+        if(dayOfTheWeek > 1)
+        {
+            startDate.add(GregorianCalendar.DATE, 9-dayOfTheWeek);
+        }
+        else
+        {
+            startDate.add(GregorianCalendar.DATE, 1);
+        }
+        
         System.out.println(startDate.getTime());
         
         setEditID(0);
@@ -201,9 +210,22 @@ public class Summerhouse_edit implements Serializable {
         if(summerhouseToReserve.getReservationTime() == 0)
         {
             summerhouseToReserve.setReservationTime(newReservation);
+            summerhouseToReserve.setReservationStart(startDate.getTime());
+            //summerhouseToReserve.setReservationEnd
         }
         //System.out.println("New: " + newReservation);
         //System.out.println("ResTime: " + summerhouseToReserve.getReservationTime());
+    }
+    
+    public String getEndDate(Summerhouse summerhouseToReserve)
+    {
+        if(summerhouseToReserve.getReservationTime() == 0)
+        {
+            return "Laisvas";
+        }
+        GregorianCalendar endDate = (GregorianCalendar)startDate.clone();
+        endDate.add(GregorianCalendar.DATE, summerhouseToReserve.getReservationTime()*7);
+        return dateFormat.format(endDate.getTime());
     }
     
     public void freeSummerhouse(Summerhouse summerhouseToFree)
