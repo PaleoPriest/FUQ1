@@ -6887,11 +6887,11 @@ button.close {
     opacity: 0;
     z-index: 0;
 	-webkit-backface-visibility: hidden;
-    -webkit-animation: imageAnimation 24s linear infinite 0s;
-    -moz-animation: imageAnimation 24s linear infinite 0s;
-    -o-animation: imageAnimation 24s linear infinite 0s;
-    -ms-animation: imageAnimation 24s linear infinite 0s;
-    animation: imageAnimation 24s linear infinite 0s; 
+    -webkit-animation: imageAnimation 240s linear infinite 0s;
+    -moz-animation: imageAnimation 240s linear infinite 0s;
+    -o-animation: imageAnimation 240s linear infinite 0s;
+    -ms-animation: imageAnimation 240s linear infinite 0s;
+    animation: imageAnimation 240s linear infinite 0s; 
 }
 .cb-slideshow li div { 
     z-index: 1000;
