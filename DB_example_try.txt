@@ -79,9 +79,10 @@ CREATE TABLE Summerhouse(
 ID			INTEGER			NOT NULL,
 Name		VARCHAR(15)		NOT NULL,
 Description	VARCHAR(255),
+MaxRooms	Integer,
 ReservationStart DATE,
 ReservationTime INTEGER,
-UserID   	INTEGER
+UserID   	INTEGER,
 
 PRIMARY KEY	(ID)
 );
