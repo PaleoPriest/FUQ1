@@ -21,7 +21,7 @@ import javax.persistence.TypedQuery;
 
 /**
  *
- * @author Shalifar
+ * @author Martynas
  */
 @Stateless
 public class SummerhouseDAOImpl implements SummerhouseDAO {
@@ -31,22 +31,66 @@ public class SummerhouseDAOImpl implements SummerhouseDAO {
     
     @Override
     public List<Summerhouse> getSummerhouseList() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            List<Summerhouse> summerHouseList = em.createQuery("select e from Summerhouse e",
+                    Summerhouse.class).getResultList();
+            return summerHouseList;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
     }
 
     @Override
+    @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
     public void updateSummerhouse(Summerhouse summerhouse) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+
+            em.joinTransaction();
+            Summerhouse newSummerHouse = em.find(Summerhouse.class, summerhouse.getId());
+
+            if (summerhouse.getName() != null) {
+                newSummerHouse.setName(summerhouse.getName());
+            }
+            if (summerhouse.getDescription() != null) {
+                newSummerHouse.setDescription(summerhouse.getDescription());
+            }
+            if (summerhouse.getMaxRooms() != null) {
+                newSummerHouse.setMaxRooms(summerhouse.getMaxRooms());
+            }
+            if (summerhouse.getReservationStart() != null) {
+                newSummerHouse.setReservationStart(summerhouse.getReservationStart());
+            }
+            if (summerhouse.getReservationTime() != null) {
+                newSummerHouse.setReservationTime(summerhouse.getReservationTime());
+            }
+            if (summerhouse.getUserId() != null) {
+                newSummerHouse.setUserId(summerhouse.getUserId());
+            }
+            em.flush();
+        }
+
+
+
 
     @Override
     public void deleteSummerhouse(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+        try {
+            em.remove(em.find(Summerhouse.class, id));
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
     }
 
     @Override
     public void insertSummerhouse(Summerhouse summerhouse) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+        try {
+            em.persist(summerhouse);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     // Add business logic below. (Right-click in editor and choose

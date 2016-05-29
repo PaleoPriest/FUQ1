@@ -49,6 +49,8 @@ public class Summerhouse implements Serializable {
     private String description;
     @Column(name = "MAX_ROOMS")
     private Integer maxRooms;
+    @Column(name = "USERID")
+    private Integer userId;
     
     private Date reservationStart;
     
@@ -168,5 +170,13 @@ public class Summerhouse implements Serializable {
      */
     public void setReservationStart(Date reservationStart) {
         this.reservationStart = reservationStart;
-    }    
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
 }
