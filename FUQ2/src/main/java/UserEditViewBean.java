@@ -4,6 +4,7 @@ import dao.UserDAO;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.Stateful;
+import javax.ejb.Stateless;
 import javax.enterprise.context.ConversationScoped;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.bean.ManagedBean;
@@ -24,15 +25,14 @@ import java.util.List;
  */
 
 
-@ManagedBean
-@SessionScoped
+@Named
+@Stateless
 
-public class PointsBean implements Serializable {
+public class UserEditViewBean implements Serializable {
 
     @PersistenceContext
     private EntityManager em;
 
-    private boolean editable;
 
     @Inject
     private UserDAO userDAOImpl;
@@ -42,7 +42,7 @@ public class PointsBean implements Serializable {
 
     public List<Users> getUsers() {
 
-        System.out.println("ESU");
+
         return users;
     }
 
@@ -67,7 +67,8 @@ public class PointsBean implements Serializable {
     }
 
     public void doTransaction(){
-        em.flush();
+
+       em.flush();
     }
 
 

@@ -1,61 +1,84 @@
-<?xml version='1.0' encoding='UTF-8' ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      lang="en">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+
 <head>
-<meta charset="utf-8"></meta>
-<meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
-<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
-<title>&quot;&quot; - Nariai</title>
-
-<!-- Bootstrap -->
-<link href="css/bootstrap.css" rel="stylesheet"></link>
-
-<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
 </head>
 <body>
-<div id="slideshow"></div>
-<nav class="navbar navbar-default" id="navigacija"></nav>
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-md-8 col-md-offset-2 text-center">
-      <h1>Vasaros malonumai :D</h1>
-    </div>
-  </div>
-  <hr/>
-</div>
-<div class="container">
-  <div class="row">
-    <div class="col-md-8 col-md-offset-2">
-      <img src="img/User_icon.png" width="64" height="64" alt="User Icon" class="img-left img-vspace"/>
-      <p>Info about person</p>
-    </div>
-    <div class="col-md-8 col-md-offset-2">
-      <img src="img/User_icon.png" width="64" height="64" alt="User Icon" class="img-left img-vspace"/>
-      <p>Info about person</p>
-    </div>
-  </div>
-  <hr/>
-<hr/>
-  <div class="row" id="footer"></div>
-  <hr/>
-</div>
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
-<script src="js/jquery-1.11.3.min.js"></script>
 
-<!-- Include all compiled plugins (below), or include individual files as needed --> 
-<script src="js/bootstrap.js"></script>
+<h:form id="usersForm">
+    <h1>Narių sąrašas</h1>
+    <div>
+        <h:dataTable value="#{userEditViewBean.getUsers()}" var="user" frame="box" rules="all">
+            <h:column>
+                <f:facet name="header">Vardas</f:facet>
 
-<script>
-$("#slideshow").load("Templates/BackgroundSlideshowTemplate.html");
-$( "#navigacija" ).load( "Templates/NavbarTemplate.html");
-$( "#footer" ).load( "Templates/FooterTemplate.html #footer");
-</script>
+                <h:inputText value="#{user.name}"  rendered="#{user.editable}"/>
+
+                <h:outputText value="#{user.name}"  rendered="#{not user.editable}"/>
+            </h:column>
+
+            <h:column>
+
+                <f:facet name="header">Pavardė</f:facet>
+
+                <h:inputText value="#{user.surname}"  rendered="#{user.editable}"  />
+
+                <h:outputText value="#{user.surname}"  rendered="#{not user.editable}" />
+
+            </h:column>
+
+            <h:column>
+
+                <f:facet name="header">E.Paštas</f:facet>
+
+                <h:inputText value="#{user.mail}" rendered="#{user.editable}" />
+
+                <h:outputText value="#{user.mail}" rendered="#{not user.editable}" />
+
+            </h:column>
+
+            <h:column>
+
+                <f:facet name="header">Klubo taškai</f:facet>
+
+                <h:inputText value="#{user.points}" rendered="#{user.editable}" />
+
+                <h:outputText value="#{user.points}"  rendered="#{not user.editable}" />
+
+            </h:column>
+
+            <h:column>
+
+                <f:facet name="header">Statusas</f:facet>
+
+                <h:inputText value="#{user.status}"  rendered="#{user.editable}" />
+
+                <h:outputText value="#{user.status}"  rendered="#{not user.editable}" />
+
+            </h:column>
+
+            <h:column>
+
+                <f:facet name="header">Veiksmas</f:facet>
+
+                <h:commandLink value="Redaguoti" action="#{userEditViewBean.editAction(user)}"
+                               rendered="#{not user.editable}" />
+                <h:commandLink value="Baigti" action="#{userEditViewBean.doneAction(user)}"
+                               rendered="#{user.editable}" />
+
+            </h:column>
+
+
+        </h:dataTable>
+
+        <h:commandButton action="#{userEditViewBean.doTransaction}"/>
+
+    </div>
+</h:form>
 </body>
 </html>

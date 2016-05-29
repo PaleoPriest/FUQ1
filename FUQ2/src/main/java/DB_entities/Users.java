@@ -181,12 +181,13 @@ public class Users implements Serializable {
     }
     
     public Integer getPoints() {
+
         return points;
     }
 
     public void setPoints(Integer points) {
         this.points = points;
-        System.out.println(points);
+
     }
     
     public Boolean getIsAdmin() {
@@ -227,15 +228,12 @@ public class Users implements Serializable {
 
     @Transient
     public boolean isEditable() {
-        System.out.println("Getteris "+this.editable);
         return editable;
     }
 
     @Transient
     public void setEditable(boolean editable) {
-        System.out.println(this.editable);
         this.editable = editable;
-        System.out.println(this.editable);
 
     }
 }
