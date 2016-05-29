@@ -36,6 +36,8 @@ import javax.inject.Named;
 @Named
 public class FBRegister extends HttpServlet{
 
+    private static final long serialVersionUID = 1L;
+
     @EJB
     private FBRegisterHelper fBLoginHelper;
         
@@ -110,6 +112,12 @@ public class FBRegister extends HttpServlet{
                     gender = "Kita";
             } else {
                 gender = "Kita";
+            }
+            
+            if(fBLoginHelper.isUserRegistered(facebookId))
+            {
+                res.sendRedirect("index.html");
+                return;
             }
             
             if(!fBLoginHelper.createUser(facebookId, firstName, lastName, email, gender))

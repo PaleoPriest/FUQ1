@@ -9,6 +9,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
 import javax.persistence.SynchronizationType;
 import java.util.List;
+import javax.persistence.Query;
 
 /**
  * Created by Martynas on 5/28/2016.
@@ -62,4 +63,14 @@ public class UserDAOImpl implements UserDAO {
     public int updateUserPoints(Users user) {
         return 0;
     }
+
+    @Override
+    public Users getUserByFBId(String facebookId) {
+        Query query = em.createQuery("SELECT u FROM Users u WHERE u.fbid = :id").setParameter("id", facebookId);
+        List<Users> results = query.getResultList();
+        Users user = results.get(0);
+        return user;
+    }
+    
+    
 }

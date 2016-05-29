@@ -39,7 +39,7 @@ public class mokejimas_admin {
     {
         //get id from xhtml
         int id = 2;
-        Query uzklausa = em.createQuery("SELECT AdministratoriausBoolean FROM Users WHERE ID = :manoID").setParameter("manoID", id);
+        Query uzklausa = em.createQuery("SELECT AdministratoriausBoolean FROM Users u WHERE u.id = :manoID").setParameter("manoID", id);
         return uzklausa.getResultList();
     }
     

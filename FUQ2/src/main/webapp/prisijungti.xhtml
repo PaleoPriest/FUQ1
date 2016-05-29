@@ -45,7 +45,9 @@
         Forgot your password? <br/>
         <p:commandButton id="submitUserButton" value="Log in" action="#{userSession.login()}" update=":msgDialogFailure msgDialogSuccess"></p:commandButton>
         <br/>
-		<img src="img/facebook_login_icon.png" width="152" height="57" alt=""/>
+        <a  href='http://www.facebook.com/dialog/oauth?client_id=217641221951231&amp;redirect_uri=http://localhost:8080/FUQ2/FBLogin.do&amp;scope=email'>
+            <img src="img/facebook_login_icon.png" width="152" height="57" alt="" />
+        </a>
       </h:form>
     </div>
   </div>

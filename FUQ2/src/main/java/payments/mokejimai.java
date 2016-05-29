@@ -95,7 +95,7 @@ public class mokejimai {
             //query to check by id -> !bool
             //Users vartotojasID = new Users();
             //manoID = ids[i];
-            Query uzklausa = em.createQuery("SELECT * FROM Users WHERE ID = :manoID").setParameter("manoID", ids[i]);
+            Query uzklausa = em.createQuery("SELECT u FROM Users u WHERE u.id = :manoID").setParameter("manoID", ids[i]);
             List<Users> vartotojas = uzklausa.getResultList();
             vartotojas.get(0).setPay(!vartotojas.get(0).getPay());
             em.persist(vartotojas.get(0));

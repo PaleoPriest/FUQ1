@@ -6,6 +6,8 @@
 package login;
 
 import DB_entities.Users;
+import dao.UserDAO;
+import dao.UserDAOImpl;
 import java.io.Serializable;
 import javax.ejb.Stateless;
 import javax.faces.application.FacesMessage;
@@ -36,6 +38,9 @@ public class FBRegisterHelper implements Serializable{
     
     //@Inject
     //private User_valid user_valid;
+
+    @Inject
+    private UserDAO userDAOImpl;
     
     private Users user = new Users();
 
@@ -52,6 +57,7 @@ public class FBRegisterHelper implements Serializable{
         user.setMail(email);
         user.setSex(gender);
         user.setFbid(facebookId);
+        user.setStatus("Kandidatas");
         
         try
         {
@@ -79,8 +85,9 @@ public class FBRegisterHelper implements Serializable{
         return true;
     }
     
-    public void isUserRegistered(String facebookId)
+    public boolean isUserRegistered(String facebookId)
     {
-        
+        Users tempUser = userDAOImpl.getUserByFBId(facebookId);
+        return tempUser!=null;
     }
 }
