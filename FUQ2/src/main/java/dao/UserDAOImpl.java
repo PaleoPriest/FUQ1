@@ -3,6 +3,8 @@ package dao;
 import DB_entities.Users;
 
 import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -40,7 +42,45 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
+    @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
     public int updateUser(Users user) {
+
+        em.joinTransaction();
+        Users newUser = em.find(Users.class, user.getId());
+
+        if (user.getName() != null) {
+            newUser.setName(user.getName());
+        }
+
+        if (user.getSurname() != null) {
+            newUser.setSurname(user.getSurname());
+        }
+
+        if (user.getNickname() != null) {
+            newUser.setName(user.getNickname());
+        }
+
+        if (user.getPassword() != null) {
+            newUser.setPassword(user.getPassword());
+        }
+
+        if (user.getMail() != null) {
+            newUser.setMail(user.getMail());
+        }
+
+        if (user.getPhone() != null) {
+            newUser.setPhone(user.getPhone());
+        }
+
+        if (user.getStatus() != null) {
+            newUser.setStatus(user.getStatus());
+        }
+
+        if (user.getPoints() != null) {
+            newUser.setPoints(user.getPoints());
+        }
+        em.flush();
+
         return 0;
     }
 

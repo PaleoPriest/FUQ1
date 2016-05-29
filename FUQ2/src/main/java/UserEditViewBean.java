@@ -9,6 +9,7 @@ import javax.enterprise.context.ConversationScoped;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
@@ -26,7 +27,9 @@ import java.util.List;
 
 
 @Named
-@Stateless
+@ManagedBean
+@ViewScoped
+
 
 public class UserEditViewBean implements Serializable {
 
@@ -41,7 +44,6 @@ public class UserEditViewBean implements Serializable {
     private List<Users> users;
 
     public List<Users> getUsers() {
-
 
         return users;
     }
@@ -60,15 +62,11 @@ public class UserEditViewBean implements Serializable {
         return null;
     }
 
-    public String doneAction(Users user) {
+    public String save(Users user) {
 
         user.setEditable(false);
+        userDAOImpl.updateUser(user);
         return null;
-    }
-
-    public void doTransaction(){
-
-       em.flush();
     }
 
 
