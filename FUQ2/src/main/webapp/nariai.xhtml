@@ -79,15 +79,15 @@
 
                 <h:commandLink value="Redaguoti" action="#{userEditViewBean.editAction(user)}"
                                rendered="#{not user.editable}" />
-                <h:commandLink value="Baigti" action="#{userEditViewBean.doneAction(user)}"
+                <h:commandLink value="Išsaugoti" action="#{userEditViewBean.save(user)}"
                                rendered="#{user.editable}" />
-
             </h:column>
+
 
 
         </h:dataTable>
 
-        <h:commandButton action="#{userEditViewBean.doTransaction}"/>
+
 		</div>
 </h:form>
 		</div>
