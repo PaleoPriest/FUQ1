@@ -1,3 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      lang="en"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+<head>
+</head>
+<body>
+<div id="navig">
 
   <div class="container-fluid col-md-8 col-md-offset-2"> 
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -18,16 +28,25 @@
         <li><a href="mokejimai.html">Mokėjimai</a></li>
         <li><a href="kontaktine_info.html">Kontaktai</a></li>
       </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">User name<span class="caret"></span></a>
-          <ul class="dropdown-menu" role="menu">
-            <li><a href="registracija.html">Registracija</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Atsijungti</a></li>
-          </ul>
-        </li>
-      </ul>
+        <ui:fragment rendered="#{userSession.isLoggedIn()}">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><h:outputText value="#{userSession.usi}" /><span class="caret"></span></a>
+
+                  <ul class="dropdown-menu" role="menu">
+                      <li>
+                          <h:form>
+                              <h:commandLink action="#{userSession.logout()}" value="Atsijungti" />
+                          </h:form>
+                      </li>
+                  </ul>
+              </li>
+            </ul>
+      </ui:fragment>
     </div>
     <!-- /.navbar-collapse --> 
   </div>
   <!-- /.container-fluid --> 
+
+</div>
+</body>
+</html>

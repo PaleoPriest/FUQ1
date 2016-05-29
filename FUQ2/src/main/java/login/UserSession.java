@@ -55,15 +55,14 @@ public class UserSession {
     }
     public void setIsFailure(boolean isFailure) {
         this.isFailure = isFailure;
-    }
-
-
+    } 
     
-    
-    public void login(){
+    public String login(){
         if(lh.isValidUser(email, password, usi)!=false)
         {
             isFailure = false;
+            password=null;
+            return returnHome();
         }
         else
         {
@@ -73,6 +72,7 @@ public class UserSession {
             //System.out.println("Nera userio");
         }
         password=null;
+        return null;
     }
     
     public String returnHome()
@@ -87,7 +87,7 @@ public class UserSession {
     
     public String logout(){
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-        return "index?faces-redirect=true";
+        return "../index?faces-redirect=true";
     }
     
     public Boolean isLoggedIn()
