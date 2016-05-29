@@ -18,4 +18,5 @@ public interface UserDAO extends Serializable {
     public int getUserPoints(Users user);
     public int updateUserPoints(Users user);
     public Users getUserByFBId(String facebookId);
+    public Users getUserByEmail(String email);
 }

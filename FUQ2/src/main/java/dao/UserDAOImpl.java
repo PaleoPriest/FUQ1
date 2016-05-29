@@ -12,6 +12,7 @@ import javax.persistence.PersistenceContextType;
 import javax.persistence.SynchronizationType;
 import java.util.List;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 /**
  * Created by Martynas on 5/28/2016.
@@ -107,6 +108,14 @@ public class UserDAOImpl implements UserDAO {
     @Override
     public Users getUserByFBId(String facebookId) {
         Query query = em.createQuery("SELECT u FROM Users u WHERE u.fbid = :id").setParameter("id", facebookId);
+        List<Users> results = query.getResultList();
+        Users user = results.get(0);
+        return user;
+    }
+
+    @Override
+    public Users getUserByEmail(String email) {
+        TypedQuery<Users> query = em.createQuery("SELECT u FROM Users u where u.mail = :email", Users.class).setParameter("email", email);
         List<Users> results = query.getResultList();
         Users user = results.get(0);
         return user;

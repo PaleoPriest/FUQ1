@@ -6,13 +6,16 @@
 package login;
 
 import DB_entities.Users;
+import dao.UserDAO;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -24,31 +27,36 @@ public class LoginHelper {
     
     @PersistenceContext
     private EntityManager em;
+    
+    @Inject
+    private UserDAO userDAOImpl;
+    
     public boolean isValidUser(String email, String pass, UserSessionInfo usi)
     {
         //Users userList = null;
-        Query query = em.createQuery("SELECT u.mail, u.password, u.id, u.isAdmin, u.name, u.surname FROM Users u where u.mail = :email").setParameter("email", email);
+        //Query query = em.createQuery("SELECT u.mail, u.password, u.id, u.isAdmin, u.name, u.surname FROM Users u where u.mail = :email").setParameter("email", email);
         
-        List<Object[]> results = query.getResultList();
         String emailTemp="";
         String passTemp="";
         
-        if(!results.isEmpty())
+        Users results = userDAOImpl.getUserByEmail(email);
+        
+        if(results!=null)
         {
-            emailTemp = String.valueOf(String.valueOf(results.get(0)[0]));
-            passTemp  = String.valueOf(results.get(0)[1]);
-            usi.id = Integer.valueOf(results.get(0)[2].toString());
+            emailTemp = results.getMail();
+            passTemp  = results.getPassword();
+            usi.id = results.getId();
             
-            usi.firstName =String.valueOf(results.get(0)[4]);
-            usi.lastName =String.valueOf(results.get(0)[5]);
+            usi.firstName = results.getName();
+            usi.lastName = results.getSurname();
             
-            if(results.get(0)[3]==null)
+            if(results.getIsAdmin()==null)
             {
                 usi.isAdmin = false;
             }
             else
             {
-                usi.isAdmin = Boolean.valueOf(results.get(0)[3].toString());
+                usi.isAdmin = results.getIsAdmin();
             }
         }
 
