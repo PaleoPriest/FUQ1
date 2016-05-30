@@ -42,7 +42,6 @@
     <p class="medium_height">
         Vardas <br/> <br/>
         Pavardė <br/> <br/>
-        Slapyvardis <br/> <br/>
         Slaptažodis <br/> <br/>
         Pakartoti slaptažodį <br/> <br/>
         E-mail <br/> <br/>
@@ -55,7 +54,6 @@
         <h:form id="userForm">
         <h:inputText required="true" value="#{userCreation.user.name}"></h:inputText> <br/> <br/> 
         <h:inputText value="#{userCreation.user.surname}"></h:inputText> <br/> <br/>   <!--add required to not null fields-->
-        <h:inputText value="#{userCreation.user.nickname}"></h:inputText> <br/> <br/>
         <h:inputSecret value="#{userCreation.user.password}"></h:inputSecret> <br/> <br/>
         <h:inputSecret value="#{userCreation.passRepeat}"></h:inputSecret> <br/> <br/>
         <h:inputText value="#{userCreation.user.mail}"></h:inputText> <br/> <br/>
@@ -73,13 +71,6 @@
       <img src="img/User_icon.png" width="90" height="90" alt="User icon"/>
     <br/> <br/>
     <input type="file"></input>
-    <br/><br/>
-      <div class="col-md-offset-6">
-        <a  href='http://www.facebook.com/dialog/oauth?client_id=217641221951231&amp;redirect_uri=http://localhost:8080/FUQ2/FBLogin.do&amp;scope=email'><img src="img/facebook_login_icon.png" width="150" alt="Login with FB"/></a>
-        <form method="post" action="prisijungti.html">
-            &nbsp; <button type="submit">Prisijungti</button>
-        </form>
-      </div>
   </div>  
   <hr/>
   <hr/>
