@@ -72,6 +72,14 @@ public class Users implements Serializable {
     private Integer points;
     @Column(name = "ISADMIN")
     private Boolean isAdmin;
+    @Column(name = "THISYEARHOLIDAYS")
+    private Integer thisYearHolidays;
+    @Column(name = "LASTYEARHOLIDAYS")
+    private Integer lastYearHolidays;
+    @Column(name = "PRIORITYGROUP")
+    private Integer priorityGroup;
+    @Column(name = "YEAR")
+    private Integer year;
 
     @Transient private boolean editable;
 
@@ -235,5 +243,61 @@ public class Users implements Serializable {
     public void setEditable(boolean editable) {
         this.editable = editable;
 
+    }
+
+    /**
+     * @return the thisYearHolidays
+     */
+    public Integer getThisYearHolidays() {
+        return thisYearHolidays;
+    }
+
+    /**
+     * @param thisYearHolidays the thisYearHolidays to set
+     */
+    public void setThisYearHolidays(Integer thisYearHolidays) {
+        this.thisYearHolidays = thisYearHolidays;
+    }
+
+    /**
+     * @return the lastYearHolidays
+     */
+    public Integer getLastYearHolidays() {
+        return lastYearHolidays;
+    }
+
+    /**
+     * @param lastYearHolidays the lastYearHolidays to set
+     */
+    public void setLastYearHolidays(Integer lastYearHolidays) {
+        this.lastYearHolidays = lastYearHolidays;
+    }
+
+    /**
+     * @return the priorityGroup
+     */
+    public Integer getPriorityGroup() {
+        return priorityGroup;
+    }
+
+    /**
+     * @param priorityGroup the priorityGroup to set
+     */
+    public void setPriorityGroup(Integer priorityGroup) {
+        this.priorityGroup = priorityGroup;
+    }
+
+    /**
+     * @return the year
+     */
+    public Integer getYear() {
+        return year;
+    }
+
+    /**
+     * @param year the year to set
+     */
+    public void setYear(Integer year) {
+        this.year = year;
     }
 }
