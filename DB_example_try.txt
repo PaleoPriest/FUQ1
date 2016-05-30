@@ -69,6 +69,10 @@ Status	 VARCHAR(10),		/*to save 'kandidatas', 'narys'*/
 Pay		BOOLEAN,
 FBId     VARCHAR(20),
 IsAdmin  BOOLEAN,
+ThisYearHolidays INTEGER,
+LastYearHolidays INTEGER,
+ReservationGroup INTEGER,
+ForYear		INTEGER,
 
 PRIMARY KEY	(ID)
 );

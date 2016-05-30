@@ -47,6 +47,9 @@ public class Summerhouse_edit implements Serializable {
     @Inject
     private SummerhouseDAO summerhouseDAOImpl;
     
+    @Inject
+    private UserDAO userDAOImpl;
+    
     private List<Summerhouse> summerhouseList = new ArrayList<Summerhouse>();
     
     private Summerhouse newSummerhouse;

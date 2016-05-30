@@ -51,9 +51,9 @@ public class Summerhouse implements Serializable {
     private Integer maxRooms;
     @Column(name = "USERID")
     private Integer userId;
-    
+    @Column(name = "RESERVSTIONSTART")
     private Date reservationStart;
-    
+    @Column(name = "RESERVATIONTIME")
     private Integer reservationTime;
     @JoinColumn(name = "ROOM", referencedColumnName = "ID")
     @ManyToOne
