@@ -86,7 +86,11 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
+    @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
     public int removeUser(Users user) {
+        em.joinTransaction();
+        em.remove(em.merge(user));
+        em.flush();
         return 0;
     }
 
