@@ -92,7 +92,14 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public Users getUserById(int id) {
-        return null;
+        Query query = em.createQuery("SELECT u FROM Users u WHERE u.id = :id").setParameter("id", id);
+        List<Users> results = query.getResultList();
+        Users user = null;
+        if(!results.isEmpty())
+        {
+            user = results.get(0);
+        }
+        return user;
     }
 
     @Override

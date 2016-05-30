@@ -8,10 +8,13 @@ package account;
 import DB_entities.Users;
 import dao.UserDAO;
 import javax.ejb.Stateless;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import login.UserCreationHelper;
 import login.UserSession;
 
 /**
@@ -30,6 +33,9 @@ public class Account {
     
     @Inject
     private UserSession userSession;
+    
+    @Inject
+    private UserCreationHelper creationHelper;
     
     private Users user;
     private String passRepeat;
@@ -55,13 +61,20 @@ public class Account {
     
     
     public void init(){
-        //todo 
-        //find user by id and load to user
+        user = userDAOImpl.getUserById(userSession.getId());
     }
     
-    public void updateUserInfo(){
-        //to do
-        //add to db
-        //update userSessionInfo if neccessary
+    public String updateUserInfo(){
+        if(!creationHelper.comparePasswords(user.getPassword(), passRepeat))
+        {
+            FacesContext.getCurrentInstance().addMessage(
+                    null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Nesutampa slaptazodziai", "Nesutampa slaptazodis"));
+            return null;
+        }
+        
+        userDAOImpl.updateUser(user);
+        userSession.getUsi().setFirstName(user.getName());
+        userSession.getUsi().setLastName(user.getSurname());
+        return "paskyra?faces-redirect=true";
     }
 }
