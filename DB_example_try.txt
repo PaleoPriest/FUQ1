@@ -72,7 +72,7 @@ IsAdmin  BOOLEAN,
 ThisYearHolidays INTEGER,
 LastYearHolidays INTEGER,
 ReservationGroup INTEGER,
-Year		INTEGER,
+ForYear		INTEGER,
 
 PRIMARY KEY	(ID)
 );
@@ -86,7 +86,8 @@ Description	VARCHAR(255),
 MaxRooms	Integer,
 ReservationStart DATE,
 ReservationTime INTEGER,
-AdditionDate	DATE,
+AdditionMonth	INTEGER,
+AdditionDay	INTEGER,
 UserID   	INTEGER,
 
 PRIMARY KEY	(ID)
