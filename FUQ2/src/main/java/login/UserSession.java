@@ -62,6 +62,7 @@ public class UserSession {
         {
             isFailure = false;
             password=null;
+            //System.out.println(usi.firstName + usi.lastName);
             return returnHome();
         }
         else
@@ -86,6 +87,7 @@ public class UserSession {
     }
     
     public String logout(){
+        System.out.println(usi.firstName);
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
         return "../index?faces-redirect=true";
     }
