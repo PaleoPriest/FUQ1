@@ -62,6 +62,12 @@
                     </h:column>
                     <h:column>
                         <f:facet name="header">
+                            <h:outputText value="Kambarių skaičius"/>
+                        </f:facet>
+                        <h:outputText value="#{summerhouse.maxRooms}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
                             <h:outputText value="Rezervacijos laikotarpis"/>
                         </f:facet>
                         <h:outputText value="#{summerhouse.reservationTime}"/>
@@ -94,7 +100,7 @@
             </h:form>
         </div>
             <h:form id="summerhouse_form">
-                <h:commandButton class="btn btn-success" id="editSummerhouse" value="Keisti vasarnamius" action="#{navBean.toSActions()}" ></h:commandButton>
+                <h:commandButton class="btn btn-success" id="editSummerhouse" value="Keisti vasarnamius" action="#{summerhouse_edit.toSActions()}" ></h:commandButton>
             </h:form>
         </div>
         </div>

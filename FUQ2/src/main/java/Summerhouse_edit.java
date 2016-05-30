@@ -333,11 +333,13 @@ public class Summerhouse_edit implements Serializable {
     
     public String toSummerhouseListPage()
     {
+        listCopy(summerhouseList, filteredSummerhouseList);
         return SUMMERHOUSE_LIST_PAGE;
     }
     
     public String toSActions()
     {
+        listCopy(summerhouseList, filteredSummerhouseList);
         return PAGE_INDEX;
     }
 }
