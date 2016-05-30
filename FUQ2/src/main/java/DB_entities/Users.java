@@ -31,6 +31,15 @@ import javax.validation.constraints.Size;
     @NamedQuery(name = "Users.findByPay", query = "SELECT u FROM Users u WHERE u.pay = :pay")})
 public class Users implements Serializable {
 
+    @Column(name = "THISYEARHOLIDAYS")
+    private Integer thisyearholidays;
+    @Column(name = "LASTYEARHOLIDAYS")
+    private Integer lastyearholidays;
+    @Column(name = "RESERVATIONGROUP")
+    private Integer reservationgroup;
+    @Column(name = "FORYEAR")
+    private Integer foryear;
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -235,5 +244,37 @@ public class Users implements Serializable {
     public void setEditable(boolean editable) {
         this.editable = editable;
 
+    }
+
+    public Integer getThisyearholidays() {
+        return thisyearholidays;
+    }
+
+    public void setThisyearholidays(Integer thisyearholidays) {
+        this.thisyearholidays = thisyearholidays;
+    }
+
+    public Integer getLastyearholidays() {
+        return lastyearholidays;
+    }
+
+    public void setLastyearholidays(Integer lastyearholidays) {
+        this.lastyearholidays = lastyearholidays;
+    }
+
+    public Integer getReservationgroup() {
+        return reservationgroup;
+    }
+
+    public void setReservationgroup(Integer reservationgroup) {
+        this.reservationgroup = reservationgroup;
+    }
+
+    public Integer getForyear() {
+        return foryear;
+    }
+
+    public void setForyear(Integer foryear) {
+        this.foryear = foryear;
     }
 }

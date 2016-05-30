@@ -16,6 +16,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -32,6 +34,16 @@ import javax.validation.constraints.Size;
     @NamedQuery(name = "Summerhouse.findByDescription", query = "SELECT s FROM Summerhouse s WHERE s.description = :description"),
     @NamedQuery(name = "Summerhouse.findByMaxRooms", query = "SELECT s FROM Summerhouse s WHERE s.maxRooms = :maxRooms")})
 public class Summerhouse implements Serializable {
+
+    @Column(name = "MAXROOMS")
+    private Integer maxrooms;
+    @Column(name = "RESERVATIONSTART")
+    @Temporal(TemporalType.DATE)
+    private Date reservationstart;
+    @Column(name = "ADDITIONMONTH")
+    private Integer additionmonth;
+    @Column(name = "ADDITIONDAY")
+    private Integer additionday;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -178,5 +190,37 @@ public class Summerhouse implements Serializable {
 
     public void setUserId(Integer userId) {
         this.userId = userId;
+    }
+
+    public Integer getMaxrooms() {
+        return maxrooms;
+    }
+
+    public void setMaxrooms(Integer maxrooms) {
+        this.maxrooms = maxrooms;
+    }
+
+    public Date getReservationstart() {
+        return reservationstart;
+    }
+
+    public void setReservationstart(Date reservationstart) {
+        this.reservationstart = reservationstart;
+    }
+
+    public Integer getAdditionmonth() {
+        return additionmonth;
+    }
+
+    public void setAdditionmonth(Integer additionmonth) {
+        this.additionmonth = additionmonth;
+    }
+
+    public Integer getAdditionday() {
+        return additionday;
+    }
+
+    public void setAdditionday(Integer additionday) {
+        this.additionday = additionday;
     }
 }
