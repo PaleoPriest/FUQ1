@@ -93,7 +93,15 @@ public class FBRegisterHelper implements Serializable{
     public Integer isUserRegistered(String facebookId)
     {
         Users tempUser = userDAOImpl.getUserByFBId(facebookId);
-        return tempUser.getId();
+        if(tempUser!=null)
+        {
+            return tempUser.getId();
+        }
+        else
+        {
+            return null;
+        }
+        //return null;
     }
     
     public void setSessionInfo(int id, String firstName, String lastName, boolean isAdmin)

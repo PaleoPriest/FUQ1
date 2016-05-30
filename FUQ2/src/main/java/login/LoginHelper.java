@@ -25,9 +25,6 @@ import javax.persistence.TypedQuery;
 @Stateless
 public class LoginHelper {
     
-    @PersistenceContext
-    private EntityManager em;
-    
     @Inject
     private UserDAO userDAOImpl;
     
