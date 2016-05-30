@@ -31,6 +31,7 @@ public class UserSession {
     private String  password;
     private UserSessionInfo usi = new UserSessionInfo();
     private boolean isFailure = false;
+    private boolean isBeingDeleted = false;
     
     public String getEmail() {
         return email;
@@ -55,7 +56,14 @@ public class UserSession {
     }
     public void setIsFailure(boolean isFailure) {
         this.isFailure = isFailure;
-    } 
+    }
+    public boolean getIsBeingDeleted() {
+        return isBeingDeleted;
+    }
+    public void setIsBeingDeleted(boolean isBeingDeleted) {
+        this.isBeingDeleted = isBeingDeleted;
+    }
+    
     
     public String login(){
         if(lh.isValidUser(email, password, usi)!=false)
@@ -86,10 +94,20 @@ public class UserSession {
         isFailure = false;
     }
     
-    public String logout(){
-        System.out.println(usi.firstName);
-        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+    public String logoutForNav(){
+        //System.out.println(usi.firstName);
+        logoutGeneral();
         return "../index?faces-redirect=true";
+    }
+    
+    public String logoutForDelete(){
+        //System.out.println(usi.firstName);
+        logoutGeneral();
+        return "index?faces-redirect=true";
+    }
+    
+    private void logoutGeneral(){
+        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
     }
     
     public Boolean isLoggedIn()

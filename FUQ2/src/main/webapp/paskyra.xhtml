@@ -67,13 +67,24 @@
         <p:calendar value="#{account.user.birthday}" pattern="dd-mm-yyyy"></p:calendar> <br/> <br/>
         <h:commandButton id="submitUserButton" value="Save" action="#{account.updateUserInfo()}" ></h:commandButton>
     </h:form>
+        
+    <h:form id="deleteForm">
+        <p:commandButton id="deleteButton" value="Istrinti paskyra" action="#{account.deleteAccount()}" update="msgDeleteAccount" ></p:commandButton>
+    </h:form>  
     </div>
   </div>
+    <p:dialog id="msgDeleteAccount" widgetVar="messageDeleteAccount" modal="true" visible="#{userSession.isBeingDeleted}">
+        <p:messages id="messageDelete" />
+        <h:form>
+            <p:commandButton value="OK" onclick="PF('messageDeleteAccount').hide()" action="#{account.removeAccount()}"/>
+            <p:commandButton value="Cancel" onclick="PF('messageDeleteAccount').hide()" action="#{account.cancelDelete()}"/>
+        </h:form>
+    </p:dialog>
   <div class="row" id="footer">
   <hr/></div>
 </div>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
-<script src="js/jquery-1.11.3.min.js"></script>
+<!--script src="js/jquery-1.11.3.min.js"></script-->
 
 <!-- Include all compiled plugins (below), or include individual files as needed --> 
 <script src="js/bootstrap.js"></script>

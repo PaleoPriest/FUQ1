@@ -40,6 +40,7 @@ public class Account {
     private Users user;
     private String passRepeat;
     private String genderValue;
+    
     public Users getUser() {
         return user;
     }
@@ -60,6 +61,7 @@ public class Account {
     }
     
     
+    
     public void init(){
         user = userDAOImpl.getUserById(userSession.getId());
     }
@@ -76,5 +78,27 @@ public class Account {
         userSession.getUsi().setFirstName(user.getName());
         userSession.getUsi().setLastName(user.getSurname());
         return "paskyra?faces-redirect=true";
+    }
+    
+    public void deleteAccount()
+    {
+        userSession.setIsBeingDeleted(true);
+        FacesContext.getCurrentInstance().addMessage(
+                    null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Ar tikrai norite istrinti savo paskyra?", ""));
+        
+    }
+    
+    public String removeAccount()
+    {
+        //System.out.println("asdf");
+        userDAOImpl.removeUser(user);
+        userSession.setIsBeingDeleted(false);
+        return userSession.logoutForDelete();
+    }
+    
+    public String cancelDelete()
+    {
+        userSession.setIsBeingDeleted(false);
+        return "index?faces-redirect=true";
     }
 }
