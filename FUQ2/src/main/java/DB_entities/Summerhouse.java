@@ -55,11 +55,6 @@ public class Summerhouse implements Serializable {
     private Date reservationStart;
     @Column(name = "RESERVATIONTIME")
     private Integer reservationTime;
-    @Column(name = "ADDITIONDATE")
-    private Date additionDate;
-    @Column(name = "USERID")
-    private Integer userID;
-    
     @JoinColumn(name = "ROOM", referencedColumnName = "ID")
     @ManyToOne
     private Rooms room;
@@ -183,33 +178,5 @@ public class Summerhouse implements Serializable {
 
     public void setUserId(Integer userId) {
         this.userId = userId;
-    }
-
-    /**
-     * @return the additionDate
-     */
-    public Date getAdditionDate() {
-        return additionDate;
-    }
-
-    /**
-     * @param additionDate the additionDate to set
-     */
-    public void setAdditionDate(Date additionDate) {
-        this.additionDate = additionDate;
-    }
-
-    /**
-     * @return the userID
-     */
-    public Integer getUserID() {
-        return userID;
-    }
-
-    /**
-     * @param userID the userID to set
-     */
-    public void setUserID(Integer userID) {
-        this.userID = userID;
     }
 }
