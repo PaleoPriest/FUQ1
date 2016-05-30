@@ -76,11 +76,10 @@ public class Users implements Serializable {
     private Integer thisYearHolidays;
     @Column(name = "LASTYEARHOLIDAYS")
     private Integer lastYearHolidays;
-    @Column(name = "PRIORITYGROUP")
-    private Integer priorityGroup;
-    @Column(name = "YEAR")
-    private Integer year;
-
+    @Column(name = "RESERVATIONGROUP")
+    private Integer reservationGroup;
+    @Column(name = "FORYEAR")
+    private Integer forYear;
     @Transient private boolean editable;
 
     
@@ -274,30 +273,30 @@ public class Users implements Serializable {
     }
 
     /**
-     * @return the priorityGroup
+     * @return the reservationGroup
      */
-    public Integer getPriorityGroup() {
-        return priorityGroup;
+    public Integer getReservationGroup() {
+        return reservationGroup;
     }
 
     /**
-     * @param priorityGroup the priorityGroup to set
+     * @param reservationGroup the reservationGroup to set
      */
-    public void setPriorityGroup(Integer priorityGroup) {
-        this.priorityGroup = priorityGroup;
+    public void setReservationGroup(Integer reservationGroup) {
+        this.reservationGroup = reservationGroup;
     }
 
     /**
-     * @return the year
+     * @return the forYear
      */
-    public Integer getYear() {
-        return year;
+    public Integer getForYear() {
+        return forYear;
     }
 
     /**
-     * @param year the year to set
+     * @param forYear the forYear to set
      */
-    public void setYear(Integer year) {
-        this.year = year;
+    public void setForYear(Integer forYear) {
+        this.forYear = forYear;
     }
 }
