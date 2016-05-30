@@ -55,14 +55,6 @@ public class Summerhouse implements Serializable {
     private Date reservationStart;
     @Column(name = "RESERVATIONTIME")
     private Integer reservationTime;
-    @Column(name = "THISYEARHOLIDAYS")
-    private Integer thisYearHolidays;
-    @Column(name = "LASTYEARHOLIDAYS")
-    private Integer lastYearHolidays;
-    @Column(name = "RESERVATIONGROUP")
-    private Integer reservationGroup;
-    @Column(name = "FORYEAR")
-    private Integer forYear;
     @JoinColumn(name = "ROOM", referencedColumnName = "ID")
     @ManyToOne
     private Rooms room;
@@ -186,61 +178,5 @@ public class Summerhouse implements Serializable {
 
     public void setUserId(Integer userId) {
         this.userId = userId;
-    }
-
-    /**
-     * @return the thisYearHolidays
-     */
-    public Integer getThisYearHolidays() {
-        return thisYearHolidays;
-    }
-
-    /**
-     * @param thisYearHolidays the thisYearHolidays to set
-     */
-    public void setThisYearHolidays(Integer thisYearHolidays) {
-        this.thisYearHolidays = thisYearHolidays;
-    }
-
-    /**
-     * @return the lastYearHolidays
-     */
-    public Integer getLastYearHolidays() {
-        return lastYearHolidays;
-    }
-
-    /**
-     * @param lastYearHolidays the lastYearHolidays to set
-     */
-    public void setLastYearHolidays(Integer lastYearHolidays) {
-        this.lastYearHolidays = lastYearHolidays;
-    }
-
-    /**
-     * @return the reservationGroup
-     */
-    public Integer getReservationGroup() {
-        return reservationGroup;
-    }
-
-    /**
-     * @param reservationGroup the reservationGroup to set
-     */
-    public void setReservationGroup(Integer reservationGroup) {
-        this.reservationGroup = reservationGroup;
-    }
-
-    /**
-     * @return the forYear
-     */
-    public Integer getForYear() {
-        return forYear;
-    }
-
-    /**
-     * @param forYear the forYear to set
-     */
-    public void setForYear(Integer forYear) {
-        this.forYear = forYear;
     }
 }
