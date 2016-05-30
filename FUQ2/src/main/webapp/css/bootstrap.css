@@ -30,7 +30,6 @@ aside,
 details,
 figcaption,
 figure,
-footer,
 header,
 hgroup,
 main,
@@ -39,6 +38,22 @@ nav,
 section,
 summary {
   display: block;
+}
+
+#footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+	
+  display: block;
+  
+ 
+  background-image: url(../img/cream_text_background.jpg);
+  background-repeat: repeat;
+  opacity: 0.8;
+  filter: alpha(opacity=80); /* For IE8 and earlier */
 }
 
 p.medium_height{
