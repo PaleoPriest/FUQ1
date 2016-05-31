@@ -44,7 +44,7 @@ public class UserCreationHelper {
         return pass1.equals(pass2);
     }
     
-    public String convertGender(String value)
+    public String convertGenderFromNumbers(String value)
     {
         if("1".equals(value))
             return "Vyras";

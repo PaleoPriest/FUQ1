@@ -64,12 +64,14 @@
           <f:selectItem   itemLabel="Moteris" itemValue="2"/>
           <f:selectItem   itemLabel="Kita" itemValue="3"/>
         </h:selectOneRadio> <br/> <br/>
-        <p:calendar value="#{account.user.birthday}" pattern="dd-mm-yyyy"></p:calendar> <br/> <br/>
+        <p:calendar value="#{account.user.birthday}" pattern="dd-MM-yyyy">
+            <f:ajax event="dateSelect" listener="#{account.dateChanged}" execute="@this"/>
+        </p:calendar> <br/> <br/>
         <h:commandButton id="submitUserButton" value="Save" action="#{account.updateUserInfo()}" ></h:commandButton>
     </h:form>
         
     <h:form id="deleteForm">
-        <p:commandButton id="deleteButton" value="Istrinti paskyra" action="#{account.deleteAccount()}" update="msgDeleteAccount" ></p:commandButton>
+        <p:commandButton id="deleteButton" value="Istrinti paskyra" action="#{account.deleteAccount()}" update="msgDeleteAccount msgWrongPassword" ></p:commandButton>
     </h:form>  
     </div>
   </div>
@@ -79,6 +81,12 @@
             <p:commandButton value="OK" onclick="PF('messageDeleteAccount').hide()" action="#{account.removeAccount()}"/>
             <p:commandButton value="Cancel" onclick="PF('messageDeleteAccount').hide()" action="#{account.cancelDelete()}"/>
         </h:form>
+    </p:dialog>
+    <p:dialog id="msgWrongPassword" widgetVar="messageDialogPassword" modal="true" visible="#{userSession.isPasswordFail}">
+    <p:messages id="messagesPassFail" />
+    <h:form>
+    <p:commandButton value="OK" onclick="PF('messageDialogPassword').hide()"/>
+    </h:form>
     </p:dialog>
   <div class="row" id="footer">
   <hr/></div>

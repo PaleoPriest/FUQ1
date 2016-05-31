@@ -52,21 +52,23 @@
     </div>
     <div class="col-md-3">
         <h:form id="userForm">
-        <h:inputText required="true" value="#{userCreation.user.name}"></h:inputText> <br/> <br/> 
-        <h:inputText value="#{userCreation.user.surname}"></h:inputText> <br/> <br/>   <!--add required to not null fields-->
-        <h:inputSecret value="#{userCreation.user.password}"></h:inputSecret> <br/> <br/>
-        <h:inputSecret value="#{userCreation.passRepeat}"></h:inputSecret> <br/> <br/>
-        <h:inputText value="#{userCreation.user.mail}"></h:inputText> <br/> <br/>
-        <h:inputText value="#{userCreation.user.phone}"></h:inputText> <br/> <br/>
-        <h:selectOneRadio value="#{userCreation.genderValue}">
-          <f:selectItem   itemLabel="Vyras" itemValue="1"/>
-          <f:selectItem   itemLabel="Moteris" itemValue="2"/>
-          <f:selectItem   itemLabel="Kita" itemValue="3"/>
-        </h:selectOneRadio> <br/> <br/>
-        <p:calendar value="#{userCreation.user.birthday}" pattern="dd-mm-yyyy"></p:calendar> <br/> <br/>
-        <h:commandButton id="submitUserButton" value="Save" action="#{userCreation.createUser()}" ></h:commandButton>
-    </h:form>
-  </div>
+            <h:inputText required="true" value="#{userCreation.user.name}"></h:inputText> <br/> <br/> 
+            <h:inputText value="#{userCreation.user.surname}"></h:inputText> <br/> <br/>   <!--add required to not null fields-->
+            <h:inputSecret value="#{userCreation.user.password}"></h:inputSecret> <br/> <br/>
+            <h:inputSecret value="#{userCreation.passRepeat}"></h:inputSecret> <br/> <br/>
+            <h:inputText value="#{userCreation.user.mail}"></h:inputText> <br/> <br/>
+            <h:inputText value="#{userCreation.user.phone}"></h:inputText> <br/> <br/>
+            <h:selectOneRadio value="#{userCreation.genderValue}">
+              <f:selectItem   itemLabel="Vyras" itemValue="1"/>
+              <f:selectItem   itemLabel="Moteris" itemValue="2"/>
+              <f:selectItem   itemLabel="Kita" itemValue="3"/>
+            </h:selectOneRadio> <br/> <br/>
+            <p:calendar id="calendarForRegistration" pattern="dd-MM-yyyy" value="#{userCreation.user.birthday}">
+                <f:ajax event="change" listener="#{userCreation.dateChanged}" execute="@this"/>
+            </p:calendar> <br/> <br/>
+            <h:commandButton id="submitUserButton" value="Save" action="#{userCreation.createUser()}" ></h:commandButton>
+        </h:form>
+    </div>
   <div class="col-md-4">
       <img src="img/User_icon.png" width="90" height="90" alt="User icon"/>
     <br/> <br/>

@@ -12,7 +12,7 @@ public interface UserDAO extends Serializable {
 
     public int insertUser(Users user);
     public List<Users> getUserList();
-    public int updateUser(Users user);
+    public Users updateUser(Users user);
     public int removeUser(Users user);
     public Users getUserById(int id);
     public int getUserPoints(Users user);

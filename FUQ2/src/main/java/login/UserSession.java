@@ -32,6 +32,7 @@ public class UserSession {
     private UserSessionInfo usi = new UserSessionInfo();
     private boolean isFailure = false;
     private boolean isBeingDeleted = false;
+    private boolean isPasswordFail = false;
     
     public String getEmail() {
         return email;
@@ -62,6 +63,12 @@ public class UserSession {
     }
     public void setIsBeingDeleted(boolean isBeingDeleted) {
         this.isBeingDeleted = isBeingDeleted;
+    }
+    public boolean getIsPasswordFail() {
+        return isPasswordFail;
+    }
+    public void setIsPasswordFail(boolean isPasswordFail) {
+        this.isPasswordFail = isPasswordFail;
     }
     
     

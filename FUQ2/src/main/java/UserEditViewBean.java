@@ -65,7 +65,7 @@ public class UserEditViewBean implements Serializable {
     public String save(Users user) {
 
         user.setEditable(false);
-        userDAOImpl.updateUser(user);
+        user = userDAOImpl.updateUser(user);
         return null;
     }
 
