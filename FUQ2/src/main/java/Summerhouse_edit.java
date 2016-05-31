@@ -72,6 +72,8 @@ public class Summerhouse_edit implements Serializable {
     
     private int dayOfTheWeek;
     
+    private GregorianCalendar endDate;
+    
     public Summerhouse_edit()
     {
         //summerhouseList = summerhouseDAOImpl.getSummerhouseList();
@@ -87,7 +89,6 @@ public class Summerhouse_edit implements Serializable {
         System.out.println(dayOfTheWeek);
         
         dateFormat.setCalendar(startDate);
-        stringDate = dateFormat.format(startDate.getTime());
         
         if(dayOfTheWeek > 1)
         {
@@ -97,6 +98,8 @@ public class Summerhouse_edit implements Serializable {
         {
             startDate.add(GregorianCalendar.DATE, 1);
         }
+        
+        stringDate = dateFormat.format(startDate.getTime());
         
         System.out.println(startDate.getTime());
         
@@ -234,7 +237,8 @@ public class Summerhouse_edit implements Serializable {
         {
             return "Laisvas";
         }
-        GregorianCalendar endDate = (GregorianCalendar)startDate.clone();
+        endDate = new GregorianCalendar(startDate.get(Calendar.YEAR),startDate.get(Calendar.MONTH), startDate.get(Calendar.DAY_OF_MONTH));
+        System.out.println(dateFormat.format(endDate.getTime()));
         endDate.add(GregorianCalendar.DATE, summerhouseToReserve.getReservationTime()*7);
         return dateFormat.format(endDate.getTime());
     }
