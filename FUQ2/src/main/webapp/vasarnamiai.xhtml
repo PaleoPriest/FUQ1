@@ -100,7 +100,7 @@
             </h:form>
         </div>
             <h:form id="summerhouse_form">
-                <h:commandButton class="btn btn-success" id="editSummerhouse" value="Keisti vasarnamius" action="#{summerhouse_edit.toSActions()}" ></h:commandButton>
+                <h:commandButton class="btn btn-success" id="editSummerhouse" value="Keisti vasarnamius" action="#{summerhouse_edit.toSActions()}" rendered="#{userSession.isAdmin()}"></h:commandButton>
             </h:form>
         </div>
         </div>
