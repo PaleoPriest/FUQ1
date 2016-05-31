@@ -57,6 +57,10 @@ summary {
   filter: alpha(opacity=80); /* For IE8 and earlier 
 }*/
 
+.table-widht {
+	width: 100%;
+}
+
 p.medium_height{
 	line-height:165%;
 }
