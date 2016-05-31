@@ -83,6 +83,16 @@
                 <h:outputText value="#{user.status}"  rendered="#{not user.editable}" />
 
             </h:column>
+            
+            <h:column>
+
+                <f:facet name="header">Ar administratorius</f:facet>
+
+                <h:inputText value="#{user.isAdmin}"  rendered="#{user.editable}" />
+
+                <h:outputText value="#{user.isAdmin}"  rendered="#{not user.editable}" />
+
+            </h:column>
 
             <h:column rendered="#{userSession.isAdmin()}">
 

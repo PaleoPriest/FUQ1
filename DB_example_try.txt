@@ -89,7 +89,7 @@ ReservationStart DATE,
 ReservationTime INTEGER,
 AdditionMonth	INTEGER,
 AdditionDay	INTEGER,
-UserID   	INTEGER,
+User_ID   	INTEGER,
 OPT_LOCK_VERSION INTEGER,
 
 PRIMARY KEY	(ID)

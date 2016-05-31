@@ -60,8 +60,11 @@ public class Summerhouse implements Serializable {
     private Integer maxRooms;
     @Column(name = "USER_ID")
     private Integer userId;
+    
     @Column(name = "RESERVSTIONSTART")
+    @Temporal(TemporalType.DATE)
     private Date reservationStart;
+    
     @Column(name = "RESERVATIONTIME")
     private Integer reservationTime;
     @Column(name = "MAXROOMS")

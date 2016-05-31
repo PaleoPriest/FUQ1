@@ -32,8 +32,9 @@ public class SummerhouseDAOImpl implements SummerhouseDAO {
     @Override
     public List<Summerhouse> getSummerhouseList() {
         try {
-            List<Summerhouse> summerHouseList = em.createQuery("select e from Summerhouse e",
-                    Summerhouse.class).getResultList();
+            List<Summerhouse> summerHouseList = em.createQuery("select e from Summerhouse e", Summerhouse.class).getResultList();
+            //List<Summerhouse> summerHouseList = em.createQuery("select s from Summerhouse s").getResultList();
+            //System.out.println(summerHouseList);
             return summerHouseList;
         } catch (Exception e) {
             System.out.println(e.getMessage());
