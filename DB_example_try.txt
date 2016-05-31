@@ -81,8 +81,8 @@ PRIMARY KEY	(ID)
 /*4. Vasarnamiu*/
 CREATE TABLE Summerhouse(
 ID		INTEGER	 GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
-Name		VARCHAR(15)		NOT NULL,
-Description	VARCHAR(255),
+Name		VARCHAR(15),
+Description	VARCHAR(100),
 MaxRooms	Integer,
 ReservationStart DATE,
 ReservationTime INTEGER,
