@@ -21,6 +21,14 @@
         <servlet-name>Login</servlet-name>
         <url-pattern>*.do</url-pattern>
     </servlet-mapping>
+    <!--filter>
+        <filter-name>LoginFilter</filter-name>
+        <filter-class>login.LoginFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>LoginFilter</filter-name>
+        <servlet-name>Faces Servlet</servlet-name>
+    </filter-mapping-->
     <session-config>
         <session-timeout>
             90
@@ -30,12 +38,5 @@
         <welcome-file>prisijungti.html</welcome-file>
     </welcome-file-list>
     
-    <filter>
-        <filter-name>LoginFilter</filter-name>
-        <filter-class>login.LoginFilter</filter-class>
-    </filter>
-    <filter-mapping>
-        <filter-name>LoginFilter</filter-name>
-        <servlet-name>Faces Servlet</servlet-name>
-    </filter-mapping>
+    
 </web-app>
