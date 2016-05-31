@@ -37,7 +37,7 @@
                       <li><a href="paskyra.html">Paskyra</a></li>
                       <li>
                           <h:form>
-                              <h:commandLink action="#{userSession.logoutForNav()}" value="Atsijungti" />
+                              <h:commandLink styleClass="dropdownListEle" action="#{userSession.logoutForNav()}" value="Atsijungti" />
                           </h:form>
                       </li>
                   </ul>
@@ -50,7 +50,7 @@
 
                   <ul class="dropdown-menu" role="menu">
                       <li>
-                          <a  href='http://www.facebook.com/dialog/oauth?client_id=217641221951231&amp;redirect_uri=http://localhost:8080/FUQ2/FBLogin.do&amp;scope=email'>
+                          <a class="dropdownListEle" href='http://www.facebook.com/dialog/oauth?client_id=217641221951231&amp;redirect_uri=http://localhost:8080/FUQ2/FBLogin.do&amp;scope=email'>
                             <img src="img/facebook_login_icon.png" width="152" height="57" alt="" />
                           </a>
                       </li>

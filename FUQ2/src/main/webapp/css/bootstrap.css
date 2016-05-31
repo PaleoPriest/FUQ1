@@ -30,6 +30,7 @@ aside,
 details,
 figcaption,
 figure,
+footer,
 header,
 hgroup,
 main,
@@ -40,7 +41,7 @@ summary {
   display: block;
 }
 
-#footer {
+/*#footer {
   position: absolute;
   right: 0;
   bottom: 0;
@@ -53,11 +54,21 @@ summary {
   background-image: url(../img/cream_text_background.jpg);
   background-repeat: repeat;
   opacity: 0.8;
-  filter: alpha(opacity=80); /* For IE8 and earlier */
-}
+  filter: alpha(opacity=80); /* For IE8 and earlier 
+}*/
 
 p.medium_height{
 	line-height:165%;
+}
+
+.dropdownListEle {
+    display: block;
+    padding: 3px 20px;
+    clear: both;
+    font-weight: normal;
+    line-height: 1.42857143;
+    color: #333;
+    white-space: nowrap;
 }
 
 audio,

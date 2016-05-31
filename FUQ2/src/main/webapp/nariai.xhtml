@@ -10,7 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-    <title></title>
+    <title>&quot;Vasaros malonumai&quot; - Nariai</title>
 
     <link href="css/bootstrap.css" rel="stylesheet"></link>
     <h:outputScript name="jsf.js" library="javax.faces"/>
@@ -19,11 +19,21 @@
 <div id="slideshow"></div>
 <nav class="navbar navbar-default" id="navigacija"/>
 <br/><br/><br/>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2 text-center">
+      <h1>Vasaros malonumai</h1>
+    </div>
+  <hr/>
+  <hr/>
+  <hr/>
+  </div>
+</div>
 	<div class="container">
         <div class="row text-center">
             <div class="col-md-8 col-md-offset-2">
 <h:form id="usersForm">
-    <h1>Narių sąrašas</h1>
+    <h2>Narių sąrašas</h2>
     <div>
         <h:dataTable value="#{userEditViewBean.getUsers()}" var="user" frame="box" rules="all" class="table">
             <h:column>
