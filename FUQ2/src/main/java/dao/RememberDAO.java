@@ -16,4 +16,5 @@ public interface RememberDAO {
     public boolean saveLogin(String uuid, Users user);
     public boolean removeLogin(Users user);
     public Remember findRememberByUser(Users user);
+    public Remember findRemember(String id);
 }

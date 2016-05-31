@@ -33,6 +33,8 @@ public class UserSession {
     private boolean isFailure = false;
     private boolean isBeingDeleted = false;
     private boolean isPasswordFail = false;
+    private boolean remember;
+
     
     public String getEmail() {
         return email;
@@ -70,7 +72,12 @@ public class UserSession {
     public void setIsPasswordFail(boolean isPasswordFail) {
         this.isPasswordFail = isPasswordFail;
     }
-    
+    public boolean isRemember() {
+        return remember;
+    }
+    public void setRemember(boolean remember) {
+        this.remember = remember;
+    }
     
     public String login(){
         if(lh.isValidUser(email, password, usi)!=false)

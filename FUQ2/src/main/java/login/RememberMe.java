@@ -28,21 +28,15 @@ public class RememberMe {
     @Inject
     RememberDAO rememberDAOImpl;
     
-    private boolean remember;
-
-    public boolean isRemember() {
-        return remember;
-    }
-    public void setRemember(boolean remember) {
-        this.remember = remember;
-    }
+    @Inject
+    UserSession userSession;
     
     
     public void doCookieStuff(Users user)
     {
         //HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
         HttpServletResponse response = (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
-        if (remember)
+        if (userSession.isRemember())
         {
         String uuid = UUID.randomUUID().toString();
         rememberDAOImpl.saveLogin(uuid, user);

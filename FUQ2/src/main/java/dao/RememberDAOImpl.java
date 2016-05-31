@@ -84,7 +84,17 @@ public class RememberDAOImpl implements RememberDAO {
         }
         return login;
     }
-    
+    @Override
+    public Remember findRemember(String id) {
+        Query query = em.createQuery("SELECT r FROM Remember r WHERE r.id = :id").setParameter("id", id);
+        List<Remember> logins = query.getResultList();
+        Remember login = null;
+        if(!logins.isEmpty())
+        {
+            login = logins.get(0);
+        }
+        return login;
+    }
     
     
 }
