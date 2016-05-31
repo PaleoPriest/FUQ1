@@ -101,7 +101,7 @@ PRIMARY KEY	(ID)
 
 /*5. Cookies for keep logged in*/
 CREATE TABLE Remember(
-ID VARCHAR(20) NOT NULL,
+ID VARCHAR(36) NOT NULL,
 LoggedInUser INTEGER,
 
 PRIMARY KEY	(ID),

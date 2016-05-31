@@ -34,7 +34,7 @@ public class Remember implements Serializable {
     @Id
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 20)
+    @Size(min = 1, max = 38)
     @Column(name = "ID")
     private String id;
     @JoinColumn(name = "LOGGEDINUSER", referencedColumnName = "ID")

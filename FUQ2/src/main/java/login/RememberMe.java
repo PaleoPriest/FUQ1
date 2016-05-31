@@ -5,6 +5,13 @@
  */
 package login;
 
+import DB_entities.Users;
+import dao.RememberDAO;
+import java.util.UUID;
+import javax.ejb.Stateless;
+import javax.faces.context.FacesContext;
+import javax.inject.Inject;
+import javax.inject.Named;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,7 +20,38 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Rugile
  */
+
+@Named
+@Stateless
 public class RememberMe {
+    
+    @Inject
+    RememberDAO rememberDAOImpl;
+    
+    private boolean remember;
+
+    public boolean isRemember() {
+        return remember;
+    }
+    public void setRemember(boolean remember) {
+        this.remember = remember;
+    }
+    
+    
+    public void doCookieStuff(Users user)
+    {
+        //HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
+        HttpServletResponse response = (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
+        if (remember)
+        {
+        String uuid = UUID.randomUUID().toString();
+        rememberDAOImpl.saveLogin(uuid, user);
+        addCookie(response, "remember", uuid, 2592000); //thats 30 days in seconds
+        } else {
+            rememberDAOImpl.removeLogin(user);
+            removeCookie(response, "remember");
+        }
+    }
     
     public static String getCookieValue(HttpServletRequest request, String name) {
     Cookie[] cookies = request.getCookies();

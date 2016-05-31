@@ -77,6 +77,7 @@ public class UserSession {
         {
             isFailure = false;
             password=null;
+            
             //System.out.println(usi.firstName + usi.lastName);
             return returnHome();
         }

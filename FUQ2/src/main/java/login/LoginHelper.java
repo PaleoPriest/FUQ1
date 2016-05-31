@@ -28,6 +28,9 @@ public class LoginHelper {
     @Inject
     private UserDAO userDAOImpl;
     
+    @Inject
+    RememberMe remember;
+    
     public boolean isValidUser(String email, String pass, UserSessionInfo usi)
     {
         //Users userList = null;
@@ -37,6 +40,7 @@ public class LoginHelper {
         String passTemp="";
         
         Users results = userDAOImpl.getUserByEmail(email);
+        remember.doCookieStuff(results);
         
         if(results!=null)
         {
