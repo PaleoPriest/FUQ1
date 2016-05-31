@@ -33,17 +33,12 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Users.findByPay", query = "SELECT u FROM Users u WHERE u.pay = :pay")})
 public class Users implements Serializable {
 
+    
+
     @OneToMany(mappedBy = "loggedinuser")
     private List<Remember> rememberList;
 
-    @Column(name = "THISYEARHOLIDAYS")
-    private Integer thisyearholidays;
-    @Column(name = "LASTYEARHOLIDAYS")
-    private Integer lastyearholidays;
-    @Column(name = "RESERVATIONGROUP")
-    private Integer reservationgroup;
-    @Column(name = "FORYEAR")
-    private Integer foryear;
+    
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -86,6 +81,17 @@ public class Users implements Serializable {
     private Integer points;
     @Column(name = "ISADMIN")
     private Boolean isAdmin;
+    @Column(name = "THISYEARHOLIDAYS")
+    private Integer thisyearholidays;
+    @Column(name = "LASTYEARHOLIDAYS")
+    private Integer lastyearholidays;
+    @Column(name = "RESERVATIONGROUP")
+    private Integer reservationgroup;
+    @Column(name = "FORYEAR")
+    private Integer foryear;
+    @Version
+    @Column(name = "OPT_LOCK_VERSION")
+    private Integer optLockVersion;
 
     @Transient private boolean editable;
 
@@ -290,5 +296,13 @@ public class Users implements Serializable {
 
     public void setRememberList(List<Remember> rememberList) {
         this.rememberList = rememberList;
+    }
+
+    public Integer getOptLockVersion() {
+        return optLockVersion;
+    }
+
+    public void setOptLockVersion(Integer optLockVersion) {
+        this.optLockVersion = optLockVersion;
     }
 }

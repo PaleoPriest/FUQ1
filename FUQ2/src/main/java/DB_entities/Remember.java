@@ -15,6 +15,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Version;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -30,6 +31,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Remember.findAll", query = "SELECT r FROM Remember r")})
 public class Remember implements Serializable {
 
+    
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -40,6 +43,9 @@ public class Remember implements Serializable {
     @JoinColumn(name = "LOGGEDINUSER", referencedColumnName = "ID")
     @ManyToOne
     private Users loggedinuser;
+    @Version
+    @Column(name = "OPT_LOCK_VERSION")
+    private Integer optLockVersion;
 
     public Remember() {
     }
@@ -87,6 +93,14 @@ public class Remember implements Serializable {
     @Override
     public String toString() {
         return "DB_entities.Remember[ id=" + id + " ]";
+    }
+
+    public Integer getOptLockVersion() {
+        return optLockVersion;
+    }
+
+    public void setOptLockVersion(Integer optLockVersion) {
+        this.optLockVersion = optLockVersion;
     }
     
 }

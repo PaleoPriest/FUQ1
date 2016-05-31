@@ -73,6 +73,7 @@ ThisYearHolidays INTEGER,
 LastYearHolidays INTEGER,
 ReservationGroup INTEGER,
 ForYear		INTEGER,
+OPT_LOCK_VERSION INTEGER,
 
 PRIMARY KEY	(ID)
 );
@@ -88,7 +89,8 @@ ReservationStart DATE,
 ReservationTime INTEGER,
 AdditionMonth	INTEGER,
 AdditionDay	INTEGER,
-User_ID   	INTEGER,
+UserID   	INTEGER,
+OPT_LOCK_VERSION INTEGER,
 
 PRIMARY KEY	(ID)
 );
@@ -103,6 +105,7 @@ PRIMARY KEY	(ID)
 CREATE TABLE Remember(
 ID VARCHAR(36) NOT NULL,
 LoggedInUser INTEGER,
+OPT_LOCK_VERSION INTEGER,
 
 PRIMARY KEY	(ID),
 FOREIGN KEY (LoggedInUser) REFERENCES Users(ID)

@@ -20,6 +20,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Version;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -37,15 +38,9 @@ import javax.validation.constraints.Size;
     @NamedQuery(name = "Summerhouse.findByMaxRooms", query = "SELECT s FROM Summerhouse s WHERE s.maxRooms = :maxRooms")})
 public class Summerhouse implements Serializable {
 
-    @Column(name = "MAXROOMS")
-    private Integer maxrooms;
-    @Column(name = "RESERVATIONSTART")
-    @Temporal(TemporalType.DATE)
-    private Date reservationstart;
-    @Column(name = "ADDITIONMONTH")
-    private Integer additionmonth;
-    @Column(name = "ADDITIONDAY")
-    private Integer additionday;
+    
+
+    
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -63,12 +58,27 @@ public class Summerhouse implements Serializable {
     private String description;
     @Column(name = "MAX_ROOMS")
     private Integer maxRooms;
-    @Column(name = "USERID")
+    @Column(name = "USER_ID")
     private Integer userId;
     @Column(name = "RESERVSTIONSTART")
     private Date reservationStart;
     @Column(name = "RESERVATIONTIME")
     private Integer reservationTime;
+    @Column(name = "MAXROOMS")
+    private Integer maxrooms;
+    @Column(name = "RESERVATIONSTART")
+    @Temporal(TemporalType.DATE)
+    private Date reservationstart;
+    @Column(name = "ADDITIONMONTH")
+    private Integer additionmonth;
+    @Column(name = "ADDITIONDAY")
+    private Integer additionday;
+    @Column(name = "USERID")
+    private Integer userid;
+    @Version
+    @Column(name = "OPT_LOCK_VERSION")
+    private Integer optLockVersion;
+    
     @JoinColumn(name = "ROOM", referencedColumnName = "ID")
     @ManyToOne
     private Rooms room;
@@ -224,5 +234,21 @@ public class Summerhouse implements Serializable {
 
     public void setAdditionday(Integer additionday) {
         this.additionday = additionday;
+    }
+
+    public Integer getUserid() {
+        return userid;
+    }
+
+    public void setUserid(Integer userid) {
+        this.userid = userid;
+    }
+
+    public Integer getOptLockVersion() {
+        return optLockVersion;
+    }
+
+    public void setOptLockVersion(Integer optLockVersion) {
+        this.optLockVersion = optLockVersion;
     }
 }
