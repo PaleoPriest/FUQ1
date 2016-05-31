@@ -7,9 +7,11 @@ package DB_entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -30,6 +32,9 @@ import javax.validation.constraints.Size;
     @NamedQuery(name = "Users.findByStatus", query = "SELECT u FROM Users u WHERE u.status = :status"),
     @NamedQuery(name = "Users.findByPay", query = "SELECT u FROM Users u WHERE u.pay = :pay")})
 public class Users implements Serializable {
+
+    @OneToMany(mappedBy = "loggedinuser")
+    private List<Remember> rememberList;
 
     @Column(name = "THISYEARHOLIDAYS")
     private Integer thisyearholidays;
@@ -276,5 +281,14 @@ public class Users implements Serializable {
 
     public void setForyear(Integer foryear) {
         this.foryear = foryear;
+    }
+
+    @XmlTransient
+    public List<Remember> getRememberList() {
+        return rememberList;
+    }
+
+    public void setRememberList(List<Remember> rememberList) {
+        this.rememberList = rememberList;
     }
 }

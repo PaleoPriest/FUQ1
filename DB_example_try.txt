@@ -99,12 +99,23 @@ ID			INTEGER			NOT NULL,
 PRIMARY KEY	(ID)
 );*/
 
+/*5. Cookies for keep logged in*/
+CREATE TABLE Remember(
+ID VARCHAR(20) NOT NULL,
+LoggedInUser INTEGER,
+
+PRIMARY KEY	(ID),
+FOREIGN KEY (LoggedInUser) REFERENCES Users(ID)
+);
+
+
 --	Drop tables / sequince / triggers
 /*
 DROP TABLE Users;
 DROP TABLE Summerhouse;
 DROP TABLE Rent;
 DROP TABLE Poll;
+DROP TABLE Remember;
 
 DROP seq_User_ID;
 DROP seq_SummerH_ID;
