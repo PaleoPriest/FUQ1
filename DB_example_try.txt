@@ -88,7 +88,7 @@ ReservationStart DATE,
 ReservationTime INTEGER,
 AdditionMonth	INTEGER,
 AdditionDay	INTEGER,
-UserID   	INTEGER,
+User_ID   	INTEGER,
 
 PRIMARY KEY	(ID)
 );
