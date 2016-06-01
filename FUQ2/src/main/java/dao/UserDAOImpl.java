@@ -11,6 +11,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
 import javax.persistence.SynchronizationType;
 import java.util.List;
+import javax.persistence.OptimisticLockException;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
@@ -47,9 +48,15 @@ public class UserDAOImpl implements UserDAO {
     @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
     public Users updateUser(Users user) { 
 
-        em.joinTransaction();
-        user = em.merge(user);  
-        em.flush();
+        try{
+            em.joinTransaction();
+            user = em.merge(user);  
+            em.flush();
+        }
+        catch(OptimisticLockException ole)
+        {
+            throw ole;
+        }
 
         return user;
     }

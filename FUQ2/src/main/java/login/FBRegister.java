@@ -117,7 +117,8 @@ public class FBRegister extends HttpServlet{
             Integer tempId = fBLoginHelper.isUserRegistered(facebookId);
             if(tempId!=null)
             {
-                fBLoginHelper.setSessionInfo(tempId, firstName, lastName, false);
+                boolean isAdmin = fBLoginHelper.isUserAdmin(facebookId);
+                fBLoginHelper.setSessionInfo(tempId, firstName, lastName, isAdmin);
                 res.sendRedirect("index.html");
                 return;
             }

@@ -20,6 +20,8 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
+import javax.faces.application.FacesMessage;
+import javax.persistence.OptimisticLockException;
 
 /**
  * Created by Martynas on 5/28/2016.
@@ -62,10 +64,22 @@ public class UserEditViewBean implements Serializable {
         return null;
     }
 
-    public String save(Users user) {
+    public String save(Users user) throws OptimisticLockException{
 
         user.setEditable(false);
-        user = userDAOImpl.updateUser(user);
+        try{
+            user = userDAOImpl.updateUser(user);
+        }
+        catch(OptimisticLockException ole)
+        {
+            FacesContext.getCurrentInstance().addMessage(
+                    null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Kazkas jau pakeite si vartotoja. Atsidarykite langa is naujo ir bandykite dar karta", ""));
+        }
+        catch(Exception e)
+        {
+            FacesContext.getCurrentInstance().addMessage(
+                    null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Kazkas jau pakeite si vartotoja. Atsidarykite langa is naujo ir bandykite dar karta", ""));
+        }
         return null;
     }
 

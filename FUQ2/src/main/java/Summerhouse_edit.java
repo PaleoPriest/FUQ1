@@ -105,9 +105,11 @@ public class Summerhouse_edit implements Serializable {
         
         setEditID(0);
         setNewSummerhouse(new Summerhouse());
-        summerhouseList.add(new Summerhouse(1, "aaa", "ad", 2, 0));
-        summerhouseList.add(new Summerhouse(2, "bbb", "bd", 3, 0));
-        summerhouseList.add(new Summerhouse(3, "ccc", "cd", 4, 0));
+        summerhouseList.add(new Summerhouse(1, "Azuolu", "", 2, 0));
+        summerhouseList.add(new Summerhouse(2, "Mariu", "", 3, 0));
+        summerhouseList.add(new Summerhouse(3, "Klevu", "", 4, 0));
+        summerhouseList.add(new Summerhouse(4, "Liepu", "", 4, 0));
+        summerhouseList.add(new Summerhouse(5, "Berzu", "", 5, 0));
         listCopy(summerhouseList, filteredSummerhouseList);
     }
     

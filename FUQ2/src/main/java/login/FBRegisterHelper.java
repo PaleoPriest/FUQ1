@@ -68,7 +68,8 @@ public class FBRegisterHelper implements Serializable{
             //user_valid.create(user);
             //System.out.println("asdf");
             em.flush();
-            int tempId = userDAOImpl.getUserByFBId(facebookId).getId();
+            Users user = userDAOImpl.getUserByFBId(facebookId);
+            int tempId = user.getId();
             setSessionInfo(tempId, firstName, lastName, false);
         }
         catch (OptimisticLockException ole) {
@@ -100,6 +101,19 @@ public class FBRegisterHelper implements Serializable{
         else
         {
             return null;
+        }
+        //return null;
+    }
+    public boolean isUserAdmin(String facebookId)
+    {
+        Users tempUser = userDAOImpl.getUserByFBId(facebookId);
+        if(tempUser.getIsAdmin()!=null)
+        {
+            return tempUser.getIsAdmin();
+        }
+        else
+        {
+            return false;
         }
         //return null;
     }
