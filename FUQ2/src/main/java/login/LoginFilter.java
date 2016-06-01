@@ -19,6 +19,7 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -26,6 +27,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Rugile
  */
+
+@WebFilter("*.html")    //this turns it on/off
 public class LoginFilter implements Filter{
 
     @Inject
@@ -39,29 +42,6 @@ public class LoginFilter implements Filter{
     
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-        HttpServletRequest req = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
-        HttpServletResponse response = (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
-        //User user = request.getSession().getAttribute("user");
-
-        if (userSession.isLoggedIn() == false) {
-            String uuid = rememberMe.getCookieValue(req, "remember");
-
-            Users user = null;
-            if (uuid != null) {
-                user = rememberDAOImpl.findRemember(uuid).getLoggedinuser();
-            }
-            
-            
-            if (user == null) {
-                try {
-                    response.sendRedirect("login");
-                } catch (IOException ex) {
-                    Logger.getLogger(LoginFilter.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            } else {
-                login(user);
-            }
-        }
     }
 
     public void login(Users user)
@@ -84,6 +64,42 @@ public class LoginFilter implements Filter{
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException
     {
+        HttpServletRequest req = (HttpServletRequest) request;
+        HttpServletResponse res = (HttpServletResponse)response;
+        //User user = request.getSession().getAttribute("user");
+
+        String path = ((HttpServletRequest) request).getRequestURI();
+        System.out.println(path);
+        if (path.contains("prisijungti")  || path.contains("index") || path.contains("registracija") || path.contains("kontaktine_info") || path.contains("facebook") || path.contains("css") || path.contains("fronts") || path.contains("img") || path.contains("js") || path.contains("source_fancybox") || path.contains("Templates") || path.contains("resource") || path.contains("confirm")) {
+            //System.out.println("asdf");
+            chain.doFilter(request, response); // Just continue chain.
+        } else {
+            if (userSession.isLoggedIn() == false) {
+                String uuid = rememberMe.getCookieValue(req, "remember"); //probably need uniqe name
+
+                Users user = null;
+                if (uuid != null) {
+                    user = rememberDAOImpl.findRemember(uuid).getLoggedinuser();
+                }
+
+
+                if (user == null) {
+                    try {
+                        res.sendRedirect("prisijungti.html");  //add exception fol login so user can see this
+                    } catch (IOException ex) {
+                        Logger.getLogger(LoginFilter.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                } else {
+                    login(user);
+                    chain.doFilter(request, response);
+                }
+            }
+            else
+            {
+                chain.doFilter(request, response);
+            }
+        }
+        
     }
 
     @Override
